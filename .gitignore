@@ -1,0 +1,37 @@
+# VS Code
+.vscode/
+*.code-workspace
+
+# LaTeX Build Artifacts
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.synctex(busy)
+*.toc
+*.lof
+*.lot
+*.nav
+*.snm
+*.vrb
+*.pdf
+
+# C/C++ & ESP-IDF
+build/
+sdkconfig
+sdkconfig.old
+*.o
+*.obj
+*.elf
+*.bin
+*.map
+*.hex
+
+# OS System Files
+Thumbs.db
+.DS_Store
+desktop.ini

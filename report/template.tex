@@ -1,0 +1,571 @@
+%!TEX program = xelatex
+\documentclass[12pt,a4paper]{report}
+
+% ================= FONT & TIẾNG VIỆT (BẮT BUỘC DÙNG XELATEX) =================
+\usepackage{fontspec}
+\usepackage[vietnamese]{babel}
+
+% Font Times New Roman
+\setmainfont{Times New Roman}
+
+% ================= GÓI TOÁN & KÝ HIỆU =================
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+% ================= HÌNH ẢNH & BẢNG =================
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{tabularx}
+
+% ================= CĂN LỀ – GIÃN DÒNG =================
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{indentfirst}
+
+\geometry{
+  left=3cm,
+  right=2cm,
+  top=2.5cm,
+  bottom=2.5cm
+}
+
+% ================= HEADER / FOOTER =================
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Đồ án chuyên ngành I}
+\fancyhead[R]{Bộ đàm sử dụng ESP32 và ESP-NOW}
+\fancyfoot[C]{\thepage}
+
+% ================= ĐỊNH DẠNG TIÊU ĐỀ CHƯƠNG =================
+\usepackage{titlesec}
+
+\titleformat{\chapter}[block]
+  {\bfseries\Large}
+  {\chaptertitlename\ \thechapter:}
+  {0.5em}
+  {}
+
+\titlespacing*{\chapter}{0pt}{-20pt}{20pt}
+
+% ================= HIỂN THỊ CODE =================
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    tabsize=2
+}
+\lstset{style=mystyle}
+
+% ================= HYPERLINK =================
+\usepackage{hyperref}
+
+% ================= GIÃN DÒNG =================
+\onehalfspacing
+
+\begin{document}
+
+% ====================================================================
+% TRANG BÌA
+% ====================================================================
+\begin{titlepage}
+    \begin{center}
+        % Phần đầu trang
+        \textbf{\large ĐẠI HỌC BÁCH KHOA HÀ NỘI}\\
+        \textbf{\large TRƯỜNG ĐIỆN - ĐIỆN TỬ}
+        
+        \vfill 
+        % --- PHẦN LOGO (Đã mở lại) ---
+        % Bạn nhớ thay 'hust_logo.png' bằng tên chính xác file ảnh của bạn
+        % \includegraphics[width=3cm]{hust_logo.png} 
+        % -----------------------------
+        \vfill
+        
+        % Tên đồ án
+        {\bfseries \Huge ĐỒ ÁN CHUYÊN NGÀNH I \par}
+        
+        \vspace{1.5cm} 
+        
+        {\bfseries \Large Nghiên cứu và thiết kế \\ Bộ đàm sử dụng ESP32 và ESP-NOW \par}
+        
+        \vfill 
+        
+        % Phần thông tin sinh viên
+        \begin{tabular}{ll} 
+            \textbf{Sinh viên thực hiện:} & Nguyễn Văn Dương 20241713E\\
+                            
+            \textbf{Ngành:}               & Kỹ thuật Điện tử - Viễn thông \\
+            \textbf{Chuyên ngành:}        & Kỹ thuật điện tử \\[10pt]
+            \textbf{Giảng viên hướng dẫn:}& ThS. Đào Lê Thu Thảo \\
+            \textbf{Bộ môn:}              & Đồ án chuyên ngành I
+        \end{tabular}
+
+        \vfill 
+        
+        \textbf{Hà Nội, 12/2025}
+    \end{center}
+\end{titlepage}
+
+% ====================================================================
+% LỜI NÓI ĐẦU
+% ====================================================================
+\chapter*{LỜI NÓI ĐẦU}
+\addcontentsline{toc}{chapter}{LỜI NÓI ĐẦU}
+
+Trong bối cảnh công nghệ thông tin và truyền thông không dây ngày càng phát triển mạnh mẽ như ngày nay, các thiết bị IoT (Internet of Things) và hệ thống truyền thông tầm ngắn đã trở thành một xu hướng quan trọng trong rất nhiều lĩnh vực như công nghiệp, nông nghiệp, y tế và đời sống hàng ngày. Đặc biệt là nhu cầu về các thiết bị truyền thông giọng nói độ trễ thấp, tiết kiệm năng lượng và không phụ thuộc vào hạ tầng mạng truyền thống đang ngày càng gia tăng.
+
+ESP32 là một dòng vi điều khiển vô cùng mạnh mẽ với khả năng kết nối Wi-Fi và Bluetooth tích hợp sẵn, đồng thời hỗ trợ giao thức ESP-NOW – một giao thức truyền thông ngang hàng (peer-to-peer) cho phép truyền dữ liệu nhanh chóng mà không cần kết nối router. Với những ưu điểm đó, ESP32 trở thành lựa chọn lý tưởng để phát triển các ứng dụng truyền thông thời gian thực như Walkie-Talkie.
+
+Tuy nhiên, việc thiết kế một hệ thống Walkie-Talkie đạt yêu cầu về độ trễ thấp (dưới 100ms), chất lượng âm thanh rõ ràng, và hoạt động ổn định không phải là vấn đề đơn giản. Quá trình này đòi hỏi người thiết kế phải nắm vững nguyên lý hoạt động của giao thức ESP-NOW, kỹ thuật xử lý âm thanh số (DSP), quản lý bộ đệm DMA (Direct Memory Access), và tối ưu hóa hiệu năng của một hệ thống nhúng.
+
+Xuất phát từ những yêu cầu thực tiễn đó, đồ án \textbf{"Nghiên cứu và thiết kế bộ đàm sử dụng ESP32 và ESP-NOW"} được thực hiện nhằm tìm hiểu sâu về nguyên lý làm việc của ESP-NOW, các phương pháp xử lý âm thanh I2S, đồng thời tiến hành thiết kế một hệ thống Walkie-Talkie cụ thể đáp ứng các thông số kỹ thuật đặt ra. Thông qua đồ án này, em mong muốn củng cố kiến thức lý thuyết, nâng cao kỹ năng thiết kế hệ thống nhúng và tạo nền tảng cho việc nghiên cứu, ứng dụng trong thực tế sau này.
+
+\newpage
+% ====================================================================
+% MỤC LỤC
+% ====================================================================
+\tableofcontents
+\newpage
+
+% ====================================================================
+% CHƯƠNG 1
+% ====================================================================
+\chapter{GIỚI THIỆU TỔNG QUAN VỀ ĐỒ ÁN}
+
+\section{Đặt vấn đề}
+Trong các năm gần đây, cùng với sự phát triển mạnh mẽ của công nghệ điện tử và tự động hóa, nhu cầu của con người về việc sử dụng các thiết bị truyền thông giọng nói tầm ngắn có độ trễ thấp, độ tin cậy cao và không phụ thuộc vào hạ tầng mạng ngày càng gia tăng. Các thiết bị như Walkie-Talkie được ứng dụng rộng rãi trong công nghiệp, xây dựng, an ninh, và các hoạt động ngoài trời.
+
+Trong bối cảnh đó, các giải pháp truyền thống như Walkie-Talkie sử dụng sóng radio FM hoặc PMR446 có ưu điểm về tầm xa nhưng lại tốn kém, kích thước lớn và khó tích hợp với các hệ thống IoT hiện đại. Ngược lại, ESP32 với khả năng Wi-Fi tích hợp và giao thức ESP-NOW cung cấp một giải pháp thay thế linh hoạt, chi phí thấp và dễ dàng lập trình.
+
+ESP-NOW là giao thức truyền thông không dây ngang hàng được phát triển bởi Espressif, cho phép truyền dữ liệu nhanh chóng giữa các thiết bị ESP32 mà không cần kết nối router. Với độ trễ thấp (thường dưới 10ms cho mỗi gói tin) và khả năng hoạt động ở chế độ broadcast, ESP-NOW rất phù hợp cho các ứng dụng thời gian thực như truyền âm thanh.
+
+Tuy nhiên, việc thiết kế hệ thống Walkie-Talkie trên thực tế không chỉ dừng lại ở việc lựa chọn giao thức truyền thông mà còn liên quan chặt chẽ đến quá trình xử lý âm thanh I2S, quản lý bộ đệm DMA, thiết kế logic PTT (Push-to-Talk), và đảm bảo ổn định vòng điều khiển. Nếu như thiết kế không hợp lý, hệ thống có thể gặp các vấn đề như độ trễ cao, âm thanh bị gián đoạn, nhiễu điện từ hoặc giảm độ tin cậy khi vận hành lâu dài.
+
+\section{Mục tiêu và kết quả dự kiến}
+\textbf{Những mục tiêu và nhiệm vụ thiết kế, phát triển đặt ra bao gồm:}
+\begin{itemize}
+    \item Tìm hiểu và phân tích các yêu cầu về thông số kỹ thuật cần thiết cho một hệ thống Walkie-Talkie sử dụng ESP32.
+    \item Tìm hiểu tổng quan về ESP-NOW, I2S, DMA và các kỹ thuật xử lý âm thanh số.
+    \item Thiết kế và phát triển firmware cho ESP32 sử dụng ESP-IDF framework.
+    \item Triển khai và kiểm thử hệ thống trên phần cứng thực tế.
+    \item Tiến hành thử nghiệm và đánh giá dựa trên kết quả thu được qua quá trình kiểm thử độ trễ, chất lượng âm thanh và độ ổn định.
+\end{itemize}
+
+\textbf{Kết quả dự kiến đạt được:}
+\begin{itemize}
+    \item Thiết kế và tính toán giá trị các thông số, cấu hình cần cho hệ thống Walkie-Talkie.
+    \item Báo cáo thiết kế phần cứng và phần mềm.
+    \item Sản phẩm thực tế: Hai thiết bị ESP32 Walkie-Talkie hoạt động được với độ trễ dưới 100ms.
+\end{itemize}
+
+\section{Những công việc chính}
+Để đạt được mục tiêu đề ra, đồ án được chia thành các công việc chính sau:
+\begin{enumerate}
+    \item \textbf{Nghiên cứu lý thuyết:} Tìm hiểu về ESP32, ESP-NOW, I2S, DMA; Nghiên cứu các kỹ thuật xử lý âm thanh số và quản lý bộ đệm.
+    \item \textbf{Thiết kế hệ thống:} Thiết kế sơ đồ khối hệ thống; Lựa chọn linh kiện phần cứng; Thiết kế kiến trúc phần mềm.
+    \item \textbf{Triển khai firmware:} Phát triển driver I2S, ESP-NOW, GPIO; Triển khai logic PTT, Ring Buffer, Audio Transport; Tối ưu hóa độ trễ.
+    \item \textbf{Kiểm thử và đánh giá:} Kiểm thử Audio Loopback; Kiểm thử ESP-NOW Link; Kiểm thử PTT Logic và Full System; Đo lường độ trễ và chất lượng.
+\end{enumerate}
+
+\section{Cấu trúc báo cáo}
+Báo cáo đồ án được chia thành 4 chương chính:
+\begin{itemize}
+    \item \textbf{Chương 1:} Giới thiệu tổng quan về đồ án, đặt vấn đề, mục tiêu và kết quả dự kiến.
+    \item \textbf{Chương 2:} Cơ sở lý thuyết về ESP32, ESP-NOW, I2S, DMA và kiến trúc hệ thống.
+    \item \textbf{Chương 3:} Phân tích và thiết kế hệ thống, bao gồm thiết kế phần cứng, phần mềm và tính toán thông số.
+    \item \textbf{Chương 4:} Triển khai và kiểm thử, trình bày kết quả thực nghiệm và đánh giá hiệu năng.
+\end{itemize}
+
+% ====================================================================
+% CHƯƠNG 2
+% ====================================================================
+\chapter{CƠ SỞ LÝ THUYẾT}
+
+\section{Tìm hiểu về ESP32 và ESP-NOW}
+\subsection{ESP32 là gì?}
+ESP32 là một vi điều khiển 32-bit được phát triển bởi Espressif Systems, tích hợp sẵn Wi-Fi và Bluetooth. ESP32 sử dụng lõi xử lý Xtensa LX6 dual-core hoặc single-core, hoạt động ở tần số lên đến 240 MHz. ESP32 hỗ trợ nhiều giao thức truyền thông như SPI, I2C, I2S, UART, và có khả năng xử lý tín hiệu số (DSP) mạnh mẽ.
+
+Các đặc điểm nổi bật của ESP32:
+\begin{itemize}
+    \item Wi-Fi: 802.11 b/g/n, hỗ trợ Station, SoftAP, và P2P mode.
+    \item Bluetooth: Bluetooth Classic và BLE.
+    \item I2S: Hỗ trợ giao tiếp âm thanh số với DMA.
+    \item DMA: Truyền dữ liệu trực tiếp không cần CPU can thiệp.
+    \item FreeRTOS: Hệ điều hành thời gian thực tích hợp sẵn.
+\end{itemize}
+
+\subsection{ESP-NOW là gì?}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.8\textwidth]{esp_now.jpg}
+%     \caption{Sơ đồ khối hệ thống}
+%     \label{fig:esp_now}
+% \end{figure}
+ESP-NOW là một giao thức truyền thông không dây ngang hàng (peer-to-peer) được phát triển bởi Espressif, cho phép các thiết bị ESP32 truyền dữ liệu trực tiếp với nhau mà không cần kết nối router.
+
+So sánh ESP-NOW với Wi-Fi truyền thống:
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Tiêu chí} & \textbf{ESP-NOW} & \textbf{Wi-Fi (TCP/IP)} \\ \hline
+Độ trễ & $<$ 10ms & 50-200ms \\ \hline
+Kích thước gói tin & 250 bytes & Không giới hạn \\ \hline
+Cần router & Không & Có \\ \hline
+Tiêu thụ năng lượng & Thấp & Cao \\ \hline
+\end{tabular}
+\caption{So sánh ESP-NOW và Wi-Fi}
+\end{table}
+
+\section{Nguyên lý hoạt động của giao tiếp I2S}
+\subsection{Chuẩn giao tiếp I2S}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.8\textwidth]{i2s.jpg}
+%     \caption{Chuẩn giao tiếp I2S}
+%     \label{fig:esp_now}
+% \end{figure}
+I2S (Inter-IC Sound) sử dụng 3 đường tín hiệu chính:
+\begin{itemize}
+    \item \textbf{BCLK (Bit Clock):} Xung clock đồng bộ cho mỗi bit dữ liệu.
+    \item \textbf{LRCK (Left-Right Clock / WS):} Xung clock chọn kênh hoặc đồng bộ frame.
+    \item \textbf{SD (Serial Data):} Đường truyền dữ liệu âm thanh.
+\end{itemize}
+
+Ví dụ: Với 16 kHz, 16-bit, Mono:
+\[ BCLK = 16,000 \times 16 \times 1 = 256,000 Hz = 256 kHz \]
+
+\subsection{DMA (Direct Memory Access)}
+DMA cho phép truyền dữ liệu trực tiếp giữa bộ nhớ và thiết bị ngoại vi. Trong hệ thống Walkie-Talkie, DMA được sử dụng để truyền dữ liệu âm thanh từ Microphone vào bộ nhớ (RX) và từ bộ nhớ ra Amplifier (TX) một cách liên tục, giúp giảm tải cho CPU và giảm độ trễ.
+
+\section{Kiến trúc hệ thống Walkie-Talkie}
+\subsection{Chế độ Half-Duplex}
+Hệ thống hoạt động ở chế độ Half-Duplex, nghĩa là tại một thời điểm chỉ có một thiết bị được phép truyền (TX), các thiết bị khác ở chế độ nhận (RX).
+
+\subsection{PTT (Push-to-Talk) Logic}
+Logic hoạt động:
+\begin{itemize}
+    \item \textbf{Khi nhấn PTT:} Chuyển sang TX Mode, tắt Speaker (mute), bật LED trạng thái, thu âm từ Mic và truyền đi.
+    \item \textbf{Khi nhả PTT:} Chuyển về RX Mode, bật Speaker, tắt LED, lắng nghe gói tin đến.
+\end{itemize}
+
+% ====================================================================
+% CHƯƠNG 3
+% ====================================================================
+\chapter{PHÂN TÍCH \& THIẾT KẾ HỆ THỐNG}
+
+\section{Yêu cầu kỹ thuật hệ thống}
+\subsection{Bài toán đặt ra}
+Thiết kế hệ thống với các yêu cầu:
+\begin{itemize}
+    \item Độ trễ: Dưới 100ms (end-to-end).
+    \item Chất lượng âm thanh: MOS $>$ 3.0.
+    \item Tầm hoạt động: 50-100m.
+    \item Chế độ: Half-Duplex với PTT.
+\end{itemize}
+
+\subsection{Thông số kỹ thuật}
+\textbf{Thông số âm thanh:} Sample Rate 16 kHz, 16-bit Mono. Băng thông 32 KB/s. \\
+\textbf{Thông số ESP-NOW:} Max Payload 250 bytes. Gói tin 244 bytes (240 bytes Audio = 7.5ms). \\
+\textbf{GPIO:} I2S BCLK (14), LRCK (15), SD\_IN (32), SD\_OUT (22), PTT (4), LED (2).
+
+\section{Thiết kế kiến trúc phần cứng}
+\subsection{Sơ đồ khối hệ thống}
+% Đây là nơi chèn hình ảnh sơ đồ khối. Tạm thời dùng verbatim để mô tả text.
+
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.5\textwidth]{so_do_khoi.png}
+%     \caption{Sơ đồ khối hệ thống}
+%     \label{fig:so_do_khoi}
+% \end{figure}
+Hệ thống Walkie-Talkie được thiết kế dựa trên kiến trúc vi điều khiển tập trung, chia làm 4 khối chức năng chính tương tác chặt chẽ với nhau như thể hiện trong Hình \ref{fig:so_do_khoi}:
+
+\begin{itemize}
+    \item \textbf{Khối Đầu Vào (Input Block):} 
+    Đóng vai trò thu thập tín hiệu điều khiển và tín hiệu âm thanh.
+    \begin{itemize}
+        \item \textit{Microphone (I2S Input):} Sử dụng cảm biến MEMS (INMP441) để thu âm thanh từ môi trường, chuyển đổi trực tiếp sang tín hiệu số và truyền về vi điều khiển qua giao tiếp I2S, giúp giảm thiểu nhiễu so với Analog truyền thống.
+        \item \textit{Nút PTT (GPIO Input):} Nút nhấn Push-to-Talk gửi tín hiệu ngắt (Interrupt) hoặc mức logic về GPIO để vi điều khiển chuyển đổi giữa hai chế độ: Thu (RX) và Phát (TX).
+    \end{itemize}
+
+    \item \textbf{Khối Xử Lý Trung Tâm (Central Processing Block):} 
+    Vi điều khiển ESP32 là bộ não của hệ thống, thực hiện các nhiệm vụ song song:
+    \begin{itemize}
+        \item \textit{Audio Processing:} Quản lý luồng dữ liệu âm thanh thông qua cơ chế DMA và Ring Buffer. Tại đây, tín hiệu có thể được xử lý khuếch đại kỹ thuật số (Gain) trước khi truyền đi hoặc phát ra loa.
+        \item \textit{Control Unit:} Điều phối trạng thái hệ thống dựa trên tín hiệu từ nút PTT.
+    \end{itemize}
+
+    \item \textbf{Khối Truyền Thông (Communication Block):} 
+    Sử dụng giao thức không dây \textbf{ESP-NOW}. Đây là lớp giao vận (Transport Layer) giúp đóng gói dữ liệu âm thanh thành các khung truyền (Frame) nhỏ gọn và gửi trực tiếp đến thiết bị đích (Peer-to-Peer) với độ trễ cực thấp (< 10ms), loại bỏ sự phụ thuộc vào Router Wifi trung gian.
+
+    \item \textbf{Khối Đầu Ra (Output Block):} 
+    Thực hiện chức năng tái tạo âm thanh và báo hiệu trạng thái.
+    \begin{itemize}
+        \item \textit{Amplifier & Speaker (I2S Output):} Module giải mã DAC tích hợp khuếch đại Class-D (MAX98357A) nhận dữ liệu I2S từ ESP32 để phát ra loa với hiệu suất cao.
+        \item \textit{LED Status (GPIO Output):} Đèn báo hiệu trực quan giúp người dùng nhận biết thiết bị đang ở trạng thái phát (TX), nhận (RX) hay đang chờ kết nối.
+    \end{itemize}
+\end{itemize}
+\subsection{Mô hình hoạt động giữa hai thiết bị}
+Để minh họa rõ luồng dữ liệu âm thanh thực tế khi đàm thoại, Hình \ref{fig:so_do_ket_noi} mô tả quá trình tương tác giữa Thiết bị A (Người nói) và Thiết bị B (Người nghe):
+
+% \begin{figure}[H]
+%     \centering
+%     % Bạn nhớ đổi tên file ảnh mới tải lên thành 'so_do_ket_noi.jpg' nhé
+%     \includegraphics[width=0.35\textwidth]{2thietbi.png} 
+%     \caption{Sơ đồ luồng tín hiệu giữa hai thiết bị Walkie-Talkie}
+%     \label{fig:so_do_ket_noi}
+% \end{figure}
+\subsection{Lựa chọn linh kiện}
+\begin{itemize}
+    \item \textbf{Microphone INMP441:} MEMS I2S Digital Mic, không cần ADC ngoài, nhiễu thấp.
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.4\textwidth]{mic.png}
+%     \caption{Microphone INMP441}
+% \end{figure}
+    \item \textbf{Amplifier MAX98357A:} I2S Class D Amp, hiệu suất cao, không cần DAC.
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.4\textwidth]{loa.png}
+%     \caption{Amplifier MAX98357A}
+% \end{figure}
+    \item \textbf{ESP32-WROOM-32:} Xử lý mạnh mẽ, hỗ trợ I2S/DMA và ESP-NOW.
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.4\textwidth]{esp32.png}
+%     \caption{ESP32-WROOM-32}
+% \end{figure}
+\end{itemize}
+
+\section{Thiết kế kiến trúc phần mềm}
+\subsection{Luồng dữ liệu (Data Flow)}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=1.0\textwidth]{luong_du_lieu.jpg}
+%     \caption{Sơ đồ luồng dữ liệu}
+% \end{figure}
+
+\textbf{TX Path:} Mic $\to$ DMA $\to$ Audio Task $\to$ Ring Buffer $\to$ WiFi Task $\to$ ESP-NOW. \\
+\textbf{RX Path:} ESP-NOW $\to$ Jitter Buffer $\to$ Audio Task $\to$ DMA $\to$ Amp.
+
+\subsection{Cấu trúc gói tin}
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Field} & \textbf{Size (Bytes)} & \textbf{Description} \\ \hline
+magic & 2 & Sync word (0xA55A) \\ \hline
+seq\_num & 2 & Số thứ tự gói tin \\ \hline
+payload & 240 & Dữ liệu PCM Audio (120 samples) \\ \hline
+\textbf{Total} & \textbf{244} & $<$ 250 bytes max \\ \hline
+\end{tabular}
+\end{table}
+
+Định nghĩa struct trong C:
+\begin{lstlisting}[language=C]
+typedef struct {
+    uint16_t magic;          // 0xA55A
+    uint16_t seq_num;        // Rolling sequence number
+    uint8_t payload[240];    // PCM Audio Data
+} __attribute__((packed)) audio_packet_t;
+\end{lstlisting}
+
+\section{Tính toán các thông số hệ thống}
+\subsection{Tính toán độ trễ (Latency)}
+Tổng độ trễ lý thuyết được tính toán qua các khâu Capture, Processing, Transmission, Jitter Buffer và Playback:
+\[ Latency \approx 7.5 + 1 + 5 + 1 + 22.5 + 7.5 = 44.5 ms \]
+Thực tế đo đạc với buffer xử lý: $< 70 ms$ (Đạt yêu cầu $< 100ms$).
+
+\subsection{Tính toán kích thước bộ đệm DMA}
+\[ DMA\_Size = 16000 \times \frac{16}{8} \times 1 \times 0.0075s = 240 \text{ bytes} \]
+Sử dụng 4 buffers cho TX và 8 buffers cho RX.
+
+\subsection{Tính toán băng thông ESP-NOW}
+Số gói tin mỗi giây: $133 \text{ packets/sec}$. \\
+Tổng băng thông: $32.5 \text{ KB/s}$, nằm trong khả năng đáp ứng của ESP-NOW.
+
+% ====================================================================
+% CHƯƠNG 4
+% ====================================================================
+% ====================================================================
+% CHƯƠNG 4
+% ====================================================================
+\chapter{TRIỂN KHAI VÀ KIỂM THỬ}
+
+Chương này trình bày chi tiết quá trình hiện thực hóa hệ thống Walkie-Talkie trên nền tảng phần cứng ESP32, mô tả cấu trúc phần mềm và các kịch bản kiểm thử thực tế để đánh giá hiệu năng của hệ thống.
+
+\section{Triển khai phần mềm}
+
+\subsection{Môi trường phát triển}
+Hệ thống được phát triển dựa trên bộ công cụ và thư viện tiêu chuẩn:
+\begin{itemize}
+    \item \textbf{Framework:} ESP-IDF (Espressif IoT Development Framework) phiên bản v5.x.
+    \item \textbf{IDE:} Visual Studio Code với extension Espressif IDF.
+    \item \textbf{Ngôn ngữ:} C (Tiêu chuẩn C11).
+    \item \textbf{Công cụ nạp/debug:} Esptool và Serial Monitor.
+\end{itemize}
+
+\subsection{Cấu trúc thư mục dự án}
+Dự án được tổ chức theo chuẩn ESP-IDF, phân tách rõ ràng giữa mã nguồn ứng dụng và các thư viện driver. Cấu trúc cụ thể được thể hiện như trong Hình \ref{fig:cau_truc}:
+
+% \begin{figure}[H]
+%     \centering
+%     % Đã giữ lại hình ảnh của bạn
+%     \includegraphics[width=1.0\textwidth]{cau_truc.jpg}
+%     \caption{Cấu trúc thư mục dự án}
+%     \label{fig:cau_truc}
+% \end{figure}
+
+Trong đó, thư mục \texttt{main} chứa các thành phần cốt lõi:
+\begin{itemize}
+    \item \texttt{main.c}: Chứa hàm \texttt{app\_main}, khởi tạo các tác vụ (Task) FreeRTOS và quản lý máy trạng thái.
+    \item \texttt{audio\_driver.c}: Driver điều khiển phần cứng âm thanh (I2S, DMA).
+    \item \texttt{wifi\_transport.c}: Driver quản lý giao thức ESP-NOW.
+\end{itemize}
+
+\subsection{Triển khai các module chính}
+\textbf{Khởi tạo I2S Driver (audio\_driver.c):} \\
+Module này chịu trách nhiệm thiết lập giao tiếp I2S ở chế độ Master. Cấu hình quan trọng nhất là kích thước bộ đệm DMA (8 buffers x 240 bytes) nhằm cân bằng giữa độ trễ thấp và độ ổn định âm thanh, tránh hiện tượng đứt quãng (buffer underrun).
+
+% Đã giữ lại đoạn code của bạn
+\begin{lstlisting}[language=C, caption={Cấu hình I2S Driver}]
+void audio_driver_init(void) {
+    i2s_config_t i2s_config = {
+        .mode = I2S_MODE_MASTER | I2S_MODE_TX | I2S_MODE_RX,
+        .sample_rate = 16000, // Tần số lấy mẫu 16kHz
+        .bits_per_sample = I2S_BITS_PER_SAMPLE_16BIT,
+        .channel_format = I2S_CHANNEL_FMT_ONLY_LEFT,
+        .communication_format = I2S_COMM_FORMAT_I2S,
+        // Cấu hình DMA: 8 buffers, mỗi buffer 240 bytes
+        .dma_buf_count = 8,
+        .dma_buf_len = 240,
+        .use_apll = false,
+        .intr_alloc_flags = ESP_INTR_FLAG_LEVEL1
+    };
+    i2s_driver_install(I2S_NUM_0, &i2s_config, 0, NULL);
+}
+\end{lstlisting}
+
+\section{Kết quả kiểm thử thực nghiệm}
+Quá trình kiểm thử được chia thành 4 giai đoạn từ đơn giản đến phức tạp nhằm cô lập và xử lý lỗi hiệu quả.
+
+\subsection{Kịch bản 1: Kiểm thử Audio Loopback}
+\textbf{Mục đích:} Kiểm tra tính toàn vẹn của phần cứng âm thanh (Mic INMP441, Amp MAX98357A). \\
+\textbf{Phương pháp:} Thiết lập phần mềm đọc dữ liệu từ Mic và ghi trực tiếp ra Loa trên cùng một thiết bị (Bypass Wi-Fi). \\
+\textbf{Kết quả:} 
+\begin{itemize}
+    \item Âm thanh thu được rõ ràng, không bị méo tiếng.
+    \item Độ trễ xử lý nội bộ đo được khoảng 15ms.
+    \item Không xuất hiện hiện tượng feedback (hú) khi điều chỉnh gain hợp lý.
+\end{itemize}
+
+\subsection{Kịch bản 2: Kiểm thử liên kết ESP-NOW}
+\textbf{Mục đích:} Đánh giá độ ổn định của đường truyền không dây. \\
+\textbf{Phương pháp:} Gửi gói tin liên tục giữa 2 thiết bị và đo RSSI. \\
+\textbf{Kết quả:}
+\begin{itemize}
+    \item \textbf{Độ trễ truyền dẫn:} Rất thấp, trung bình 3-5ms/gói.
+    \item \textbf{Tỉ lệ mất gói:} $< 1\%$ trong phạm vi 50m (môi trường thoáng).
+    \item \textbf{RSSI:} Đạt mức tốt (-40dBm) ở khoảng cách gần, đảm bảo kết nối ổn định.
+\end{itemize}
+
+\subsection{Kịch bản 3: Kiểm thử Logic PTT}
+\textbf{Mục đích:} Đảm bảo chuyển đổi trạng thái Thu/Phát mượt mà. \\
+\textbf{Kết quả:}
+\begin{itemize}
+    \item Nút nhấn phản hồi tức thời. Đèn LED hiển thị đúng trạng thái (Sáng khi phát, Tắt khi thu).
+    \item Speaker được ngắt tiếng (Mute) hoàn toàn khi ở chế độ TX, loại bỏ tiếng vọng.
+\end{itemize}
+
+\subsection{Kịch bản 4: Kiểm thử toàn hệ thống (Full System)}
+\textbf{Mục đích:} Đánh giá trải nghiệm thực tế với hai thiết bị hoàn chỉnh. \\
+\textbf{Kết quả:}
+\begin{itemize}
+    \item \textbf{Giao tiếp:} Ổn định, hai chiều (Half-duplex).
+    \item \textbf{Độ trễ tổng thể (End-to-End):} Đo được khoảng 50-70ms. Đây là mức trễ rất tốt, gần như thời gian thực.
+    \item \textbf{Chất lượng âm thanh:} Đạt yêu cầu, giọng nói dễ nghe.
+    \item \textbf{Tầm hoạt động:} Hiệu quả trong khoảng 80m.
+\end{itemize}
+
+\section{Đánh giá hiệu năng hệ thống}
+Bảng dưới đây tổng hợp kết quả kiểm thử so với yêu cầu thiết kế ban đầu:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{4cm}|p{4cm}|p{5cm}|}
+\hline
+\textbf{Tiêu chí} & \textbf{Yêu cầu thiết kế} & \textbf{Kết quả thực tế} \\ \hline
+Độ trễ end-to-end & $<$ 100ms & \textbf{50-70ms} (Đạt) \\ \hline
+Chất lượng âm thanh & MOS $>$ 3.0 & $\sim$ \textbf{3.5} (Đạt) \\ \hline
+Tầm hoạt động & 50-100m & \textbf{80m} (Đạt) \\ \hline
+Packet Loss Rate & $<$ 5\% & \textbf{$<$ 1\%} (Đạt) \\ \hline
+\end{tabular}
+\caption{Bảng tổng hợp và đánh giá kết quả kiểm thử}
+\end{table}
+
+\textbf{Nhận xét chung:} 
+Hệ thống hoạt động đúng theo nguyên lý thiết kế, đáp ứng tốt các chỉ tiêu về độ trễ và chất lượng âm thanh. Việc sử dụng ESP-NOW đã chứng minh được hiệu quả vượt trội về tốc độ so với các giao thức Wi-Fi truyền thống trong ứng dụng bộ đàm.
+
+% ====================================================================
+% KẾT LUẬN
+% ====================================================================
+\chapter*{KẾT LUẬN VÀ HƯỚNG PHÁT TRIỂN}
+\addcontentsline{toc}{chapter}{KẾT LUẬN VÀ HƯỚNG PHÁT TRIỂN}
+
+\section*{Kết luận}
+Đồ án \textbf{"Nghiên cứu và thiết kế bộ đàm sử dụng ESP32 và ESP-NOW"} đã hoàn thành các mục tiêu đề ra:
+\begin{enumerate}
+    \item Nghiên cứu lý thuyết sâu về ESP32, ESP-NOW, I2S và DMA.
+    \item Thiết kế thành công kiến trúc phần cứng và phần mềm, tối ưu hóa gói tin và bộ nhớ.
+    \item Triển khai firmware hoạt động ổn định với các tính năng PTT, Audio Transport.
+    \item Kiểm thử thực tế đạt độ trễ thấp (50-70ms) và chất lượng âm thanh tốt.
+\end{enumerate}
+
+\section*{Hướng phát triển}
+Để cải thiện hệ thống, các hướng phát triển tiếp theo bao gồm:
+\begin{itemize}
+    \item Tối ưu hóa tiêu thụ năng lượng (Light Sleep).
+    \item Tăng tầm hoạt động bằng anten ngoài.
+    \item Cải thiện chất lượng âm thanh bằng thuật toán lọc nhiễu và nén (Opus).
+    \item Thêm tính năng mã hóa bảo mật và màn hình hiển thị.
+    \item Thiết kế mạch PCB chuyên dụng tích hợp sạc pin.
+\end{itemize}
+
+% ====================================================================
+% TÀI LIỆU THAM KHẢO
+% ====================================================================
+\begin{thebibliography}{99}
+\addcontentsline{toc}{chapter}{TÀI LIỆU THAM KHẢO}
+
+\bibitem{esp32_ref} Espressif Systems (2023), \textit{ESP32 Technical Reference Manual}.
+\bibitem{espnow} Espressif Systems (2023), \textit{ESP-NOW User Guide}.
+\bibitem{espidf} Espressif Systems (2023), \textit{ESP-IDF Programming Guide}.
+\bibitem{inmp441} InvenSense (2023), \textit{INMP441 Datasheet}.
+\bibitem{max98357a} Maxim Integrated (2023), \textit{MAX98357A Datasheet}.
+\bibitem{i2s} Philips Semiconductors (1996), \textit{I2S Bus Specification}.
+\bibitem{freertos} FreeRTOS (2023), \textit{FreeRTOS Documentation}.
+\bibitem{ti_codec} Texas Instruments (2020), \textit{Audio Codec Design Guide}.
+
+\end{thebibliography}
+
+\end{document}
