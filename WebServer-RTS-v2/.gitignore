@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.venv/
+
+# Logs and results
+logs/
+results/
+
+# Local secrets
+secrets/
+
+# Editor
+.vscode/
+.idea/
