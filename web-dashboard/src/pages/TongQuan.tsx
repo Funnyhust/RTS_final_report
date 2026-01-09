@@ -1,9 +1,16 @@
-import { useEffect, useMemo, useState } from "react";
+﻿import { useMemo } from "react";
 import { FloorCard } from "../components/FloorCard";
 import { FLOORS } from "../config/building";
+import { useNow } from "../hooks/useNow";
 import { useRtdbValue } from "../hooks/useRtdbValue";
 import type { DevicesTree, FloorConfig, FloorSummary } from "../types";
-import { SEVERITY_RANK, getDeviceStateSnapshot, getSensorValues, normalizeSeverity, readNumber } from "../types";
+import {
+  SEVERITY_RANK,
+  getDeviceStateSnapshot,
+  getSensorValues,
+  normalizeSeverity,
+  readNumber,
+} from "../types";
 
 const STALE_MS = 5000;
 
@@ -13,17 +20,12 @@ function buildFloorsWithUnassigned(devices: DevicesTree): FloorConfig[] {
   const allDevices = Object.keys(devices ?? {});
   const unassigned = allDevices.filter((id) => !assigned.has(id));
   if (unassigned.length === 0) return FLOORS;
-  return [...FLOORS, { id: "unassigned", label: "Unassigned", deviceIds: unassigned }];
+  return [...FLOORS, { id: "unassigned", label: "Chưa gán", deviceIds: unassigned }];
 }
 
-export default function Overview() {
+export default function TongQuan() {
   const { value: devices, loading } = useRtdbValue<DevicesTree>("devices", {});
-  const [now, setNow] = useState(() => Date.now());
-
-  useEffect(() => {
-    const timer = setInterval(() => setNow(Date.now()), 1000);
-    return () => clearInterval(timer);
-  }, []);
+  const now = useNow(1000);
 
   const summaries = useMemo<FloorSummary[]>(() => {
     const floors = buildFloorsWithUnassigned(devices);
@@ -65,23 +67,31 @@ export default function Overview() {
     <section className="page">
       <div className="page-header">
         <div>
-          <h2>Overview</h2>
-          <p className="dim">Per-floor status with freshness (stale if age &gt; {STALE_MS} ms).</p>
+          <h2>Tổng quan theo tầng</h2>
+          <p className="dim">Dữ liệu thời gian thực từ /devices, đánh dấu DỮ LIỆU CŨ nếu &gt; {STALE_MS} ms.</p>
         </div>
         <div className="legend">
-          <span className="severity-badge severity-normal">NORMAL</span>
-          <span className="severity-badge severity-warn">WARN</span>
-          <span className="severity-badge severity-alarm">ALARM</span>
+          <span className="severity-badge severity-normal">BÌNH THƯỜNG</span>
+          <span className="severity-badge severity-warn">CẢNH BÁO</span>
+          <span className="severity-badge severity-alarm">BÁO ĐỘNG</span>
         </div>
       </div>
 
-      <div className="floor-grid">
-        {summaries.map((summary) => (
-          <FloorCard key={summary.floor.id} summary={summary} />
-        ))}
-      </div>
-
-      {loading && <div className="empty-state">Loading devices...</div>}
+      {loading ? (
+        <div className="skeleton-grid">
+          {[1, 2, 3, 4].map((item) => (
+            <div key={item} className="skeleton-card" />
+          ))}
+        </div>
+      ) : summaries.length === 0 ? (
+        <div className="empty-state">Chưa có dữ liệu thiết bị. Hãy kiểm tra Firebase RTDB.</div>
+      ) : (
+        <div className="floor-grid">
+          {summaries.map((summary) => (
+            <FloorCard key={summary.floor.id} summary={summary} />
+          ))}
+        </div>
+      )}
     </section>
   );
 }

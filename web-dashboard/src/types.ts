@@ -7,6 +7,13 @@ export const SEVERITY_RANK: Record<Severity, number> = {
   ALARM: 3,
 };
 
+export const SEVERITY_LABELS_VI: Record<Severity, string> = {
+  UNKNOWN: "KHÔNG RÕ",
+  NORMAL: "BÌNH THƯỜNG",
+  WARN: "CẢNH BÁO",
+  ALARM: "BÁO ĐỘNG",
+};
+
 export type MetricKey = "temp" | "smoke" | "gas" | "flame";
 
 export type SensorValues = {
@@ -43,6 +50,7 @@ export type AlarmRecord = {
   deviceId?: string;
   severity?: unknown;
   ts_ms?: unknown;
+  ack_ts_ms?: unknown;
   values?: SensorValues;
   ack?: boolean;
   note?: string;
@@ -160,6 +168,22 @@ export function formatAge(ms?: number): string {
   if (ms < 1000) return `${Math.round(ms)} ms`;
   if (ms < 60000) return `${(ms / 1000).toFixed(1)} s`;
   return `${(ms / 60000).toFixed(1)} min`;
+}
+
+export function formatFreshnessVi(ageMs?: number): string {
+  if (ageMs === undefined || !Number.isFinite(ageMs)) return "Chưa có dữ liệu";
+  if (ageMs < 1000) return "Vừa cập nhật";
+  if (ageMs < 60000) return `${(ageMs / 1000).toFixed(2)} giây trước`;
+  return `${(ageMs / 60000).toFixed(1)} phút trước`;
+}
+
+export function formatTimeHms(tsMs?: number): string {
+  if (!tsMs) return "--:--:--";
+  return new Date(tsMs).toLocaleTimeString("vi-VN", { hour12: false });
+}
+
+export function formatSeverityVi(severity: Severity): string {
+  return SEVERITY_LABELS_VI[severity] ?? "KHÔNG RÕ";
 }
 
 export function formatNumber(value?: number, digits = 1): string {

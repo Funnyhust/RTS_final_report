@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+﻿import { useMemo } from "react";
 import { CommandPanel } from "../components/CommandPanel";
 import { ThresholdEditor } from "../components/ThresholdEditor";
 import { FLOORS } from "../config/building";
@@ -11,10 +11,10 @@ function buildFloorsWithUnassigned(devices: DevicesTree): FloorConfig[] {
   const allDevices = Object.keys(devices ?? {});
   const unassigned = allDevices.filter((id) => !assigned.has(id));
   if (unassigned.length === 0) return FLOORS;
-  return [...FLOORS, { id: "unassigned", label: "Unassigned", deviceIds: unassigned }];
+  return [...FLOORS, { id: "unassigned", label: "Chưa gán", deviceIds: unassigned }];
 }
 
-export default function Controls() {
+export default function DieuKhien() {
   const { value: devices } = useRtdbValue<DevicesTree>("devices", {});
   const floors = useMemo(() => buildFloorsWithUnassigned(devices), [devices]);
 
@@ -22,8 +22,8 @@ export default function Controls() {
     <section className="page">
       <div className="page-header">
         <div>
-          <h2>Controls</h2>
-          <p className="dim">Send commands and manage thresholds.</p>
+          <h2>Điều khiển</h2>
+          <p className="dim">Gửi lệnh và cấu hình ngưỡng cảnh báo cho thiết bị.</p>
         </div>
       </div>
 

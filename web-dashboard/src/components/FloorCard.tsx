@@ -1,7 +1,12 @@
-import type { FloorSummary } from "../types";
-import { formatAge, formatNumber } from "../types";
+﻿import type { FloorSummary } from "../types";
+import { formatFreshnessVi, formatNumber, formatSeverityVi } from "../types";
 
-const METRICS = ["temp", "smoke", "gas", "flame"] as const;
+const METRICS = [
+  { key: "temp", label: "Nhiệt độ", unit: "°C" },
+  { key: "smoke", label: "Khói", unit: "ppm" },
+  { key: "gas", label: "Gas", unit: "ppm" },
+  { key: "flame", label: "Lửa", unit: "lvl" },
+] as const;
 
 type FloorCardProps = {
   summary: FloorSummary;
@@ -9,6 +14,8 @@ type FloorCardProps = {
 
 export function FloorCard({ summary }: FloorCardProps) {
   const { floor, overallSeverity, devices, staleCount } = summary;
+  const latestDevice = devices[0];
+  const freshnessText = latestDevice ? formatFreshnessVi(latestDevice.ageMs) : "Chưa có dữ liệu";
 
   return (
     <div className={`card floor-card severity-${overallSeverity.toLowerCase()}`}>
@@ -16,32 +23,41 @@ export function FloorCard({ summary }: FloorCardProps) {
         <div>
           <div className="floor-title">{floor.label}</div>
           <div className="floor-subtitle">
-            {devices.length} device{devices.length === 1 ? "" : "s"}
-            {staleCount > 0 ? `, ${staleCount} stale` : ""}
+            {devices.length} thiết bị · {freshnessText}
           </div>
         </div>
-        <div className={`severity-badge severity-${overallSeverity.toLowerCase()}`}>{overallSeverity}</div>
+        <div className={`severity-badge severity-${overallSeverity.toLowerCase()}`}>
+          {formatSeverityVi(overallSeverity)}
+        </div>
       </div>
 
-      {devices.length === 0 ? (
-        <div className="empty-state">No device mapped to this floor.</div>
+      {staleCount > 0 && <div className="stale-banner">DỮ LIỆU CŨ</div>}
+
+      {latestDevice ? (
+        <div className="metric-grid">
+          {METRICS.map((metric) => (
+            <div key={metric.key} className="metric-item">
+              <div className="metric-label">{metric.label}</div>
+              <div className="metric-value">
+                {formatNumber(latestDevice.values[metric.key] as number, 1)}
+                <span className="metric-unit">{metric.unit}</span>
+              </div>
+            </div>
+          ))}
+        </div>
       ) : (
-        <div className="device-list">
+        <div className="empty-state">Chưa có thiết bị trong tầng này.</div>
+      )}
+
+      {devices.length > 0 && (
+        <div className="device-mini-list">
           {devices.map((device) => (
-            <div key={device.deviceId} className={`device-row ${device.stale ? "stale" : ""}`}>
-              <div className="device-id">
-                <div className="device-name">{device.deviceId}</div>
-                <div className={`mini-pill severity-${device.severity.toLowerCase()}`}>{device.severity}</div>
+            <div key={device.deviceId} className={`device-mini ${device.stale ? "stale" : ""}`}>
+              <div className="device-mini-id">{device.deviceId}</div>
+              <div className={`mini-pill severity-${device.severity.toLowerCase()}`}>
+                {formatSeverityVi(device.severity)}
               </div>
-              <div className="device-age">Age: {formatAge(device.ageMs)}</div>
-              <div className="sensor-grid">
-                {METRICS.map((metric) => (
-                  <div key={metric} className="sensor-item">
-                    <div className="sensor-label">{metric.toUpperCase()}</div>
-                    <div className="sensor-value">{formatNumber(device.values[metric] as number, 1)}</div>
-                  </div>
-                ))}
-              </div>
+              <div className="device-mini-age">{formatFreshnessVi(device.ageMs)}</div>
             </div>
           ))}
         </div>

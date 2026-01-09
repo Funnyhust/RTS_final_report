@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+﻿import { useEffect, useState } from "react";
 import { ref, set } from "firebase/database";
 import { db } from "../firebase";
 import { useRtdbValue } from "../hooks/useRtdbValue";
@@ -6,6 +6,12 @@ import type { ThresholdConfig } from "../types";
 import { DEFAULT_THRESHOLDS, normalizeThresholds } from "../types";
 
 const METRICS: Array<keyof ThresholdConfig> = ["temp", "smoke", "gas", "flame"];
+const METRIC_LABELS: Record<keyof ThresholdConfig, string> = {
+  temp: "Nhiệt độ",
+  smoke: "Khói",
+  gas: "Gas",
+  flame: "Lửa",
+};
 
 export function ThresholdEditor() {
   const { value: thresholds } = useRtdbValue<ThresholdConfig>("config/thresholds", DEFAULT_THRESHOLDS);
@@ -33,30 +39,30 @@ export function ThresholdEditor() {
 
   const handleSave = async () => {
     if (!db) return;
-    setStatus("Saving...");
+    setStatus("Đang lưu...");
     try {
       await set(ref(db, "config/thresholds"), draft);
       setDirty(false);
-      setStatus("Saved");
+      setStatus("Đã lưu ngưỡng");
     } catch (error) {
       console.error(error);
-      setStatus("Save failed");
+      setStatus("Lưu thất bại");
     }
   };
 
   return (
     <div className="card">
       <div className="panel-header">
-        <h3>Thresholds</h3>
-        <p className="dim">Write to /config/thresholds for device-side alerting.</p>
+        <h3>Ngưỡng cảnh báo</h3>
+        <p className="dim">Đọc/ghi tại /config/thresholds để đồng bộ thiết bị.</p>
       </div>
 
       <div className="threshold-grid">
         {METRICS.map((metric) => (
           <div key={metric} className="threshold-row">
-            <div className="threshold-label">{metric.toUpperCase()}</div>
+            <div className="threshold-label">{METRIC_LABELS[metric]}</div>
             <label>
-              Warn
+              Cảnh báo
               <input
                 type="number"
                 value={draft[metric].warn}
@@ -64,7 +70,7 @@ export function ThresholdEditor() {
               />
             </label>
             <label>
-              Alarm
+              Báo động
               <input
                 type="number"
                 value={draft[metric].alarm}
@@ -77,7 +83,7 @@ export function ThresholdEditor() {
 
       <div className="panel-actions">
         <button className="btn" disabled={!dirty} onClick={handleSave}>
-          Save thresholds
+          LƯU NGƯỠNG
         </button>
         <div className="status-text">{status ?? ""}</div>
       </div>

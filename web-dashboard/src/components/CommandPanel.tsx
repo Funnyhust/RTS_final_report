@@ -1,10 +1,16 @@
-import { useMemo, useState } from "react";
+﻿import { useMemo, useState } from "react";
 import { push, ref, set } from "firebase/database";
 import { db } from "../firebase";
 import type { FloorConfig } from "../types";
 
-const COMMANDS = ["SIREN_ON", "SIREN_OFF", "RESET_ALARM", "TEST_BUZZER"] as const;
+const COMMANDS = [
+  { value: "SIREN_ON", label: "BẬT CÒI" },
+  { value: "SIREN_OFF", label: "TẮT CÒI" },
+  { value: "RESET_ALARM", label: "XÓA CẢNH BÁO" },
+  { value: "TEST_BUZZER", label: "THỬ CÒI" },
+] as const;
 
+type CommandValue = (typeof COMMANDS)[number]["value"];
 type TargetType = "all" | "floor" | "device";
 
 type CommandPanelProps = {
@@ -15,8 +21,7 @@ export function CommandPanel({ floors }: CommandPanelProps) {
   const [targetType, setTargetType] = useState<TargetType>("all");
   const [floorId, setFloorId] = useState(floors[0]?.id ?? "");
   const [deviceId, setDeviceId] = useState(floors[0]?.deviceIds[0] ?? "");
-  const [command, setCommand] = useState<(typeof COMMANDS)[number]>("SIREN_ON");
-  const [note, setNote] = useState("");
+  const [command, setCommand] = useState<CommandValue>(COMMANDS[0].value);
   const [status, setStatus] = useState<string | null>(null);
 
   const deviceOptions = useMemo(() => floors.flatMap((floor) => floor.deviceIds), [floors]);
@@ -30,55 +35,52 @@ export function CommandPanel({ floors }: CommandPanelProps) {
   const handleSend = async () => {
     if (!db) return;
     if (targetType === "floor" && !floorId) {
-      setStatus("Select a floor target");
+      setStatus("Vui lòng chọn tầng mục tiêu");
       return;
     }
     if (targetType === "device" && !deviceId) {
-      setStatus("Select a device target");
+      setStatus("Vui lòng chọn thiết bị mục tiêu");
       return;
     }
-    setStatus("Sending...");
+    setStatus("Đang gửi lệnh...");
     try {
-      const payload = {
-        command,
+      const payload: Record<string, unknown> = {
+        cmd: command,
         ts_ms: Date.now(),
-        target: {
-          type: targetType,
-          id: targetType === "all" ? "all" : targetType === "floor" ? floorId : deviceId,
-        },
-        note: note.trim() || undefined,
-        source: "web-dashboard",
+        target: targetType,
       };
+      if (targetType === "floor") payload.floorId = floorId;
+      if (targetType === "device") payload.deviceId = deviceId;
+
       const targetRef = push(ref(db, `commands/${targetKey}`));
       await set(targetRef, payload);
-      setStatus(`Queued ${command} -> ${targetKey}`);
-      setNote("");
+      setStatus("Đã gửi lệnh thành công");
     } catch (error) {
       console.error(error);
-      setStatus("Send failed");
+      setStatus("Gửi lệnh thất bại");
     }
   };
 
   return (
     <div className="card">
       <div className="panel-header">
-        <h3>Command Center</h3>
-        <p className="dim">Write commands to /commands/&lt;target&gt;/&lt;pushId&gt;.</p>
+        <h3>Gửi lệnh điều khiển</h3>
+        <p className="dim">Ghi vào /commands/&lt;target&gt;/&lt;pushId&gt; trên RTDB.</p>
       </div>
 
       <div className="command-grid">
         <label>
-          Target
+          Mục tiêu
           <select value={targetType} onChange={(event) => setTargetType(event.target.value as TargetType)}>
-            <option value="all">All devices</option>
-            <option value="floor">By floor</option>
-            <option value="device">By device</option>
+            <option value="all">Tất cả thiết bị</option>
+            <option value="floor">Theo tầng</option>
+            <option value="device">Theo thiết bị</option>
           </select>
         </label>
 
         {targetType === "floor" && (
           <label>
-            Floor
+            Chọn tầng
             <select value={floorId} onChange={(event) => setFloorId(event.target.value)}>
               {floors.map((floor) => (
                 <option key={floor.id} value={floor.id}>
@@ -91,7 +93,7 @@ export function CommandPanel({ floors }: CommandPanelProps) {
 
         {targetType === "device" && (
           <label>
-            Device
+            Chọn thiết bị
             <select value={deviceId} onChange={(event) => setDeviceId(event.target.value)}>
               {deviceOptions.map((id) => (
                 <option key={id} value={id}>
@@ -103,33 +105,20 @@ export function CommandPanel({ floors }: CommandPanelProps) {
         )}
 
         <label>
-          Command
-          <select
-            value={command}
-            onChange={(event) => setCommand(event.target.value as (typeof COMMANDS)[number])}
-          >
+          Lệnh
+          <select value={command} onChange={(event) => setCommand(event.target.value as CommandValue)}>
             {COMMANDS.map((cmd) => (
-              <option key={cmd} value={cmd}>
-                {cmd}
+              <option key={cmd.value} value={cmd.value}>
+                {cmd.label}
               </option>
             ))}
           </select>
-        </label>
-
-        <label className="command-note">
-          Note
-          <input
-            type="text"
-            placeholder="Optional note"
-            value={note}
-            onChange={(event) => setNote(event.target.value)}
-          />
         </label>
       </div>
 
       <div className="panel-actions">
         <button className="btn" onClick={handleSend}>
-          Send command
+          GỬI LỆNH
         </button>
         <div className="status-text">{status ?? ""}</div>
       </div>

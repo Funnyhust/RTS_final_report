@@ -1,7 +1,16 @@
-import { useEffect, useMemo, useState } from "react";
+﻿import { useEffect, useMemo, useState } from "react";
 import { getFloorLabel } from "../config/building";
 import type { AlarmRecord, DeviceState } from "../types";
-import { formatAge, formatNumber, getSensorValues, normalizeSeverity, readNumber } from "../types";
+import {
+  formatFreshnessVi,
+  formatNumber,
+  formatSeverityVi,
+  formatTimeHms,
+  getSensorValues,
+  normalizeSeverity,
+  readNumber,
+} from "../types";
+import { ToastStack } from "./Toast";
 
 export type AlarmItem = AlarmRecord & { id: string };
 
@@ -10,13 +19,16 @@ type AlarmListProps = {
   deviceFloorMap: Record<string, string>;
   nowMs: number;
   onAck: (alarmId: string, note: string) => void;
+  loading?: boolean;
 };
 
-export function AlarmList({ alarms, deviceFloorMap, nowMs, onAck }: AlarmListProps) {
+export function AlarmList({ alarms, deviceFloorMap, nowMs, onAck, loading }: AlarmListProps) {
   const [notes, setNotes] = useState<Record<string, string>>({});
   const [lastSeenId, setLastSeenId] = useState<string | null>(null);
   const [initialized, setInitialized] = useState(false);
-  const [toasts, setToasts] = useState<Array<{ id: string; title: string }>>([]);
+  const [toasts, setToasts] = useState<Array<{ id: string; message: string; tone?: "alarm" | "warn" }>>(
+    []
+  );
 
   useEffect(() => {
     if (!initialized) {
@@ -31,8 +43,10 @@ export function AlarmList({ alarms, deviceFloorMap, nowMs, onAck }: AlarmListPro
       const alarm = alarms[0];
       const severity = normalizeSeverity(alarm.severity);
       const floorId = alarm.deviceId ? deviceFloorMap[alarm.deviceId] : undefined;
-      const label = `New ${severity} alarm on ${alarm.deviceId ?? "unknown"} (${getFloorLabel(floorId)})`;
-      setToasts((prev) => [...prev, { id: alarm.id, title: label }]);
+      if (severity === "ALARM" && !alarm.ack) {
+        const message = `Báo động mới tại ${alarm.deviceId ?? "thiết bị"} (${getFloorLabel(floorId)})`;
+        setToasts((prev) => [...prev, { id: alarm.id, message, tone: "alarm" }]);
+      }
       setLastSeenId(alarm.id);
     }
   }, [alarms, deviceFloorMap, initialized, lastSeenId]);
@@ -41,7 +55,7 @@ export function AlarmList({ alarms, deviceFloorMap, nowMs, onAck }: AlarmListPro
     if (toasts.length === 0) return;
     const timer = setTimeout(() => {
       setToasts((prev) => prev.slice(1));
-    }, 4000);
+    }, 4500);
     return () => clearTimeout(timer);
   }, [toasts]);
 
@@ -50,24 +64,29 @@ export function AlarmList({ alarms, deviceFloorMap, nowMs, onAck }: AlarmListPro
       const floorId = alarm.deviceId ? deviceFloorMap[alarm.deviceId] : undefined;
       const severity = normalizeSeverity(alarm.severity);
       const ts = readNumber(alarm.ts_ms);
+      const ackTs = readNumber(alarm.ack_ts_ms);
       const values = getSensorValues(alarm as unknown as DeviceState);
-      return { ...alarm, floorId, severity, ts, values };
+      return { ...alarm, floorId, severity, ts, ackTs, values };
     });
   }, [alarms, deviceFloorMap]);
 
+  if (loading) {
+    return (
+      <div className="skeleton-list">
+        {[1, 2, 3].map((item) => (
+          <div key={item} className="skeleton-card" />
+        ))}
+      </div>
+    );
+  }
+
   if (alarmsWithMeta.length === 0) {
-    return <div className="empty-state">No alarms received yet.</div>;
+    return <div className="empty-state">Chưa có cảnh báo nào được ghi nhận.</div>;
   }
 
   return (
     <div className="alarm-list">
-      <div className="toast-stack">
-        {toasts.map((toast) => (
-          <div key={toast.id} className="toast">
-            {toast.title}
-          </div>
-        ))}
-      </div>
+      <ToastStack items={toasts} />
 
       {alarmsWithMeta.map((alarm) => (
         <div
@@ -76,32 +95,36 @@ export function AlarmList({ alarms, deviceFloorMap, nowMs, onAck }: AlarmListPro
         >
           <div className="alarm-main">
             <div className="alarm-title">
-              <span className={`severity-badge severity-${alarm.severity.toLowerCase()}`}>{alarm.severity}</span>
-              <span className="alarm-device">{alarm.deviceId ?? "unknown-device"}</span>
+              <span className={`severity-badge severity-${alarm.severity.toLowerCase()}`}>
+                {formatSeverityVi(alarm.severity)}
+              </span>
+              <span className="alarm-device">{alarm.deviceId ?? "Thiết bị chưa rõ"}</span>
               <span className="alarm-floor">{getFloorLabel(alarm.floorId)}</span>
             </div>
             <div className="alarm-meta">
-              <span>Age: {formatAge(alarm.ts ? nowMs - alarm.ts : undefined)}</span>
-              <span>ACK: {alarm.ack ? "yes" : "no"}</span>
+              <span>Thời gian: {formatFreshnessVi(alarm.ts ? nowMs - alarm.ts : undefined)}</span>
+              <span>Trạng thái: {alarm.ack ? "Đã xác nhận" : "Chưa xác nhận"}</span>
+              {alarm.ackTs ? <span>Xác nhận lúc: {formatTimeHms(alarm.ackTs)}</span> : null}
             </div>
+            {alarm.note ? <div className="alarm-note">Ghi chú: {alarm.note}</div> : null}
           </div>
 
           <div className="alarm-values">
-            <div className="sensor-item">
-              <div className="sensor-label">TEMP</div>
-              <div className="sensor-value">{formatNumber(alarm.values.temp, 1)}</div>
+            <div className="metric-mini">
+              <div className="metric-label">Nhiệt độ</div>
+              <div className="metric-value">{formatNumber(alarm.values.temp, 1)}</div>
             </div>
-            <div className="sensor-item">
-              <div className="sensor-label">SMOKE</div>
-              <div className="sensor-value">{formatNumber(alarm.values.smoke, 1)}</div>
+            <div className="metric-mini">
+              <div className="metric-label">Khói</div>
+              <div className="metric-value">{formatNumber(alarm.values.smoke, 1)}</div>
             </div>
-            <div className="sensor-item">
-              <div className="sensor-label">GAS</div>
-              <div className="sensor-value">{formatNumber(alarm.values.gas, 1)}</div>
+            <div className="metric-mini">
+              <div className="metric-label">Gas</div>
+              <div className="metric-value">{formatNumber(alarm.values.gas, 1)}</div>
             </div>
-            <div className="sensor-item">
-              <div className="sensor-label">FLAME</div>
-              <div className="sensor-value">{formatNumber(alarm.values.flame, 1)}</div>
+            <div className="metric-mini">
+              <div className="metric-label">Lửa</div>
+              <div className="metric-value">{formatNumber(alarm.values.flame, 1)}</div>
             </div>
           </div>
 
@@ -109,7 +132,7 @@ export function AlarmList({ alarms, deviceFloorMap, nowMs, onAck }: AlarmListPro
             <input
               className="note-input"
               type="text"
-              placeholder="Add note"
+              placeholder="Ghi chú xác nhận"
               value={notes[alarm.id] ?? ""}
               onChange={(event) =>
                 setNotes((prev) => ({
@@ -126,7 +149,7 @@ export function AlarmList({ alarms, deviceFloorMap, nowMs, onAck }: AlarmListPro
                 setNotes((prev) => ({ ...prev, [alarm.id]: "" }));
               }}
             >
-              {alarm.ack ? "ACKED" : "ACK"}
+              {alarm.ack ? "Đã xác nhận" : "XÁC NHẬN"}
             </button>
           </div>
         </div>
