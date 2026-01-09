@@ -12,14 +12,23 @@ const firebaseConfig = {
   measurementId: import.meta.env.VITE_FB_MEASUREMENT_ID,
 };
 
+type FirebaseConfigKey = keyof typeof firebaseConfig;
+
 export let db: ReturnType<typeof getDatabase> | null = null;
 export let firebaseInitError: unknown = null;
 
 try {
+  const missingKeys = (Object.keys(firebaseConfig) as FirebaseConfigKey[]).filter(
+    (key) => !firebaseConfig[key]
+  );
+  if (missingKeys.length > 0) {
+    throw new Error(`Missing Firebase env vars: ${missingKeys.join(", ")}`);
+  }
+
   const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
   db = getDatabase(app);
   console.log("Firebase init OK:", firebaseConfig.databaseURL);
-} catch (e) {
-  firebaseInitError = e;
-  console.error("Firebase init FAILED:", e);
+} catch (error) {
+  firebaseInitError = error;
+  console.error("Firebase init FAILED:", error);
 }
