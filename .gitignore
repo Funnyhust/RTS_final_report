@@ -35,3 +35,21 @@ sdkconfig.old
 Thumbs.db
 .DS_Store
 desktop.ini
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.venv/
+
+# Logs and results
+logs/
+results/
+
+# Local secrets
+secrets/
+
+# Editor
+.idea/

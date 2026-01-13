@@ -1,0 +1,217 @@
+Command: D:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe D:\Espressif\frameworks\esp-idf-v5.5.1\tools/idf_monitor.py -p COM7 -b 115200 --toolchain-prefix xtensa-esp32-elf- --target esp32 --revision 0 D:\Duong\RTS_Lab\Project\He_thong_bao_chay\build\He_thong_bao_chay.elf D:\Duong\RTS_Lab\Project\He_thong_bao_chay\build\bootloader\bootloader.elf --force-color -m 'D:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe' 'D:\Espressif\frameworks\esp-idf-v5.5.1\tools\idf.py'
+"%=5
+I (40) boo�ets Jun  8 2016 00:22:57
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:6380
+ho 0 tail 12 room 4
+load:0x40078000,len:15916
+load:0x40080400,len:3860
+entry 0x40080638
+I (28) boot: ESP-IDF v5.5.1 2nd stage bootloader
+I (29) boot: compile time Dec  3 2025 00:21:48
+I (29) boot: Multicore bootloader
+I (30) boot: chip revision: v1.1
+I (33) boot.esp32: SPI Speed      : 40MHz
+[0;32mI (36) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (40) boot.esp32: SPI Flash Size : 4MB[0m
+[0;32mI (44) boot: Enabling RNG early entropy source...[0m
+[0;32mI (48) boot: Partition Table:[0m
+[0;32mI (51) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (57) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (63) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (70) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (77) boot: End of partition table[0m
+[0;32mI (80) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=20bech (134124) map[0m
+[0;32mI (133) esp_image: segment 1: paddr=00030c14 vaddr=3ffb0000 size=03f84h ( 16260) load[0m
+[0;32mI (139) esp_image: segment 2: paddr=00034ba0 vaddr=40080000 size=0b478h ( 46200) load[0m
+[0;32mI (158) esp_image: segment 3: paddr=00040020 vaddr=400d0020 size=ab248h (701000) map[0m
+[0;32mI (397) esp_image: segment 4: paddr=000eb270 vaddr=4008b478 size=0ccfch ( 52476) load[0m
+[0;32mI (418) esp_image: segment 5: paddr=000f7f74 vaddr=50000000 size=00020h (    32) load[0m
+[0;32mI (430) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (430) boot: Disabling RNG early entropy source...[0m
+[0;32mI (441) cpu_start: Multicore app[0m
+[0;32mI (449) cpu_start: Pro cpu start user code[0m
+[0;32mI (449) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (449) app_init: Application information:[0m
+[0;32mI (449) app_init: Project name:     He_thong_bao_chay[0m
+[0;32mI (454) app_init: App version:      38f805b-dirty[0m
+[0;32mI (458) app_init: Compile time:     Dec 10 2025 00:31:47[0m
+[0;32mI (463) app_init: ELF file SHA256:  f5f4071be...[0m
+[0;32mI (468) app_init: ESP-IDF:          v5.5.1[0m
+[0;32mI (472) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (475) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (479) efuse_init: Chip rev:         v1.1[0m
+[0;32mI (484) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (490) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (495) heap_init: At 3FFB88E0 len 00027720 (157 KiB): DRAM[0m
+[0;32mI (500) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (505) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (511) heap_init: At 40098174 len 00007E8C (31 KiB): IRAM[0m
+[0;32mI (518) spi_flash: detected chip: gd[0m
+[0;32mI (519) spi_flash: flash io: dio[0m
+[0;33mW (522) spi_flash: Detected size(8192k) larger than the size in the binary image header(4096k). Using the size in the binary image header.[0m
+[0;32mI (535) main_task: Started on CPU0[0m
+[0;32mI (545) main_task: Calling app_main()[0m
+[0;32mI (545) MAIN: === Hệ thống báo cháy ESP32 khởi động ===[0m
+[0;32mI (545) MAIN: Initializing sensors...[0m
+[0;32mI (545) SENSOR: Calibration scheme version is Line Fitting[0m
+[0;32mI (555) SENSOR: ADC calibration success[0m
+[0;32mI (555) SENSOR: ADC initialized[0m
+[0;32mI (555) SENSOR: Sensor type 0 initialized on pin 6 (analog: yes)[0m
+[0;32mI (565) SENSOR: Sensor type 1 initialized on pin 7 (analog: yes)[0m
+[0;32mI (565) SENSOR: Sensor type 2 initialized on pin 32 (analog: no)[0m
+[0;32mI (575) SENSOR: Sensor type 3 initialized on pin 5 (analog: yes)[0m
+[0;32mI (575) SENSOR: Sensor system initialized[0m
+[0;32mI (585) MAIN: Sensors initialized successfully[0m
+[0;32mI (585) MAIN: Initializing buzzer...[0m
+[0;32mI (595) BUZZER: Buzzer initialized on GPIO 25[0m
+[0;32mI (595) BUZZER: Buzzer mode set to 0[0m
+[0;32mI (595) MAIN: Buzzer initialized successfully[0m
+[0;32mI (605) MAIN: Initializing WiFi...[0m
+[0;32mI (645) wifi:wifi driver task: 3ffc0ac8, prio:23, stack:6656, core=0[0m
+[0;32mI (655) wifi:wifi firmware version: 14da9b7[0m
+[0;32mI (655) wifi:wifi certification version: v7.0[0m
+[0;32mI (655) wifi:config NVS flash: enabled[0m
+[0;32mI (655) wifi:config nano formatting: disabled[0m
+[0;32mI (665) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (665) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (665) wifi:Init management short buffer num: 32[0m
+[0;32mI (675) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (675) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (685) wifi:Init static rx buffer num: 10[0m
+[0;32mI (685) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (695) wifi_init: rx ba win: 6[0m
+[0;32mI (695) wifi_init: accept mbox: 6[0m
+[0;32mI (695) wifi_init: tcpip mbox: 32[0m
+[0;32mI (695) wifi_init: udp mbox: 6[0m
+[0;32mI (705) wifi_init: tcp mbox: 6[0m
+[0;32mI (705) wifi_init: tcp tx win: 5760[0m
+[0;32mI (705) wifi_init: tcp rx win: 5760[0m
+[0;32mI (715) wifi_init: tcp mss: 1440[0m
+[0;32mI (715) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (715) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (725) WIFI: WiFi initialized with SSID: DươngNV[0m
+[0;32mI (725) MAIN: Connecting to WiFi: DươngNV[0m
+[0;32mI (725) WIFI: Connecting to WiFi SSID: DươngNV[0m
+[0;32mI (735) phy_init: phy_version 4861,b71b5ad,Aug  5 2025,11:16:06[0m
+[0;32mI (815) wifi:mode : sta (a0:dd:6c:95:26:64)[0m
+[0;32mI (815) wifi:enable tsf[0m
+[0;32mI (825) WIFI: WiFi station started, connecting...[0m
+[0;32mI (835) wifi:new:<1,1>, old:<1,0>, ap:<255,255>, sta:<1,1>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (835) wifi:state: init -> auth (0xb0)[0m
+[0;32mI (845) wifi:state: auth -> assoc (0x0)[0m
+[0;32mI (845) wifi:state: assoc -> run (0x10)[0m
+[0;32mI (865) wifi:connected with DươngNV, aid = 5, channel 1, 40U, bssid = 5c:92:5e:b7:0e:7c[0m
+[0;32mI (865) wifi:security: WPA2-PSK, phy: bgn, rssi: -49[0m
+[0;32mI (875) wifi:pm start, type: 1[0m
+
+[0;32mI (875) wifi:dp: 1, bi: 102400, li: 3, scale listen interval from 307200 us to 307200 us[0m
+[0;32mI (935) wifi:AP's beacon interval = 102400 us, DTIM period = 1[0m
+[0;32mI (1355) wifi:<ba-add>idx:0 (ifx:0, 5c:92:5e:b7:0e:7c), tid:0, ssn:4, winSize:64[0m
+[0;32mI (1895) esp_netif_handlers: sta ip: 192.168.0.7, mask: 255.255.255.0, gw: 192.168.0.1[0m
+[0;32mI (1895) WIFI: Got IP:192.168.0.7[0m
+[0;32mI (1895) WIFI: Connected to WiFi SSID: DươngNV[0m
+[0;32mI (1895) MAIN: WiFi connected successfully[0m
+[0;32mI (1895) MAIN: IP Address: 192.168.0.7[0m
+[0;32mI (1905) MAIN: Initializing MQTT...[0m
+[0;32mI (1905) MQTT: MQTT client initialized[0m
+[0;32mI (1905) MQTT: URI: mqtts://2800b62043be42bc94cb422b60d069f2.s1.eu.hivemq.cloud:8883[0m
+[0;32mI (1915) MQTT: Client ID: fire_system_esp32[0m
+[0;32mI (1925) MQTT: TLS: enabled[0m
+[0;32mI (1925) MAIN: Connecting to MQTT broker...[0m
+[0;32mI (1925) MQTT: Connecting to MQTT broker...[0m
+[0;32mI (1935) MQTT: Other MQTT event id:7[0m
+[1;31mE (2275) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (2285) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (2285) esp-tls: create_ssl_handle failed[0m
+[1;31mE (2295) esp-tls: Failed to open new connection[0m
+[1;31mE (2295) transport_base: Failed to open a new connection[0m
+[1;31mE (2305) mqtt_client: Error transport connect[0m
+[1;31mE (2305) MQTT: MQTT error[0m
+[1;31mE (2305) MQTT: Transport error: ESP_OK[0m
+[0;32mI (2315) MQTT: MQTT Disconnected[0m
+[0;33mW (3935) MAIN: MQTT connection pending...[0m
+[0;32mI (3935) MAIN: Creating FreeRTOS tasks...[0m
+[0;32mI (3935) SENSOR: Sensor task started[0m
+[0;32mI (3935) BUZZER: Buzzer task started[0m
+[0;32mI (3935) MAIN: Warning task started[0m
+[0;32mI (3935) MAIN: MQTT sensor task started[0m
+[0;33mW (3945) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (3945) MAIN: MQTT control task started[0m
+[0;32mI (3945) MQTT: MQTT task started[0m
+[0;32mI (3955) MAIN: === Hệ thống đã sẵn sàng ===[0m
+[0;32mI (3955) MAIN: All tasks started. System is running...[0m
+[0;32mI (3965) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (8945) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (13945) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (17315) MQTT: Other MQTT event id:7[0m
+[1;31mE (17635) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (17635) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (17645) esp-tls: create_ssl_handle failed[0m
+[1;31mE (17655) esp-tls: Failed to open new connection[0m
+[1;31mE (17655) transport_base: Failed to open a new connection[0m
+[1;31mE (17665) mqtt_client: Error transport connect[0m
+[1;31mE (17665) MQTT: MQTT error[0m
+[1;31mE (17665) MQTT: Transport error: ESP_OK[0m
+[0;32mI (17675) MQTT: MQTT Disconnected[0m
+[0;33mW (18945) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (23945) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (28945) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (32675) MQTT: Other MQTT event id:7[0m
+[0;33mW (33945) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (33965) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[1;31mE (36985) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (36995) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (36995) esp-tls: create_ssl_handle failed[0m
+[1;31mE (37005) esp-tls: Failed to open new connection[0m
+[1;31mE (37005) transport_base: Failed to open a new connection[0m
+[1;31mE (37015) mqtt_client: Error transport connect[0m
+[1;31mE (37015) MQTT: MQTT error[0m
+[1;31mE (37015) MQTT: Transport error: ESP_OK[0m
+[0;32mI (37025) MQTT: MQTT Disconnected[0m
+[0;33mW (38945) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (40165) wifi:<ba-add>idx:1 (ifx:0, 5c:92:5e:b7:0e:7c), tid:6, ssn:0, winSize:64[0m
+[0;33mW (43945) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (48945) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (52025) MQTT: Other MQTT event id:7[0m
+[1;31mE (52355) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (52355) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (52365) esp-tls: create_ssl_handle failed[0m
+[1;31mE (52365) esp-tls: Failed to open new connection[0m
+[1;31mE (52365) transport_base: Failed to open a new connection[0m
+[1;31mE (52375) mqtt_client: Error transport connect[0m
+[1;31mE (52375) MQTT: MQTT error[0m
+[1;31mE (52375) MQTT: Transport error: ESP_OK[0m
+[0;32mI (52385) MQTT: MQTT Disconnected[0m
+[0;33mW (53945) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (58945) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (63945) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (63965) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;32mI (67385) MQTT: Other MQTT event id:7[0m
+[1;31mE (67705) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (67715) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (67715) esp-tls: create_ssl_handle failed[0m
+[1;31mE (67725) esp-tls: Failed to open new connection[0m
+[1;31mE (67725) transport_base: Failed to open a new connection[0m
+[1;31mE (67735) mqtt_client: Error transport connect[0m
+[1;31mE (67735) MQTT: MQTT error[0m
+[1;31mE (67735) MQTT: Transport error: ESP_OK[0m
+[0;32mI (67745) MQTT: MQTT Disconnected[0m
+[0;33mW (68945) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (73945) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (78945) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (82745) MQTT: Other MQTT event id:7[0m
+[1;31mE (82965) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (82965) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (82975) esp-tls: create_ssl_handle failed[0m
+[1;31mE (82985) esp-tls: Failed to open new connection[0m
+[1;31mE (82985) transport_base: Failed to open a new connection[0m
+[1;31mE (82995) mqtt_client: Error transport connect[0m
+[1;31mE (82995) MQTT: MQTT error[0m
+[1;31mE (82995) MQTT: Transport error: ESP_OK[0m
+[0;32mI (83005) MQTT: MQTT Disconnected[0m
+[0;33mW (83945) MAIN: MQTT not connected, skipping sensor data publish[0m

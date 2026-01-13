@@ -1,0 +1,351 @@
+%!TEX program = xelatex
+\documentclass[12pt,a4paper]{report}
+
+% ================= FONT & TIẾNG VIỆT (BẮT BUỘC DÙNG XELATEX) =================
+\usepackage{fontspec}
+\usepackage[vietnamese]{babel}
+
+% Font Times New Roman (Đảm bảo máy bạn đã cài font này)
+\setmainfont{Times New Roman}
+
+% ================= GÓI TOÁN & KÝ HIỆU =================
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+% ================= HÌNH ẢNH & BẢNG =================
+\usepackage{graphicx}
+\usepackage{float} % Quan trọng để dùng [H]
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{caption} % Tùy chỉnh caption tốt hơn
+
+% ================= CĂN LỀ – GIÃN DÒNG =================
+\usepackage{geometry}
+\usepackage{setspace}
+
+\geometry{
+  left=3cm,
+  right=2cm,
+  top=2.5cm,
+  bottom=2.5cm
+}
+
+% ================= HEADER / FOOTER =================
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Đồ án Môn học}
+\fancyhead[R]{Hệ thống Báo cháy Thời gian thực}
+\fancyfoot[C]{\thepage}
+
+% ================= ĐỊNH DẠNG TIÊU ĐỀ CHƯƠNG =================
+\usepackage{titlesec}
+
+\titleformat{\chapter}[block]
+  {\bfseries\Large}
+  {\chaptertitlename\ \thechapter:}
+  {0.5em}
+  {}
+
+\titlespacing*{\chapter}{0pt}{-20pt}{20pt}
+
+% ================= HIỂN THỊ CODE =================
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    tabsize=2,
+    inputencoding=utf8,
+    extendedchars=true,
+}
+\lstset{style=mystyle}
+
+% ================= HYPERLINK =================
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=blue,
+}
+
+% ================= GIÃN DÒNG =================
+\onehalfspacing
+
+\begin{document}
+
+% ====================================================================
+% TRANG BÌA
+% ====================================================================
+\begin{titlepage}
+    \begin{center}
+        \textbf{\large ĐẠI HỌC BÁCH KHOA HÀ NỘI}\\
+        \textbf{\large TRƯỜNG ĐIỆN - ĐIỆN TỬ}
+        
+        \vfill 
+        
+        {\bfseries \Huge BÁO CÁO BÀI TẬP LỚN MÔN HỌC \par}
+        \vspace{0.5cm}
+        {\bfseries \Large CÁC HỆ THỐNG THỜI GIAN THỰC \par}
+        
+        \vspace{1.5cm} 
+        
+        {\bfseries \Large Đề tài: \\ HỆ THỐNG BÁO CHÁY THỜI GIAN THỰC \\ (REAL-TIME FIRE ALARM SYSTEM) \par}
+        
+        \vfill 
+        
+        \begin{tabular}{ll} 
+            \textbf{Sinh viên thực hiện:} & Nguyễn Văn Dương 20241713E\\
+                                          &Nguyễn Duy Anh 20241652E\\
+                                          &Lê Bá Việt An 20240170E\\
+            \textbf{Lớp:}                 &163212 \\
+            \textbf{Giảng viên hướng dẫn:}&Đỗ Trọng Tuấn \\
+        \end{tabular}
+
+        \vfill 
+        
+        \textbf{Hà Nội, 01/2026}
+    \end{center}
+\end{titlepage}
+
+% ====================================================================
+% MỤC LỤC
+% ====================================================================
+\tableofcontents
+\newpage
+
+% ====================================================================
+% CHƯƠNG 1
+% ====================================================================
+\chapter{TỔNG QUAN (INTRODUCTION)}
+
+\section{Giới thiệu chung}
+Hệ thống báo cháy thời gian thực (Real-Time Fire Alarm System) là một giải pháp IoT toàn diện, kết hợp sức mạnh xử lý tại biên (Edge Computing) của vi điều khiển ESP32 với khả năng giám sát và đo lường hiệu năng trên Application Server.
+
+Dự án được thiết kế để giải quyết bài toán cốt lõi của các hệ thống an toàn: \textbf{Độ trễ thấp (Low Latency)} và \textbf{Độ tin cậy cao (High Reliability)}. Khi phát hiện nguy cơ cháy (Khói, Nhiệt, Lửa hoặc Gas), hệ thống phải phản hồi tức thì bằng còi báo động tại chỗ, đồng thời gửi tin nhắn cảnh báo khẩn cấp (Emergency Alert) đến máy chủ với sự đảm bảo tuyệt đối về khả năng truyền tin.
+
+\section{Kiến trúc hệ thống}
+Hệ thống bao gồm hai thành phần chính:
+\begin{enumerate}
+    \item \textbf{Device Layer (Firmware):} Chạy trên ESP32, sử dụng hệ điều hành thời gian thực \textbf{FreeRTOS} trong môi trường \textbf{ESP-IDF v5.5.1}.
+    \item \textbf{Application Layer (Server \& Benchmark):} Server thu thập dữ liệu viết bằng Python, tích hợp công cụ đo đạc độ trễ End-to-End và lưu trữ trạng thái thời gian thực lên Firebase.
+\end{enumerate}
+
+\section{Kiến trúc Phần cứng (Hardware Architecture)}
+\subsection{Sơ đồ khối (Block Diagram)}
+Hệ thống bao gồm các khối chức năng chính:
+\begin{enumerate}
+    \item \textbf{Khối Cảm biến (Input):} Thu thập dữ liệu môi trường (Khói, Nhiệt, Gas, Lửa).
+    \item \textbf{Khối Xử lý trung tâm (ESP32):} Đọc cảm biến, xử lý logic phát hiện cháy và điều khiển cảnh báo.
+    \item \textbf{Khối Chấp hành (Output):} Buzzer và LED cảnh báo.
+    \item \textbf{Khối Truyền thông:} Module WiFi gửi dữ liệu lên MQTT Broker.
+\end{enumerate}
+
+% --- CHÈN ẢNH SƠ ĐỒ KHỐI ---
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{so_do_khoi.jpg}
+    \caption{Sơ đồ khối kiến trúc phần cứng hệ thống báo cháy}
+    \label{fig:block_diagram}
+\end{figure}
+
+\subsection{Bảng kết nối I/O (Hardware Mapping)}
+Chi tiết kết nối các thiết bị ngoại vi với vi điều khiển ESP32:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Component} & \textbf{ESP32 Pin} & \textbf{Signal Type} & \textbf{Description} \\ \hline
+\textbf{Buzzer} & GPIO 25 & Output (Dig) & Còi báo động Active High \\ \hline
+\textbf{Smoke Sensor} & GPIO 34 & Input (ADC) & Cảm biến khói MQ-2 \\ \hline
+\textbf{Temp Sensor} & GPIO 35 & Input (ADC) & Cảm biến nhiệt LM35 \\ \hline
+\textbf{Gas Sensor} & GPIO 33 & Input (ADC) & Cảm biến Gas MQ-5 \\ \hline
+\textbf{IR Flame} & GPIO 32 & Input (Dig) & Cảm biến phát hiện lửa \\ \hline
+\end{tabular}
+\caption{Bảng phân bố chân kết nối phần cứng}
+\end{table}
+
+% ====================================================================
+% CHƯƠNG 2
+% ====================================================================
+\chapter{PHÂN TÍCH \& LẬP LỊCH (REAL-TIME SCHEDULING)}
+
+Dự án sử dụng \textbf{FreeRTOS} làm nhân hệ điều hành để quản lý đa nhiệm trên vi điều khiển ESP32. Việc phân chia Task và gán Priority được thực hiện cẩn thận để đảm bảo tính chất "Hard Real-time" của tác vụ cảnh báo.
+
+\section{Mô hình Task (Task Model)}
+Dựa trên source code \texttt{main.c}, hệ thống được chia thành các tác vụ (Tasks) sau, được sắp xếp theo thứ tự ưu tiên từ cao xuống thấp:
+
+\begin{table}[h]
+\centering
+\begin{tabularx}{\textwidth}{|l|l|c|X|}
+\hline
+\textbf{Task Name} & \textbf{Priority} & \textbf{Stack} & \textbf{Vai Trò \& Đặc Tả} \\ \hline
+\textbf{Warning Task} & High (MAX-1) & 4096 & \textbf{Hard Real-time:} Kiểm tra trạng thái cháy liên tục. Yêu cầu phản hồi tức thì để kích hoạt Buzzer và Alert. \\ \hline
+\textbf{Sensor Task} & High (MAX-1) & 4096 & \textbf{Hard Real-time:} Đọc cảm biến (Smoke, Temp...) chu kỳ 500ms. Đầu vào cho Warning Task. \\ \hline
+\textbf{Buzzer Task} & High (MAX-2) & 2048 & Điều khiển còi/LED. Priority cao để không bị ngắt bởi tác vụ mạng. \\ \hline
+\textbf{MQTT Sensor} & Med (MAX-3) & 4096 & Gửi Telemetry chu kỳ 5s (Soft Real-time). \\ \hline
+\textbf{MQTT Control} & Med (MAX-3) & 4096 & Xử lý lệnh điều khiển từ Server. \\ \hline
+\textbf{MQTT Task} & Low (MAX-4) & 4096 & Duy trì kết nối Keep-alive, xử lý TCP/IP. \\ \hline
+\end{tabularx}
+\caption{Bảng phân phối Task và Độ ưu tiên (Priority)}
+\end{table}
+
+\textit{Note:} \texttt{configMAX\_PRIORITIES} thường là 25. Việc đặt Sensor và Warning task ở mức cao nhất đảm bảo chúng luôn chiếm quyền CPU (Preempt) ngay khi có sự kiện.
+
+\section{Cơ chế Lập lịch (Scheduling Mechanism)}
+Hệ thống sử dụng cơ chế \textbf{Preemptive Priority Scheduling} của FreeRTOS:
+\begin{itemize}
+    \item \textbf{Preemption (Chiếm quyền):} Nếu \texttt{Warning Task} đang chờ (Blocked) và bất ngờ nhận được tín hiệu cháy từ \texttt{Sensor Task}, nó sẽ lập tức chiếm quyền CPU từ \texttt{MQTT Task} đang chạy. Điều này đảm bảo độ trễ xử lý là cực tiểu (Microseconds level).
+    \item \textbf{Time Slicing:} Các Task cùng độ ưu tiên sẽ được chia sẻ thời gian CPU (Round Robin).
+\end{itemize}
+
+% ====================================================================
+% CHƯƠNG 3
+% ====================================================================
+\chapter{TRUYỀN THÔNG \& CƠ SỞ DỮ LIỆU}
+
+\section{Truyền thông thời gian thực (Real-Time Communication)}
+Giao tiếp giữa Device và Server sử dụng giao thức \textbf{MQTT} qua WiFi. Đây là giao thức nhẹ, phù hợp cho IoT nhưng được tinh chỉnh cấu hình QoS để đáp ứng yêu cầu thời gian thực khác nhau.
+
+\subsection{Chiến lược QoS (Quality of Service)}
+Hệ thống áp dụng chiến lược QoS phân tầng:
+
+\begin{enumerate}
+    \item \textbf{Telemetry (Dữ liệu định kỳ):}
+    \begin{itemize}
+        \item \textbf{QoS:} 0 hoặc 1.
+        \item \textbf{Mục tiêu:} Tối ưu hóa băng thông. Chấp nhận mất gói tin định kỳ (5s/lần) để giảm tải.
+    \end{itemize}
+    
+    \item \textbf{Emergency Alert (Báo cháy):}
+    \begin{itemize}
+        \item \textbf{QoS 2 (Exactly Once):} Bắt buộc.
+        \item \textbf{Phân tích:} Hàm \texttt{mqtt\_publish\_alert} trong \texttt{mqtt.c} sử dụng \texttt{MQTT\_QOS\_2}.
+        \item \textbf{Mục tiêu:} Đảm bảo \textbf{tuyệt đối} bản tin báo cháy đến Server đúng 1 lần duy nhất, không mất mát, không trùng lặp.
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Cấu trúc dữ liệu}
+Dữ liệu được đóng gói dạng JSON. Ví dụ gói tin Alert (QoS 2):
+
+\begin{lstlisting}[language=json, caption={JSON Payload cho Alert}]
+{
+  "type": "fire_alert",
+  "detected": true,
+  "timestamp": 1704938210.123,
+  "smoke": 85.5,
+  "temperature": 60.2,
+  "ir_flame": true,
+  "gas": 120
+}
+\end{lstlisting}
+
+\section{Cơ sở dữ liệu thời gian thực (Real-Time Database)}
+Server sử dụng \textbf{Firebase Realtime Database} làm kho lưu trữ nóng.
+\begin{itemize}
+    \item \textbf{Cập nhật trạng thái:} Node \texttt{/devices/\{id\}/state} được cập nhật ngay khi nhận telemetry.
+    \item \textbf{Lưu sự kiện:} Node \texttt{/alarms/\{id\}} lưu lịch sử báo cháy.
+    \item \textbf{Data Freshness:} Web Dashboard lắng nghe trực tiếp Firebase, phản ánh trạng thái "Live" với độ trễ thấp.
+\end{itemize}
+
+% --- CHÈN ẢNH DASHBOARD TỔNG QUAN ---
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\linewidth]{tong_quan.png}
+    \caption{Giao diện giám sát thời gian thực (Dashboard) phản ánh Data Freshness}
+    \label{fig:dashboard_overview}
+\end{figure}
+
+Ngoài việc giám sát, hệ thống cho phép gửi lệnh điều khiển ngược lại thiết bị (Downlink) thông qua giao diện Web, đồng bộ trạng thái qua Firebase:
+
+% --- CHÈN ẢNH GIAO DIỆN ĐIỀU KHIỂN ---
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{dieu_khien.png}
+    \caption{Giao diện điều khiển thiết bị (Downlink Control)}
+    \label{fig:dashboard_control}
+\end{figure}
+
+% ====================================================================
+% CHƯƠNG 4
+% ====================================================================
+\chapter{THỰC THI \& ĐÁNH GIÁ HIỆU NĂNG}
+
+\section{Kiến trúc đo đạc (Measurement Pipeline)}
+Luồng dữ liệu để đo đạc hiệu năng:
+\[ Sensor (t_1) \rightarrow MQTT Broker \rightarrow Python Collector (t_2) \rightarrow SQLite/CSV \]
+File \texttt{collector\_main.py} đóng vai trò trung tâm đo đạc với lớp \texttt{TraceWriter}.
+
+Dữ liệu thu thập được từ các Node cảm biến được trực quan hóa dưới dạng biểu đồ thời gian thực, giúp quan sát độ biến thiên của nhiệt độ và nồng độ khói:
+
+% --- CHÈN ẢNH BIỂU ĐỒ PHÂN TÍCH ---
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\linewidth]{phan_tich.png}
+    \caption{Biểu đồ phân tích dữ liệu cảm biến và độ trễ theo thời gian thực}
+    \label{fig:analysis_chart}
+\end{figure}
+
+\section{Các chỉ số đánh giá (Metrics)}
+\subsection{End-to-End Latency (Độ trễ toàn trình)}
+Công thức: 
+\[ \Delta t = t_{PC\_RX} - t_{Sensor} \]
+Trong đó:
+\begin{itemize}
+    \item $t_{Sensor}$: Thời gian đóng gói tại ESP32 (\texttt{msg.t\_sensor\_ms}).
+    \item $t_{PC\_RX}$: Thời gian Python Server nhận gói tin.
+\end{itemize}
+Chỉ số này phản ánh tổng độ trễ của: Xử lý tại ESP32 + Truyền WiFi + Broker Forwarding + Xử lý Server.
+
+\subsection{Jitter (Độ rung)}
+Phân tích từ file log \texttt{trace\_events.csv}. Đo độ biến thiên của hiệu số thời gian giữa các gói tin liên tiếp. Jitter thấp chứng tỏ kết nối mạng và khả năng lập lịch ổn định.
+
+\section{Stress Test và Trung tâm Cảnh báo}
+Sử dụng script giả lập hàng trăm Sensor cùng lúc gửi dữ liệu báo cháy về Server để tìm điểm nghẽn (Bottleneck). 
+
+\textbf{Kết quả mong đợi:} Hệ thống vẫn nhận diện được gói tin Alert (QoS 2) ưu tiên ngay cả khi băng thông bị nghẽn bởi các gói tin Telemetry (QoS 0). Khi các chỉ số vượt ngưỡng an toàn, hệ thống ghi nhận sự kiện vào nhật ký cảnh báo (Alarm Log) với độ trễ thấp:
+
+% --- CHÈN ẢNH TRUNG TÂM CẢNH BÁO ---
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{canh_bao.png}
+    \caption{Giao diện trung tâm cảnh báo (Alert Center) ghi nhận sự kiện Hard Real-time}
+    \label{fig:alert_center}
+\end{figure}
+
+% ====================================================================
+% KẾT LUẬN
+% ====================================================================
+\chapter*{KẾT LUẬN}
+\addcontentsline{toc}{chapter}{KẾT LUẬN}
+
+Hệ thống báo cháy đã hiện thực hóa thành công mô hình Real-Time Systems tiêu chuẩn:
+\begin{enumerate}
+    \item \textbf{Về lập lịch:} Sử dụng đúng đắn FreeRTOS Preemptive Scheduling, ưu tiên tuyệt đối cho tác vụ an toàn (Safety).
+    \item \textbf{Về truyền thông:} Phân loại luồng dữ liệu thông minh qua QoS MQTT, đảm bảo độ tin cậy cho cảnh báo khẩn cấp.
+    \item \textbf{Về hiệu năng:} Hệ thống đo đạc tích hợp (minh chứng qua các biểu đồ phân tích) cho thấy khả năng giám sát độ trễ và độ tươi dữ liệu trong thời gian thực.
+\end{enumerate}
+
+Giải pháp kết hợp ESP32 + FreeRTOS + MQTT QoS 2 + Firebase Benchmark chứng minh là một kiến trúc tham chiếu mạnh mẽ cho các ứng dụng IoT công nghiệp yêu cầu khắt khe về thời gian thực.
+
+\end{document}

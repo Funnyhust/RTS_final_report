@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.venv/
+venv/
+env/
+
+# Logs and results
+logs/
+results/
+*.log
+
+# Local secrets
+secrets/
+.env
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# LaTeX
+*.aux
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+*.pdf
+*.toc
+*.out
+*.lof
+*.lot
+*.bbl
+*.blg
+
+# System
+Thumbs.db
+.DS_Store

@@ -1,0 +1,1431 @@
+Command: D:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe D:\Espressif\frameworks\esp-idf-v5.5.1\tools/idf_monitor.py -p COM7 -b 115200 --toolchain-prefix xtensa-esp32-elf- --target esp32 --revision 0 D:\Duong\RTS_Lab\Project\He_thong_bao_chay\build\He_thong_bao_chay.elf D:\Duong\RTS_Lab\Project\He_thong_bao_chay\build\bootloader\bootloader.elf --force-color -m 'D:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe' 'D:\Espressif\frameworks\esp-idf-v5.5.1\tools\idf.py'
+�"%=5
+[0;32mI (40) bo�ets Jun  8 2016 00:22:57[0m
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:6380
+ho 0 tail 12 room 4
+load:0x40078000,len:15916
+load:0x40080400,len:3860
+entry 0x40080638
+[0;32mI (29) boot: ESP-IDF v5.5.1 2nd stage bootloader[0m
+[0;32mI (29) boot: compile time Dec  3 2025 00:21:48[0m
+[0;32mI (29) boot: Multicore bootloader[0m
+[0;32mI (30) boot: chip revision: v1.1[0m
+[0;32mI (33) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (36) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (40) boot.esp32: SPI Flash Size : 4MB[0m
+[0;32mI (44) boot: Enabling RNG early entropy source...[0m
+[0;32mI (48) boot: Partition Table:[0m
+[0;32mI (51) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (57) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (63) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (70) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (77) boot: End of partition table[0m
+[0;32mI (80) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=20bech (134124) map[0m
+[0;32mI (133) esp_image: segment 1: paddr=00030c14 vaddr=3ffb0000 size=03f84h ( 16260) load[0m
+[0;32mI (139) esp_image: segment 2: paddr=00034ba0 vaddr=40080000 size=0b478h ( 46200) load[0m
+[0;32mI (158) esp_image: segment 3: paddr=00040020 vaddr=400d0020 size=ab248h (701000) map[0m
+[0;32mI (397) esp_image: segment 4: paddr=000eb270 vaddr=4008b478 size=0ccfch ( 52476) load[0m
+[0;32mI (418) esp_image: segment 5: paddr=000f7f74 vaddr=50000000 size=00020h (    32) load[0m
+[0;32mI (430) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (430) boot: Disabling RNG early entropy source...[0m
+[0;32mI (441) cpu_start: Multicore app[0m
+[0;32mI (449) cpu_start: Pro cpu start user code[0m
+[0;32mI (449) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (449) app_init: Application information:[0m
+[0;32mI (449) app_init: Project name:     He_thong_bao_chay[0m
+[0;32mI (454) app_init: App version:      38f805b-dirty[0m
+[0;32mI (458) app_init: Compile time:     Dec 10 2025 00:31:47[0m
+[0;32mI (463) app_init: ELF file SHA256:  f5f4071be...[0m
+[0;32mI (468) app_init: ESP-IDF:          v5.5.1[0m
+[0;32mI (472) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (475) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (479) efuse_init: Chip rev:         v1.1[0m
+[0;32mI (484) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (490) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (495) heap_init: At 3FFB88E0 len 00027720 (157 KiB): DRAM[0m
+[0;32mI (500) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (505) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (511) heap_init: At 40098174 len 00007E8C (31 KiB): IRAM[0m
+[0;32mI (518) spi_flash: detected chip: gd[0m
+[0;32mI (519) spi_flash: flash io: dio[0m
+[0;33mW (522) spi_flash: Detected size(8192k) larger than the size in the binary image header(4096k). Using the size in the binary image header.[0m
+[0;32mI (536) main_task: Started on CPU0[0m
+[0;32mI (546) main_task: Calling app_main()[0m
+[0;32mI (546) MAIN: === Hệ thống báo cháy ESP32 khởi động ===[0m
+[0;32mI (546) MAIN: Initializing sensors...[0m
+[0;32mI (546) SENSOR: Calibration scheme version is Line Fitting[0m
+[0;32mI (556) SENSOR: ADC calibration success[0m
+[0;32mI (556) SENSOR: ADC initialized[0m
+[0;32mI (556) SENSOR: Sensor type 0 initialized on pin 6 (analog: yes)[0m
+[0;32mI (566) SENSOR: Sensor type 1 initialized on pin 7 (analog: yes)[0m
+[0;32mI (566) SENSOR: Sensor type 2 initialized on pin 32 (analog: no)[0m
+[0;32mI (576) SENSOR: Sensor type 3 initialized on pin 5 (analog: yes)[0m
+[0;32mI (576) SENSOR: Sensor system initialized[0m
+[0;32mI (586) MAIN: Sensors initialized successfully[0m
+[0;32mI (586) MAIN: Initializing buzzer...[0m
+[0;32mI (596) BUZZER: Buzzer initialized on GPIO 25[0m
+[0;32mI (596) BUZZER: Buzzer mode set to 0[0m
+[0;32mI (596) MAIN: Buzzer initialized successfully[0m
+[0;32mI (606) MAIN: Initializing WiFi...[0m
+[0;32mI (646) wifi:wifi driver task: 3ffc0ac8, prio:23, stack:6656, core=0[0m
+[0;32mI (656) wifi:wifi firmware version: 14da9b7[0m
+[0;32mI (656) wifi:wifi certification version: v7.0[0m
+[0;32mI (656) wifi:config NVS flash: enabled[0m
+[0;32mI (656) wifi:config nano formatting: disabled[0m
+[0;32mI (666) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (666) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (666) wifi:Init management short buffer num: 32[0m
+[0;32mI (676) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (676) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (686) wifi:Init static rx buffer num: 10[0m
+[0;32mI (686) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (696) wifi_init: rx ba win: 6[0m
+[0;32mI (696) wifi_init: accept mbox: 6[0m
+[0;32mI (696) wifi_init: tcpip mbox: 32[0m
+[0;32mI (696) wifi_init: udp mbox: 6[0m
+[0;32mI (706) wifi_init: tcp mbox: 6[0m
+[0;32mI (706) wifi_init: tcp tx win: 5760[0m
+[0;32mI (706) wifi_init: tcp rx win: 5760[0m
+[0;32mI (716) wifi_init: tcp mss: 1440[0m
+[0;32mI (716) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (716) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (726) WIFI: WiFi initialized with SSID: DươngNV[0m
+[0;32mI (726) MAIN: Connecting to WiFi: DươngNV[0m
+[0;32mI (726) WIFI: Connecting to WiFi SSID: DươngNV[0m
+[0;32mI (736) phy_init: phy_version 4861,b71b5ad,Aug  5 2025,11:16:06[0m
+[0;32mI (826) wifi:mode : sta (a0:dd:6c:95:26:64)[0m
+[0;32mI (826) wifi:enable tsf[0m
+[0;32mI (826) WIFI: WiFi station started, connecting...[0m
+[0;32mI (846) wifi:new:<1,1>, old:<1,0>, ap:<255,255>, sta:<1,1>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (846) wifi:state: init -> auth (0xb0)[0m
+[0;32mI (846) wifi:state: auth -> assoc (0x0)[0m
+[0;32mI (856) wifi:state: assoc -> run (0x10)[0m
+[0;32mI (866) wifi:connected with DươngNV, aid = 5, channel 1, 40U, bssid = 5c:92:5e:b7:0e:7c[0m
+[0;32mI (876) wifi:security: WPA2-PSK, phy: bgn, rssi: -42[0m
+[0;32mI (876) wifi:pm start, type: 1[0m
+
+[0;32mI (876) wifi:dp: 1, bi: 102400, li: 3, scale listen interval from 307200 us to 307200 us[0m
+[0;32mI (936) wifi:AP's beacon interval = 102400 us, DTIM period = 1[0m
+[0;32mI (1906) esp_netif_handlers: sta ip: 192.168.0.7, mask: 255.255.255.0, gw: 192.168.0.1[0m
+[0;32mI (1906) WIFI: Got IP:192.168.0.7[0m
+[0;32mI (1906) WIFI: Connected to WiFi SSID: DươngNV[0m
+[0;32mI (1906) MAIN: WiFi connected successfully[0m
+[0;32mI (1906) MAIN: IP Address: 192.168.0.7[0m
+[0;32mI (1916) MAIN: Initializing MQTT...[0m
+[0;32mI (1916) MQTT: MQTT client initialized[0m
+[0;32mI (1916) MQTT: URI: mqtts://2800b62043be42bc94cb422b60d069f2.s1.eu.hivemq.cloud:8883[0m
+[0;32mI (1926) MQTT: Client ID: fire_system_esp32[0m
+[0;32mI (1936) MQTT: TLS: enabled[0m
+[0;32mI (1936) MAIN: Connecting to MQTT broker...[0m
+[0;32mI (1936) MQTT: Connecting to MQTT broker...[0m
+[0;32mI (1946) MQTT: Other MQTT event id:7[0m
+[0;32mI (1956) wifi:<ba-add>idx:0 (ifx:0, 5c:92:5e:b7:0e:7c), tid:0, ssn:4, winSize:64[0m
+[1;31mE (2626) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (2626) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (2636) esp-tls: create_ssl_handle failed[0m
+[1;31mE (2646) esp-tls: Failed to open new connection[0m
+[1;31mE (2646) transport_base: Failed to open a new connection[0m
+[1;31mE (2656) mqtt_client: Error transport connect[0m
+[1;31mE (2656) MQTT: MQTT error[0m
+[1;31mE (2656) MQTT: Transport error: ESP_OK[0m
+[0;32mI (2666) MQTT: MQTT Disconnected[0m
+[0;33mW (3946) MAIN: MQTT connection pending...[0m
+[0;32mI (3946) MAIN: Creating FreeRTOS tasks...[0m
+[0;32mI (3946) SENSOR: Sensor task started[0m
+[0;32mI (3946) BUZZER: Buzzer task started[0m
+[0;32mI (3946) MAIN: Warning task started[0m
+[0;32mI (3946) MAIN: MQTT sensor task started[0m
+[0;33mW (3956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (3956) MAIN: MQTT control task started[0m
+[0;32mI (3956) MQTT: MQTT task started[0m
+[0;32mI (3966) MAIN: === Hệ thống đã sẵn sàng ===[0m
+[0;32mI (3966) MAIN: All tasks started. System is running...[0m
+[0;32mI (3976) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (8956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (13956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (17666) MQTT: Other MQTT event id:7[0m
+[1;31mE (17936) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (17936) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (17946) esp-tls: create_ssl_handle failed[0m
+[1;31mE (17956) esp-tls: Failed to open new connection[0m
+[1;31mE (17956) transport_base: Failed to open a new connection[0m
+[1;31mE (17966) mqtt_client: Error transport connect[0m
+[1;31mE (17966) MQTT: MQTT error[0m
+[1;31mE (17966) MQTT: Transport error: ESP_OK[0m
+[0;32mI (17976) MQTT: MQTT Disconnected[0m
+[0;33mW (18956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (19166) wifi:<ba-add>idx:1 (ifx:0, 5c:92:5e:b7:0e:7c), tid:6, ssn:0, winSize:64[0m
+[0;33mW (23956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (28956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (32976) MQTT: Other MQTT event id:7[0m
+[1;31mE (33296) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (33296) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (33306) esp-tls: create_ssl_handle failed[0m
+[1;31mE (33316) esp-tls: Failed to open new connection[0m
+[1;31mE (33316) transport_base: Failed to open a new connection[0m
+[1;31mE (33326) mqtt_client: Error transport connect[0m
+[1;31mE (33326) MQTT: MQTT error[0m
+[1;31mE (33326) MQTT: Transport error: ESP_OK[0m
+[0;32mI (33336) MQTT: MQTT Disconnected[0m
+[0;33mW (33956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (33976) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (38956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (43956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (48336) MQTT: Other MQTT event id:7[0m
+[1;31mE (48656) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (48656) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (48666) esp-tls: create_ssl_handle failed[0m
+[1;31mE (48676) esp-tls: Failed to open new connection[0m
+[1;31mE (48676) transport_base: Failed to open a new connection[0m
+[1;31mE (48686) mqtt_client: Error transport connect[0m
+[1;31mE (48686) MQTT: MQTT error[0m
+[1;31mE (48686) MQTT: Transport error: ESP_OK[0m
+[0;32mI (48696) MQTT: MQTT Disconnected[0m
+[0;33mW (48956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (53956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (58956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (63696) MQTT: Other MQTT event id:7[0m
+[0;33mW (63956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (63976) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[1;31mE (64016) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (64016) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (64026) esp-tls: create_ssl_handle failed[0m
+[1;31mE (64036) esp-tls: Failed to open new connection[0m
+[1;31mE (64036) transport_base: Failed to open a new connection[0m
+[1;31mE (64046) mqtt_client: Error transport connect[0m
+[1;31mE (64046) MQTT: MQTT error[0m
+[1;31mE (64046) MQTT: Transport error: ESP_OK[0m
+[0;32mI (64056) MQTT: MQTT Disconnected[0m
+[0;33mW (68956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (73956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (78956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (79056) MQTT: Other MQTT event id:7[0m
+[1;31mE (79376) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (79376) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (79386) esp-tls: create_ssl_handle failed[0m
+[1;31mE (79396) esp-tls: Failed to open new connection[0m
+[1;31mE (79396) transport_base: Failed to open a new connection[0m
+[1;31mE (79406) mqtt_client: Error transport connect[0m
+[1;31mE (79406) MQTT: MQTT error[0m
+[1;31mE (79406) MQTT: Transport error: ESP_OK[0m
+[0;32mI (79416) MQTT: MQTT Disconnected[0m
+[0;33mW (83956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (88956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (93956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (93976) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;32mI (94416) MQTT: Other MQTT event id:7[0m
+[1;31mE (94736) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (94736) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (94746) esp-tls: create_ssl_handle failed[0m
+[1;31mE (94756) esp-tls: Failed to open new connection[0m
+[1;31mE (94756) transport_base: Failed to open a new connection[0m
+[1;31mE (94766) mqtt_client: Error transport connect[0m
+[1;31mE (94766) MQTT: MQTT error[0m
+[1;31mE (94766) MQTT: Transport error: ESP_OK[0m
+[0;32mI (94776) MQTT: MQTT Disconnected[0m
+[0;33mW (98956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (103956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (108956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (109776) MQTT: Other MQTT event id:7[0m
+[1;31mE (110106) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (110106) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (110116) esp-tls: create_ssl_handle failed[0m
+[1;31mE (110116) esp-tls: Failed to open new connection[0m
+[1;31mE (110116) transport_base: Failed to open a new connection[0m
+[1;31mE (110126) mqtt_client: Error transport connect[0m
+[1;31mE (110126) MQTT: MQTT error[0m
+[1;31mE (110136) MQTT: Transport error: ESP_OK[0m
+[0;32mI (110136) MQTT: MQTT Disconnected[0m
+[0;33mW (113956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (118956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (123956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (123976) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;32mI (125136) MQTT: Other MQTT event id:7[0m
+[1;31mE (125466) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (125466) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (125476) esp-tls: create_ssl_handle failed[0m
+[1;31mE (125476) esp-tls: Failed to open new connection[0m
+[1;31mE (125486) transport_base: Failed to open a new connection[0m
+[1;31mE (125496) mqtt_client: Error transport connect[0m
+[1;31mE (125496) MQTT: MQTT error[0m
+[1;31mE (125496) MQTT: Transport error: ESP_OK[0m
+[0;32mI (125496) MQTT: MQTT Disconnected[0m
+[0;33mW (128956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (133956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (135506) MQTT: Other MQTT event id:7[0m
+[1;31mE (135806) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (135806) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (135816) esp-tls: create_ssl_handle failed[0m
+[1;31mE (135816) esp-tls: Failed to open new connection[0m
+[1;31mE (135816) transport_base: Failed to open a new connection[0m
+[1;31mE (135826) mqtt_client: Error transport connect[0m
+[1;31mE (135826) MQTT: MQTT error[0m
+[1;31mE (135836) MQTT: Transport error: ESP_OK[0m
+[0;32mI (135836) MQTT: MQTT Disconnected[0m
+[0;33mW (138956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (143956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (148956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (150836) MQTT: Other MQTT event id:7[0m
+[1;31mE (151056) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (151056) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (151066) esp-tls: create_ssl_handle failed[0m
+[1;31mE (151076) esp-tls: Failed to open new connection[0m
+[1;31mE (151076) transport_base: Failed to open a new connection[0m
+[1;31mE (151086) mqtt_client: Error transport connect[0m
+[1;31mE (151086) MQTT: MQTT error[0m
+[1;31mE (151086) MQTT: Transport error: ESP_OK[0m
+[0;32mI (151096) MQTT: MQTT Disconnected[0m
+[0;33mW (153956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (153976) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (158956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (163956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (166096) MQTT: Other MQTT event id:7[0m
+[1;31mE (166416) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (166416) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (166426) esp-tls: create_ssl_handle failed[0m
+[1;31mE (166436) esp-tls: Failed to open new connection[0m
+[1;31mE (166436) transport_base: Failed to open a new connection[0m
+[1;31mE (166446) mqtt_client: Error transport connect[0m
+[1;31mE (166446) MQTT: MQTT error[0m
+[1;31mE (166446) MQTT: Transport error: ESP_OK[0m
+[0;32mI (166456) MQTT: MQTT Disconnected[0m
+[0;33mW (168956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (173956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (178956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (181456) MQTT: Other MQTT event id:7[0m
+[1;31mE (181776) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (181776) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (181786) esp-tls: create_ssl_handle failed[0m
+[1;31mE (181796) esp-tls: Failed to open new connection[0m
+[1;31mE (181796) transport_base: Failed to open a new connection[0m
+[1;31mE (181806) mqtt_client: Error transport connect[0m
+[1;31mE (181806) MQTT: MQTT error[0m
+[1;31mE (181806) MQTT: Transport error: ESP_OK[0m
+[0;32mI (181816) MQTT: MQTT Disconnected[0m
+[0;33mW (183956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (183976) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (188956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (193956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (196816) MQTT: Other MQTT event id:7[0m
+[1;31mE (197136) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (197136) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (197146) esp-tls: create_ssl_handle failed[0m
+[1;31mE (197156) esp-tls: Failed to open new connection[0m
+[1;31mE (197156) transport_base: Failed to open a new connection[0m
+[1;31mE (197166) mqtt_client: Error transport connect[0m
+[1;31mE (197166) MQTT: MQTT error[0m
+[1;31mE (197166) MQTT: Transport error: ESP_OK[0m
+[0;32mI (197176) MQTT: MQTT Disconnected[0m
+[0;33mW (198956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (203956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (208956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (212176) MQTT: Other MQTT event id:7[0m
+[1;31mE (212496) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (212496) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (212506) esp-tls: create_ssl_handle failed[0m
+[1;31mE (212516) esp-tls: Failed to open new connection[0m
+[1;31mE (212516) transport_base: Failed to open a new connection[0m
+[1;31mE (212526) mqtt_client: Error transport connect[0m
+[1;31mE (212526) MQTT: MQTT error[0m
+[1;31mE (212526) MQTT: Transport error: ESP_OK[0m
+[0;32mI (212536) MQTT: MQTT Disconnected[0m
+[0;33mW (213956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (213976) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (218956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (223956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (227536) MQTT: Other MQTT event id:7[0m
+[1;31mE (227856) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (227856) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (227866) esp-tls: create_ssl_handle failed[0m
+[1;31mE (227876) esp-tls: Failed to open new connection[0m
+[1;31mE (227876) transport_base: Failed to open a new connection[0m
+[1;31mE (227886) mqtt_client: Error transport connect[0m
+[1;31mE (227886) MQTT: MQTT error[0m
+[1;31mE (227886) MQTT: Transport error: ESP_OK[0m
+[0;32mI (227896) MQTT: MQTT Disconnected[0m
+[0;33mW (228956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (233956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (238956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (242896) MQTT: Other MQTT event id:7[0m
+[1;31mE (243216) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (243216) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (243226) esp-tls: create_ssl_handle failed[0m
+[1;31mE (243236) esp-tls: Failed to open new connection[0m
+[1;31mE (243236) transport_base: Failed to open a new connection[0m
+[1;31mE (243246) mqtt_client: Error transport connect[0m
+[1;31mE (243246) MQTT: MQTT error[0m
+[1;31mE (243246) MQTT: Transport error: ESP_OK[0m
+[0;32mI (243256) MQTT: MQTT Disconnected[0m
+[0;33mW (243956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (243976) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (248956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (253956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (258256) MQTT: Other MQTT event id:7[0m
+[1;31mE (258576) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (258576) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (258586) esp-tls: create_ssl_handle failed[0m
+[1;31mE (258596) esp-tls: Failed to open new connection[0m
+[1;31mE (258596) transport_base: Failed to open a new connection[0m
+[1;31mE (258606) mqtt_client: Error transport connect[0m
+[1;31mE (258606) MQTT: MQTT error[0m
+[1;31mE (258606) MQTT: Transport error: ESP_OK[0m
+[0;32mI (258616) MQTT: MQTT Disconnected[0m
+[0;33mW (258956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (263956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (268956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (273616) MQTT: Other MQTT event id:7[0m
+[1;31mE (273936) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (273936) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (273946) esp-tls: create_ssl_handle failed[0m
+[0;33mW (273956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (273956) esp-tls: Failed to open new connection[0m
+[1;31mE (273966) transport_base: Failed to open a new connection[0m
+[1;31mE (273966) mqtt_client: Error transport connect[0m
+[0;32mI (273976) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[1;31mE (273976) MQTT: MQTT error[0m
+[1;31mE (273986) MQTT: Transport error: ESP_OK[0m
+[0;32mI (273986) MQTT: MQTT Disconnected[0m
+[0;33mW (278956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (283956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (288956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (288986) MQTT: Other MQTT event id:7[0m
+[1;31mE (289506) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (289506) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (289516) esp-tls: create_ssl_handle failed[0m
+[1;31mE (289516) esp-tls: Failed to open new connection[0m
+[1;31mE (289526) transport_base: Failed to open a new connection[0m
+[1;31mE (289526) mqtt_client: Error transport connect[0m
+[1;31mE (289536) MQTT: MQTT error[0m
+[1;31mE (289536) MQTT: Transport error: ESP_OK[0m
+[0;32mI (289536) MQTT: MQTT Disconnected[0m
+[0;33mW (293956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (298956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (303956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (303986) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;32mI (304536) MQTT: Other MQTT event id:7[0m
+[1;31mE (304756) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (304766) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (304776) esp-tls: create_ssl_handle failed[0m
+[1;31mE (304776) esp-tls: Failed to open new connection[0m
+[1;31mE (304776) transport_base: Failed to open a new connection[0m
+[1;31mE (304786) mqtt_client: Error transport connect[0m
+[1;31mE (304786) MQTT: MQTT error[0m
+[1;31mE (304796) MQTT: Transport error: ESP_OK[0m
+[0;32mI (304796) MQTT: MQTT Disconnected[0m
+[0;33mW (308956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (313956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (318956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (319796) MQTT: Other MQTT event id:7[0m
+[1;31mE (320116) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (320116) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (320126) esp-tls: create_ssl_handle failed[0m
+[1;31mE (320136) esp-tls: Failed to open new connection[0m
+[1;31mE (320136) transport_base: Failed to open a new connection[0m
+[1;31mE (320146) mqtt_client: Error transport connect[0m
+[1;31mE (320146) MQTT: MQTT error[0m
+[1;31mE (320146) MQTT: Transport error: ESP_OK[0m
+[0;32mI (320156) MQTT: MQTT Disconnected[0m
+[0;33mW (323956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (328956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (333956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (333986) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;32mI (335156) MQTT: Other MQTT event id:7[0m
+[1;31mE (335376) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (335376) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (335386) esp-tls: create_ssl_handle failed[0m
+[1;31mE (335396) esp-tls: Failed to open new connection[0m
+[1;31mE (335396) transport_base: Failed to open a new connection[0m
+[1;31mE (335406) mqtt_client: Error transport connect[0m
+[1;31mE (335406) MQTT: MQTT error[0m
+[1;31mE (335406) MQTT: Transport error: ESP_OK[0m
+[0;32mI (335416) MQTT: MQTT Disconnected[0m
+[0;33mW (338956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (343956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (348956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (350416) MQTT: Other MQTT event id:7[0m
+[1;31mE (350736) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (350736) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (350746) esp-tls: create_ssl_handle failed[0m
+[1;31mE (350756) esp-tls: Failed to open new connection[0m
+[1;31mE (350756) transport_base: Failed to open a new connection[0m
+[1;31mE (350766) mqtt_client: Error transport connect[0m
+[1;31mE (350766) MQTT: MQTT error[0m
+[1;31mE (350766) MQTT: Transport error: ESP_OK[0m
+[0;32mI (350776) MQTT: MQTT Disconnected[0m
+[0;33mW (353956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (358956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (363956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (363986) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;32mI (365776) MQTT: Other MQTT event id:7[0m
+[1;31mE (366096) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (366096) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (366106) esp-tls: create_ssl_handle failed[0m
+[1;31mE (366116) esp-tls: Failed to open new connection[0m
+[1;31mE (366116) transport_base: Failed to open a new connection[0m
+[1;31mE (366126) mqtt_client: Error transport connect[0m
+[1;31mE (366126) MQTT: MQTT error[0m
+[1;31mE (366126) MQTT: Transport error: ESP_OK[0m
+[0;32mI (366136) MQTT: MQTT Disconnected[0m
+[0;33mW (368956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (373956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (378956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (381136) MQTT: Other MQTT event id:7[0m
+[1;31mE (381456) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (381456) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (381466) esp-tls: create_ssl_handle failed[0m
+[1;31mE (381476) esp-tls: Failed to open new connection[0m
+[1;31mE (381476) transport_base: Failed to open a new connection[0m
+[1;31mE (381486) mqtt_client: Error transport connect[0m
+[1;31mE (381486) MQTT: MQTT error[0m
+[1;31mE (381486) MQTT: Transport error: ESP_OK[0m
+[0;32mI (381496) MQTT: MQTT Disconnected[0m
+[0;33mW (383956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (388956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (393956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (393986) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;32mI (396496) MQTT: Other MQTT event id:7[0m
+[1;31mE (396716) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (396716) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (396726) esp-tls: create_ssl_handle failed[0m
+[1;31mE (396726) esp-tls: Failed to open new connection[0m
+[1;31mE (396736) transport_base: Failed to open a new connection[0m
+[1;31mE (396746) mqtt_client: Error transport connect[0m
+[1;31mE (396746) MQTT: MQTT error[0m
+[1;31mE (396746) MQTT: Transport error: ESP_OK[0m
+[0;32mI (396746) MQTT: MQTT Disconnected[0m
+[0;33mW (398956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (403956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (406756) MQTT: Other MQTT event id:7[0m
+[1;31mE (406986) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (406986) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (406996) esp-tls: create_ssl_handle failed[0m
+[1;31mE (406996) esp-tls: Failed to open new connection[0m
+[1;31mE (407006) transport_base: Failed to open a new connection[0m
+[1;31mE (407016) mqtt_client: Error transport connect[0m
+[1;31mE (407016) MQTT: MQTT error[0m
+[1;31mE (407016) MQTT: Transport error: ESP_OK[0m
+[0;32mI (407016) MQTT: MQTT Disconnected[0m
+[0;33mW (408956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (413956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (417026) MQTT: Other MQTT event id:7[0m
+[1;31mE (417296) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (417296) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (417306) esp-tls: create_ssl_handle failed[0m
+[1;31mE (417316) esp-tls: Failed to open new connection[0m
+[1;31mE (417316) transport_base: Failed to open a new connection[0m
+[1;31mE (417326) mqtt_client: Error transport connect[0m
+[1;31mE (417326) MQTT: MQTT error[0m
+[1;31mE (417326) MQTT: Transport error: ESP_OK[0m
+[0;32mI (417336) MQTT: MQTT Disconnected[0m
+[0;33mW (418956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (423956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (423986) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (428956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (432336) MQTT: Other MQTT event id:7[0m
+[1;31mE (432656) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (432656) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (432666) esp-tls: create_ssl_handle failed[0m
+[1;31mE (432676) esp-tls: Failed to open new connection[0m
+[1;31mE (432676) transport_base: Failed to open a new connection[0m
+[1;31mE (432686) mqtt_client: Error transport connect[0m
+[1;31mE (432686) MQTT: MQTT error[0m
+[1;31mE (432686) MQTT: Transport error: ESP_OK[0m
+[0;32mI (432696) MQTT: MQTT Disconnected[0m
+[0;33mW (433956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (438956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (443956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (447696) MQTT: Other MQTT event id:7[0m
+[1;31mE (448016) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (448016) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (448026) esp-tls: create_ssl_handle failed[0m
+[1;31mE (448036) esp-tls: Failed to open new connection[0m
+[1;31mE (448036) transport_base: Failed to open a new connection[0m
+[1;31mE (448046) mqtt_client: Error transport connect[0m
+[1;31mE (448046) MQTT: MQTT error[0m
+[1;31mE (448046) MQTT: Transport error: ESP_OK[0m
+[0;32mI (448056) MQTT: MQTT Disconnected[0m
+[0;33mW (448956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (453956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (453986) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (458956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (463056) MQTT: Other MQTT event id:7[0m
+[1;31mE (463376) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (463376) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (463386) esp-tls: create_ssl_handle failed[0m
+[1;31mE (463396) esp-tls: Failed to open new connection[0m
+[1;31mE (463396) transport_base: Failed to open a new connection[0m
+[1;31mE (463406) mqtt_client: Error transport connect[0m
+[1;31mE (463406) MQTT: MQTT error[0m
+[1;31mE (463406) MQTT: Transport error: ESP_OK[0m
+[0;32mI (463416) MQTT: MQTT Disconnected[0m
+[0;33mW (463956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (468956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (473956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (478416) MQTT: Other MQTT event id:7[0m
+[1;31mE (478736) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (478736) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (478746) esp-tls: create_ssl_handle failed[0m
+[1;31mE (478756) esp-tls: Failed to open new connection[0m
+[1;31mE (478756) transport_base: Failed to open a new connection[0m
+[1;31mE (478766) mqtt_client: Error transport connect[0m
+[1;31mE (478766) MQTT: MQTT error[0m
+[1;31mE (478766) MQTT: Transport error: ESP_OK[0m
+[0;32mI (478776) MQTT: MQTT Disconnected[0m
+[0;33mW (478956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (483956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (483986) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (488956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (493776) MQTT: Other MQTT event id:7[0m
+[0;33mW (493956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (494096) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (494096) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (494106) esp-tls: create_ssl_handle failed[0m
+[1;31mE (494116) esp-tls: Failed to open new connection[0m
+[1;31mE (494116) transport_base: Failed to open a new connection[0m
+[1;31mE (494126) mqtt_client: Error transport connect[0m
+[1;31mE (494126) MQTT: MQTT error[0m
+[1;31mE (494126) MQTT: Transport error: ESP_OK[0m
+[0;32mI (494136) MQTT: MQTT Disconnected[0m
+[0;33mW (498956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (503956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (508956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (509136) MQTT: Other MQTT event id:7[0m
+[1;31mE (509456) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (509456) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (509466) esp-tls: create_ssl_handle failed[0m
+[1;31mE (509466) esp-tls: Failed to open new connection[0m
+[1;31mE (509476) transport_base: Failed to open a new connection[0m
+[1;31mE (509486) mqtt_client: Error transport connect[0m
+[1;31mE (509486) MQTT: MQTT error[0m
+[1;31mE (509486) MQTT: Transport error: ESP_OK[0m
+[0;32mI (509496) MQTT: MQTT Disconnected[0m
+[0;33mW (513956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (513986) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (518956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (523956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (524496) MQTT: Other MQTT event id:7[0m
+[1;31mE (524816) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (524816) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (524826) esp-tls: create_ssl_handle failed[0m
+[1;31mE (524836) esp-tls: Failed to open new connection[0m
+[1;31mE (524836) transport_base: Failed to open a new connection[0m
+[1;31mE (524846) mqtt_client: Error transport connect[0m
+[1;31mE (524846) MQTT: MQTT error[0m
+[1;31mE (524846) MQTT: Transport error: ESP_OK[0m
+[0;32mI (524856) MQTT: MQTT Disconnected[0m
+[0;33mW (528956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (533956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (538956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (539856) MQTT: Other MQTT event id:7[0m
+[1;31mE (540176) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (540176) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (540186) esp-tls: create_ssl_handle failed[0m
+[1;31mE (540186) esp-tls: Failed to open new connection[0m
+[1;31mE (540196) transport_base: Failed to open a new connection[0m
+[1;31mE (540206) mqtt_client: Error transport connect[0m
+[1;31mE (540206) MQTT: MQTT error[0m
+[1;31mE (540206) MQTT: Transport error: ESP_OK[0m
+[0;32mI (540206) MQTT: MQTT Disconnected[0m
+[0;33mW (543956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (543986) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (548956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (550216) MQTT: Other MQTT event id:7[0m
+[1;31mE (550516) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (550516) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (550526) esp-tls: create_ssl_handle failed[0m
+[1;31mE (550536) esp-tls: Failed to open new connection[0m
+[1;31mE (550536) transport_base: Failed to open a new connection[0m
+[1;31mE (550546) mqtt_client: Error transport connect[0m
+[1;31mE (550546) MQTT: MQTT error[0m
+[1;31mE (550546) MQTT: Transport error: ESP_OK[0m
+[0;32mI (550556) MQTT: MQTT Disconnected[0m
+[0;33mW (553956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (558956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (563956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (565556) MQTT: Other MQTT event id:7[0m
+[1;31mE (565876) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (565876) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (565886) esp-tls: create_ssl_handle failed[0m
+[1;31mE (565896) esp-tls: Failed to open new connection[0m
+[1;31mE (565896) transport_base: Failed to open a new connection[0m
+[1;31mE (565906) mqtt_client: Error transport connect[0m
+[1;31mE (565906) MQTT: MQTT error[0m
+[1;31mE (565906) MQTT: Transport error: ESP_OK[0m
+[0;32mI (565916) MQTT: MQTT Disconnected[0m
+[0;33mW (568956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (573956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (573986) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (578956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (580916) MQTT: Other MQTT event id:7[0m
+[1;31mE (581236) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (581246) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (581246) esp-tls: create_ssl_handle failed[0m
+[1;31mE (581256) esp-tls: Failed to open new connection[0m
+[1;31mE (581256) transport_base: Failed to open a new connection[0m
+[1;31mE (581266) mqtt_client: Error transport connect[0m
+[1;31mE (581266) MQTT: MQTT error[0m
+[1;31mE (581266) MQTT: Transport error: ESP_OK[0m
+[0;32mI (581276) MQTT: MQTT Disconnected[0m
+[0;33mW (583956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (588956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (593956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (596276) MQTT: Other MQTT event id:7[0m
+[1;31mE (596606) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (596606) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (596616) esp-tls: create_ssl_handle failed[0m
+[1;31mE (596616) esp-tls: Failed to open new connection[0m
+[1;31mE (596626) transport_base: Failed to open a new connection[0m
+[1;31mE (596636) mqtt_client: Error transport connect[0m
+[1;31mE (596636) MQTT: MQTT error[0m
+[1;31mE (596636) MQTT: Transport error: ESP_OK[0m
+[0;32mI (596636) MQTT: MQTT Disconnected[0m
+[0;33mW (598956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (603956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (603986) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;32mI (606646) MQTT: Other MQTT event id:7[0m
+[1;31mE (606936) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (606946) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (606956) esp-tls: create_ssl_handle failed[0m
+[1;31mE (606956) esp-tls: Failed to open new connection[0m
+[1;31mE (606956) transport_base: Failed to open a new connection[0m
+[1;31mE (606966) mqtt_client: Error transport connect[0m
+[1;31mE (606966) MQTT: MQTT error[0m
+[1;31mE (606976) MQTT: Transport error: ESP_OK[0m
+[0;32mI (606976) MQTT: MQTT Disconnected[0m
+[0;33mW (608956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (613956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (618956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (621976) MQTT: Other MQTT event id:7[0m
+[1;31mE (622306) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (622306) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (622316) esp-tls: create_ssl_handle failed[0m
+[1;31mE (622316) esp-tls: Failed to open new connection[0m
+[1;31mE (622316) transport_base: Failed to open a new connection[0m
+[1;31mE (622326) mqtt_client: Error transport connect[0m
+[1;31mE (622326) MQTT: MQTT error[0m
+[1;31mE (622336) MQTT: Transport error: ESP_OK[0m
+[0;32mI (622336) MQTT: MQTT Disconnected[0m
+[0;33mW (623956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (628956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (633956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (633986) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;32mI (637336) MQTT: Other MQTT event id:7[0m
+[1;31mE (637656) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (637666) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (637666) esp-tls: create_ssl_handle failed[0m
+[1;31mE (637676) esp-tls: Failed to open new connection[0m
+[1;31mE (637676) transport_base: Failed to open a new connection[0m
+[1;31mE (637686) mqtt_client: Error transport connect[0m
+[1;31mE (637686) MQTT: MQTT error[0m
+[1;31mE (637696) MQTT: Transport error: ESP_OK[0m
+[0;32mI (637696) MQTT: MQTT Disconnected[0m
+[0;33mW (638956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (643956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (648956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (652696) MQTT: Other MQTT event id:7[0m
+[1;31mE (653026) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (653026) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (653036) esp-tls: create_ssl_handle failed[0m
+[1;31mE (653036) esp-tls: Failed to open new connection[0m
+[1;31mE (653036) transport_base: Failed to open a new connection[0m
+[1;31mE (653046) mqtt_client: Error transport connect[0m
+[1;31mE (653046) MQTT: MQTT error[0m
+[1;31mE (653056) MQTT: Transport error: ESP_OK[0m
+[0;32mI (653056) MQTT: MQTT Disconnected[0m
+[0;33mW (653956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (658956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (663956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (663986) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;32mI (668056) MQTT: Other MQTT event id:7[0m
+[1;31mE (668386) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (668386) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (668396) esp-tls: create_ssl_handle failed[0m
+[1;31mE (668396) esp-tls: Failed to open new connection[0m
+[1;31mE (668396) transport_base: Failed to open a new connection[0m
+[1;31mE (668406) mqtt_client: Error transport connect[0m
+[1;31mE (668406) MQTT: MQTT error[0m
+[1;31mE (668416) MQTT: Transport error: ESP_OK[0m
+[0;32mI (668416) MQTT: MQTT Disconnected[0m
+[0;33mW (668956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (673956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (678956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (683416) MQTT: Other MQTT event id:7[0m
+[1;31mE (683736) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (683736) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (683746) esp-tls: create_ssl_handle failed[0m
+[1;31mE (683756) esp-tls: Failed to open new connection[0m
+[1;31mE (683756) transport_base: Failed to open a new connection[0m
+[1;31mE (683766) mqtt_client: Error transport connect[0m
+[1;31mE (683766) MQTT: MQTT error[0m
+[1;31mE (683766) MQTT: Transport error: ESP_OK[0m
+[0;32mI (683776) MQTT: MQTT Disconnected[0m
+[0;33mW (683956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (688956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (693956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (693986) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;32mI (698776) MQTT: Other MQTT event id:7[0m
+[0;33mW (698956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (699096) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (699106) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (699116) esp-tls: create_ssl_handle failed[0m
+[1;31mE (699116) esp-tls: Failed to open new connection[0m
+[1;31mE (699116) transport_base: Failed to open a new connection[0m
+[1;31mE (699126) mqtt_client: Error transport connect[0m
+[1;31mE (699126) MQTT: MQTT error[0m
+[1;31mE (699136) MQTT: Transport error: ESP_OK[0m
+[0;32mI (699136) MQTT: MQTT Disconnected[0m
+[0;33mW (703956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (708956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (713956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (714136) MQTT: Other MQTT event id:7[0m
+[1;31mE (714456) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (714456) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (714466) esp-tls: create_ssl_handle failed[0m
+[1;31mE (714476) esp-tls: Failed to open new connection[0m
+[1;31mE (714476) transport_base: Failed to open a new connection[0m
+[1;31mE (714486) mqtt_client: Error transport connect[0m
+[1;31mE (714486) MQTT: MQTT error[0m
+[1;31mE (714486) MQTT: Transport error: ESP_OK[0m
+[0;32mI (714496) MQTT: MQTT Disconnected[0m
+[0;33mW (718956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (723956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (723986) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (728956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (729496) MQTT: Other MQTT event id:7[0m
+[1;31mE (729826) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (729826) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (729836) esp-tls: create_ssl_handle failed[0m
+[1;31mE (729836) esp-tls: Failed to open new connection[0m
+[1;31mE (729836) transport_base: Failed to open a new connection[0m
+[1;31mE (729846) mqtt_client: Error transport connect[0m
+[1;31mE (729846) MQTT: MQTT error[0m
+[1;31mE (729856) MQTT: Transport error: ESP_OK[0m
+[0;32mI (729856) MQTT: MQTT Disconnected[0m
+[0;33mW (733956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (738956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (743956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (744856) MQTT: Other MQTT event id:7[0m
+[1;31mE (745176) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (745176) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (745186) esp-tls: create_ssl_handle failed[0m
+[1;31mE (745196) esp-tls: Failed to open new connection[0m
+[1;31mE (745196) transport_base: Failed to open a new connection[0m
+[1;31mE (745206) mqtt_client: Error transport connect[0m
+[1;31mE (745206) MQTT: MQTT error[0m
+[1;31mE (745206) MQTT: Transport error: ESP_OK[0m
+[0;32mI (745216) MQTT: MQTT Disconnected[0m
+[0;33mW (748956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (753956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (753986) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (758956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (760216) MQTT: Other MQTT event id:7[0m
+[1;31mE (760546) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (760546) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (760556) esp-tls: create_ssl_handle failed[0m
+[1;31mE (760556) esp-tls: Failed to open new connection[0m
+[1;31mE (760566) transport_base: Failed to open a new connection[0m
+[1;31mE (760566) mqtt_client: Error transport connect[0m
+[1;31mE (760566) MQTT: MQTT error[0m
+[1;31mE (760576) MQTT: Transport error: ESP_OK[0m
+[0;32mI (760576) MQTT: MQTT Disconnected[0m
+[0;33mW (763956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (768956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (773956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (775576) MQTT: Other MQTT event id:7[0m
+[1;31mE (775896) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (775896) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (775906) esp-tls: create_ssl_handle failed[0m
+[1;31mE (775916) esp-tls: Failed to open new connection[0m
+[1;31mE (775916) transport_base: Failed to open a new connection[0m
+[1;31mE (775926) mqtt_client: Error transport connect[0m
+[1;31mE (775926) MQTT: MQTT error[0m
+[1;31mE (775926) MQTT: Transport error: ESP_OK[0m
+[0;32mI (775936) MQTT: MQTT Disconnected[0m
+[0;33mW (778956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (783956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (783986) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (788956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (790936) MQTT: Other MQTT event id:7[0m
+[1;31mE (791156) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (791166) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (791166) esp-tls: create_ssl_handle failed[0m
+[1;31mE (791176) esp-tls: Failed to open new connection[0m
+[1;31mE (791176) transport_base: Failed to open a new connection[0m
+[1;31mE (791186) mqtt_client: Error transport connect[0m
+[1;31mE (791186) MQTT: MQTT error[0m
+[1;31mE (791196) MQTT: Transport error: ESP_OK[0m
+[0;32mI (791196) MQTT: MQTT Disconnected[0m
+[0;33mW (793956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (798956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (803956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (806196) MQTT: Other MQTT event id:7[0m
+[1;31mE (806516) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (806516) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (806526) esp-tls: create_ssl_handle failed[0m
+[1;31mE (806536) esp-tls: Failed to open new connection[0m
+[1;31mE (806536) transport_base: Failed to open a new connection[0m
+[1;31mE (806546) mqtt_client: Error transport connect[0m
+[1;31mE (806546) MQTT: MQTT error[0m
+[1;31mE (806546) MQTT: Transport error: ESP_OK[0m
+[0;32mI (806556) MQTT: MQTT Disconnected[0m
+[0;33mW (808956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (813956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (813986) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (818956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (821556) MQTT: Other MQTT event id:7[0m
+[1;31mE (821876) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (821876) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (821886) esp-tls: create_ssl_handle failed[0m
+[1;31mE (821896) esp-tls: Failed to open new connection[0m
+[1;31mE (821896) transport_base: Failed to open a new connection[0m
+[1;31mE (821906) mqtt_client: Error transport connect[0m
+[1;31mE (821906) MQTT: MQTT error[0m
+[1;31mE (821906) MQTT: Transport error: ESP_OK[0m
+[0;32mI (821916) MQTT: MQTT Disconnected[0m
+[0;33mW (823956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (828956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (833956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (836916) MQTT: Other MQTT event id:7[0m
+[1;31mE (837236) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (837236) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (837246) esp-tls: create_ssl_handle failed[0m
+[1;31mE (837256) esp-tls: Failed to open new connection[0m
+[1;31mE (837256) transport_base: Failed to open a new connection[0m
+[1;31mE (837266) mqtt_client: Error transport connect[0m
+[1;31mE (837266) MQTT: MQTT error[0m
+[1;31mE (837266) MQTT: Transport error: ESP_OK[0m
+[0;32mI (837276) MQTT: MQTT Disconnected[0m
+[0;33mW (838956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (843956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (843986) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (848956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (852276) MQTT: Other MQTT event id:7[0m
+[1;31mE (852596) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (852596) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (852606) esp-tls: create_ssl_handle failed[0m
+[1;31mE (852616) esp-tls: Failed to open new connection[0m
+[1;31mE (852616) transport_base: Failed to open a new connection[0m
+[1;31mE (852626) mqtt_client: Error transport connect[0m
+[1;31mE (852626) MQTT: MQTT error[0m
+[1;31mE (852626) MQTT: Transport error: ESP_OK[0m
+[0;32mI (852636) MQTT: MQTT Disconnected[0m
+[0;33mW (853956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (858956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (863956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (867636) MQTT: Other MQTT event id:7[0m
+[1;31mE (867956) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (867956) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (867966) esp-tls: create_ssl_handle failed[0m
+[1;31mE (867966) esp-tls: Failed to open new connection[0m
+[1;31mE (867976) transport_base: Failed to open a new connection[0m
+[1;31mE (867986) mqtt_client: Error transport connect[0m
+[1;31mE (867986) MQTT: MQTT error[0m
+[1;31mE (867986) MQTT: Transport error: ESP_OK[0m
+[0;32mI (867996) MQTT: MQTT Disconnected[0m
+[0;33mW (868956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (873956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (873986) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (878956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (882996) MQTT: Other MQTT event id:7[0m
+[1;31mE (883316) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (883316) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (883326) esp-tls: create_ssl_handle failed[0m
+[1;31mE (883336) esp-tls: Failed to open new connection[0m
+[1;31mE (883336) transport_base: Failed to open a new connection[0m
+[1;31mE (883346) mqtt_client: Error transport connect[0m
+[1;31mE (883346) MQTT: MQTT error[0m
+[1;31mE (883346) MQTT: Transport error: ESP_OK[0m
+[0;32mI (883356) MQTT: MQTT Disconnected[0m
+[0;33mW (883956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (888956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (893956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (898356) MQTT: Other MQTT event id:7[0m
+[1;31mE (898676) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (898676) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (898686) esp-tls: create_ssl_handle failed[0m
+[1;31mE (898696) esp-tls: Failed to open new connection[0m
+[1;31mE (898696) transport_base: Failed to open a new connection[0m
+[1;31mE (898706) mqtt_client: Error transport connect[0m
+[1;31mE (898706) MQTT: MQTT error[0m
+[1;31mE (898706) MQTT: Transport error: ESP_OK[0m
+[0;32mI (898716) MQTT: MQTT Disconnected[0m
+[0;33mW (898956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (903956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (903986) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (908956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (913716) MQTT: Other MQTT event id:7[0m
+[0;33mW (913956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (914036) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (914036) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (914046) esp-tls: create_ssl_handle failed[0m
+[1;31mE (914046) esp-tls: Failed to open new connection[0m
+[1;31mE (914056) transport_base: Failed to open a new connection[0m
+[1;31mE (914066) mqtt_client: Error transport connect[0m
+[1;31mE (914066) MQTT: MQTT error[0m
+[1;31mE (914066) MQTT: Transport error: ESP_OK[0m
+[0;32mI (914076) MQTT: MQTT Disconnected[0m
+[0;33mW (918956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (923956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (928956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (929076) MQTT: Other MQTT event id:7[0m
+[1;31mE (929296) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (929296) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (929306) esp-tls: create_ssl_handle failed[0m
+[1;31mE (929306) esp-tls: Failed to open new connection[0m
+[1;31mE (929316) transport_base: Failed to open a new connection[0m
+[1;31mE (929326) mqtt_client: Error transport connect[0m
+[1;31mE (929326) MQTT: MQTT error[0m
+[1;31mE (929326) MQTT: Transport error: ESP_OK[0m
+[0;32mI (929326) MQTT: MQTT Disconnected[0m
+[0;33mW (933956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (933986) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (938956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (939336) MQTT: Other MQTT event id:7[0m
+[1;31mE (939556) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (939556) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (939566) esp-tls: create_ssl_handle failed[0m
+[1;31mE (939566) esp-tls: Failed to open new connection[0m
+[1;31mE (939576) transport_base: Failed to open a new connection[0m
+[1;31mE (939576) mqtt_client: Error transport connect[0m
+[1;31mE (939586) MQTT: MQTT error[0m
+[1;31mE (939586) MQTT: Transport error: ESP_OK[0m
+[0;32mI (939586) MQTT: MQTT Disconnected[0m
+[0;33mW (943956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (948956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (953956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (954586) MQTT: Other MQTT event id:7[0m
+[1;31mE (954896) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (954896) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (954906) esp-tls: create_ssl_handle failed[0m
+[1;31mE (954906) esp-tls: Failed to open new connection[0m
+[1;31mE (954916) transport_base: Failed to open a new connection[0m
+[1;31mE (954916) mqtt_client: Error transport connect[0m
+[1;31mE (954926) MQTT: MQTT error[0m
+[1;31mE (954926) MQTT: Transport error: ESP_OK[0m
+[0;32mI (954926) MQTT: MQTT Disconnected[0m
+[0;33mW (958956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (963956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (963986) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;32mI (964936) MQTT: Other MQTT event id:7[0m
+[1;31mE (965446) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (965446) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (965456) esp-tls: create_ssl_handle failed[0m
+[1;31mE (965456) esp-tls: Failed to open new connection[0m
+[1;31mE (965456) transport_base: Failed to open a new connection[0m
+[1;31mE (965466) mqtt_client: Error transport connect[0m
+[1;31mE (965466) MQTT: MQTT error[0m
+[1;31mE (965476) MQTT: Transport error: ESP_OK[0m
+[0;32mI (965476) MQTT: MQTT Disconnected[0m
+[0;33mW (968956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (973956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (978956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (980476) MQTT: Other MQTT event id:7[0m
+[1;31mE (980696) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (980696) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (980706) esp-tls: create_ssl_handle failed[0m
+[1;31mE (980716) esp-tls: Failed to open new connection[0m
+[1;31mE (980716) transport_base: Failed to open a new connection[0m
+[1;31mE (980726) mqtt_client: Error transport connect[0m
+[1;31mE (980726) MQTT: MQTT error[0m
+[1;31mE (980726) MQTT: Transport error: ESP_OK[0m
+[0;32mI (980736) MQTT: MQTT Disconnected[0m
+[0;33mW (983956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (988956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (993956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (993986) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;32mI (995736) MQTT: Other MQTT event id:7[0m
+[1;31mE (996056) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (996056) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (996066) esp-tls: create_ssl_handle failed[0m
+[1;31mE (996076) esp-tls: Failed to open new connection[0m
+[1;31mE (996076) transport_base: Failed to open a new connection[0m
+[1;31mE (996086) mqtt_client: Error transport connect[0m
+[1;31mE (996086) MQTT: MQTT error[0m
+[1;31mE (996086) MQTT: Transport error: ESP_OK[0m
+[0;32mI (996096) MQTT: MQTT Disconnected[0m
+[0;33mW (998956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1003956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1008956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (1011096) MQTT: Other MQTT event id:7[0m
+[1;31mE (1011426) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (1011426) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (1011436) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1011436) esp-tls: Failed to open new connection[0m
+[1;31mE (1011436) transport_base: Failed to open a new connection[0m
+[1;31mE (1011446) mqtt_client: Error transport connect[0m
+[1;31mE (1011446) MQTT: MQTT error[0m
+[1;31mE (1011456) MQTT: Transport error: ESP_OK[0m
+[0;32mI (1011456) MQTT: MQTT Disconnected[0m
+[0;33mW (1013956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1018956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1023956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (1023986) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;32mI (1026456) MQTT: Other MQTT event id:7[0m
+[1;31mE (1026776) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (1026776) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (1026786) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1026796) esp-tls: Failed to open new connection[0m
+[1;31mE (1026796) transport_base: Failed to open a new connection[0m
+[1;31mE (1026806) mqtt_client: Error transport connect[0m
+[1;31mE (1026806) MQTT: MQTT error[0m
+[1;31mE (1026806) MQTT: Transport error: ESP_OK[0m
+[0;32mI (1026816) MQTT: MQTT Disconnected[0m
+[0;33mW (1028956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1033956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1038956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (1041816) MQTT: Other MQTT event id:7[0m
+[1;31mE (1042136) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (1042136) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (1042146) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1042156) esp-tls: Failed to open new connection[0m
+[1;31mE (1042156) transport_base: Failed to open a new connection[0m
+[1;31mE (1042166) mqtt_client: Error transport connect[0m
+[1;31mE (1042166) MQTT: MQTT error[0m
+[1;31mE (1042166) MQTT: Transport error: ESP_OK[0m
+[0;32mI (1042176) MQTT: MQTT Disconnected[0m
+[0;33mW (1043956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1048956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1053956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (1053986) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;32mI (1057176) MQTT: Other MQTT event id:7[0m
+[1;31mE (1057496) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (1057496) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (1057506) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1057516) esp-tls: Failed to open new connection[0m
+[1;31mE (1057516) transport_base: Failed to open a new connection[0m
+[1;31mE (1057526) mqtt_client: Error transport connect[0m
+[1;31mE (1057526) MQTT: MQTT error[0m
+[1;31mE (1057526) MQTT: Transport error: ESP_OK[0m
+[0;32mI (1057536) MQTT: MQTT Disconnected[0m
+[0;33mW (1058956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1063956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1068956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (1072536) MQTT: Other MQTT event id:7[0m
+[1;31mE (1072866) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (1072866) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (1072876) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1072876) esp-tls: Failed to open new connection[0m
+[1;31mE (1072876) transport_base: Failed to open a new connection[0m
+[1;31mE (1072886) mqtt_client: Error transport connect[0m
+[1;31mE (1072886) MQTT: MQTT error[0m
+[1;31mE (1072896) MQTT: Transport error: ESP_OK[0m
+[0;32mI (1072896) MQTT: MQTT Disconnected[0m
+[0;33mW (1073956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1078956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1083956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (1083986) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;32mI (1087896) MQTT: Other MQTT event id:7[0m
+[1;31mE (1088216) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (1088216) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (1088226) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1088236) esp-tls: Failed to open new connection[0m
+[1;31mE (1088236) transport_base: Failed to open a new connection[0m
+[1;31mE (1088246) mqtt_client: Error transport connect[0m
+[1;31mE (1088246) MQTT: MQTT error[0m
+[1;31mE (1088246) MQTT: Transport error: ESP_OK[0m
+[0;32mI (1088256) MQTT: MQTT Disconnected[0m
+[0;33mW (1088956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1093956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1098956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (1103256) MQTT: Other MQTT event id:7[0m
+[1;31mE (1103576) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (1103576) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (1103586) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1103596) esp-tls: Failed to open new connection[0m
+[1;31mE (1103596) transport_base: Failed to open a new connection[0m
+[1;31mE (1103606) mqtt_client: Error transport connect[0m
+[1;31mE (1103606) MQTT: MQTT error[0m
+[1;31mE (1103606) MQTT: Transport error: ESP_OK[0m
+[0;32mI (1103616) MQTT: MQTT Disconnected[0m
+[0;33mW (1103956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1108956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1113956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (1113986) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;32mI (1118616) MQTT: Other MQTT event id:7[0m
+[1;31mE (1118936) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (1118936) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (1118946) esp-tls: create_ssl_handle failed[0m
+[0;33mW (1118956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (1118956) esp-tls: Failed to open new connection[0m
+[1;31mE (1118966) transport_base: Failed to open a new connection[0m
+[1;31mE (1118966) mqtt_client: Error transport connect[0m
+[1;31mE (1118976) MQTT: MQTT error[0m
+[1;31mE (1118976) MQTT: Transport error: ESP_OK[0m
+[0;32mI (1118976) MQTT: MQTT Disconnected[0m
+[0;33mW (1123956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1128956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (1128986) MQTT: Other MQTT event id:7[0m
+[1;31mE (1129276) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (1129286) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (1129296) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1129296) esp-tls: Failed to open new connection[0m
+[1;31mE (1129296) transport_base: Failed to open a new connection[0m
+[1;31mE (1129306) mqtt_client: Error transport connect[0m
+[1;31mE (1129306) MQTT: MQTT error[0m
+[1;31mE (1129316) MQTT: Transport error: ESP_OK[0m
+[0;32mI (1129316) MQTT: MQTT Disconnected[0m
+[0;33mW (1133956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1138956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1143956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (1143986) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;32mI (1144316) MQTT: Other MQTT event id:7[0m
+[1;31mE (1144536) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (1144536) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (1144546) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1144556) esp-tls: Failed to open new connection[0m
+[1;31mE (1144556) transport_base: Failed to open a new connection[0m
+[1;31mE (1144566) mqtt_client: Error transport connect[0m
+[1;31mE (1144566) MQTT: MQTT error[0m
+[1;31mE (1144576) MQTT: Transport error: ESP_OK[0m
+[0;32mI (1144576) MQTT: MQTT Disconnected[0m
+[0;33mW (1148956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1153956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1158956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (1159576) MQTT: Other MQTT event id:7[0m
+[1;31mE (1159996) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (1159996) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (1160006) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1160016) esp-tls: Failed to open new connection[0m
+[1;31mE (1160016) transport_base: Failed to open a new connection[0m
+[1;31mE (1160026) mqtt_client: Error transport connect[0m
+[1;31mE (1160026) MQTT: MQTT error[0m
+[1;31mE (1160036) MQTT: Transport error: ESP_OK[0m
+[0;32mI (1160036) MQTT: MQTT Disconnected[0m
+[0;33mW (1163956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1168956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1173956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (1173986) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;32mI (1175036) MQTT: Other MQTT event id:7[0m
+[1;31mE (1175256) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (1175256) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (1175266) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1175276) esp-tls: Failed to open new connection[0m
+[1;31mE (1175276) transport_base: Failed to open a new connection[0m
+[1;31mE (1175286) mqtt_client: Error transport connect[0m
+[1;31mE (1175286) MQTT: MQTT error[0m
+[1;31mE (1175286) MQTT: Transport error: ESP_OK[0m
+[0;32mI (1175296) MQTT: MQTT Disconnected[0m
+[0;33mW (1178956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1183956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1188956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (1190296) MQTT: Other MQTT event id:7[0m
+[1;31mE (1190616) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (1190616) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (1190626) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1190636) esp-tls: Failed to open new connection[0m
+[1;31mE (1190636) transport_base: Failed to open a new connection[0m
+[1;31mE (1190646) mqtt_client: Error transport connect[0m
+[1;31mE (1190646) MQTT: MQTT error[0m
+[1;31mE (1190656) MQTT: Transport error: ESP_OK[0m
+[0;32mI (1190656) MQTT: MQTT Disconnected[0m
+[0;33mW (1193956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1198956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1203956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (1203986) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;32mI (1205656) MQTT: Other MQTT event id:7[0m
+[1;31mE (1205976) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (1205976) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (1205986) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1205996) esp-tls: Failed to open new connection[0m
+[1;31mE (1205996) transport_base: Failed to open a new connection[0m
+[1;31mE (1206006) mqtt_client: Error transport connect[0m
+[1;31mE (1206006) MQTT: MQTT error[0m
+[1;31mE (1206006) MQTT: Transport error: ESP_OK[0m
+[0;32mI (1206016) MQTT: MQTT Disconnected[0m
+[0;33mW (1208956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1213956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1218956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (1221016) MQTT: Other MQTT event id:7[0m
+[1;31mE (1221336) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (1221336) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (1221346) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1221356) esp-tls: Failed to open new connection[0m
+[1;31mE (1221356) transport_base: Failed to open a new connection[0m
+[1;31mE (1221366) mqtt_client: Error transport connect[0m
+[1;31mE (1221366) MQTT: MQTT error[0m
+[1;31mE (1221366) MQTT: Transport error: ESP_OK[0m
+[0;32mI (1221376) MQTT: MQTT Disconnected[0m
+[0;33mW (1223956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1228956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1233956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (1233986) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;32mI (1236376) MQTT: Other MQTT event id:7[0m
+[1;31mE (1236696) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (1236696) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (1236706) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1236716) esp-tls: Failed to open new connection[0m
+[1;31mE (1236716) transport_base: Failed to open a new connection[0m
+[1;31mE (1236726) mqtt_client: Error transport connect[0m
+[1;31mE (1236726) MQTT: MQTT error[0m
+[1;31mE (1236726) MQTT: Transport error: ESP_OK[0m
+[0;32mI (1236736) MQTT: MQTT Disconnected[0m
+[0;33mW (1238956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1243956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1248956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (1251736) MQTT: Other MQTT event id:7[0m
+[1;31mE (1252056) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (1252056) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (1252066) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1252076) esp-tls: Failed to open new connection[0m
+[1;31mE (1252076) transport_base: Failed to open a new connection[0m
+[1;31mE (1252086) mqtt_client: Error transport connect[0m
+[1;31mE (1252086) MQTT: MQTT error[0m
+[1;31mE (1252086) MQTT: Transport error: ESP_OK[0m
+[0;32mI (1252096) MQTT: MQTT Disconnected[0m
+[0;33mW (1253956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1258956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1263956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (1263986) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;32mI (1267096) MQTT: Other MQTT event id:7[0m
+[1;31mE (1267416) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (1267416) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (1267426) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1267426) esp-tls: Failed to open new connection[0m
+[1;31mE (1267436) transport_base: Failed to open a new connection[0m
+[1;31mE (1267446) mqtt_client: Error transport connect[0m
+[1;31mE (1267446) MQTT: MQTT error[0m
+[1;31mE (1267446) MQTT: Transport error: ESP_OK[0m
+[0;32mI (1267456) MQTT: MQTT Disconnected[0m
+[0;33mW (1268956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1273956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1278956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (1282456) MQTT: Other MQTT event id:7[0m
+[1;31mE (1282776) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (1282776) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (1282786) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1282796) esp-tls: Failed to open new connection[0m
+[1;31mE (1282796) transport_base: Failed to open a new connection[0m
+[1;31mE (1282806) mqtt_client: Error transport connect[0m
+[1;31mE (1282806) MQTT: MQTT error[0m
+[1;31mE (1282806) MQTT: Transport error: ESP_OK[0m
+[0;32mI (1282816) MQTT: MQTT Disconnected[0m
+[0;33mW (1283956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1288956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1293956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (1293986) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;32mI (1297816) MQTT: Other MQTT event id:7[0m
+[1;31mE (1298136) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (1298136) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (1298146) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1298156) esp-tls: Failed to open new connection[0m
+[1;31mE (1298156) transport_base: Failed to open a new connection[0m
+[1;31mE (1298166) mqtt_client: Error transport connect[0m
+[1;31mE (1298166) MQTT: MQTT error[0m
+[1;31mE (1298166) MQTT: Transport error: ESP_OK[0m
+[0;32mI (1298176) MQTT: MQTT Disconnected[0m
+[0;33mW (1298956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1303956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1308956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (1313176) MQTT: Other MQTT event id:7[0m
+[1;31mE (1313496) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (1313496) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (1313506) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1313516) esp-tls: Failed to open new connection[0m
+[1;31mE (1313516) transport_base: Failed to open a new connection[0m
+[1;31mE (1313526) mqtt_client: Error transport connect[0m
+[1;31mE (1313526) MQTT: MQTT error[0m
+[1;31mE (1313526) MQTT: Transport error: ESP_OK[0m
+[0;32mI (1313536) MQTT: MQTT Disconnected[0m
+[0;33mW (1313956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1318956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1323956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (1323986) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;32mI (1328536) MQTT: Other MQTT event id:7[0m
+[1;31mE (1328856) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (1328856) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (1328866) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1328876) esp-tls: Failed to open new connection[0m
+[1;31mE (1328876) transport_base: Failed to open a new connection[0m
+[1;31mE (1328886) mqtt_client: Error transport connect[0m
+[1;31mE (1328886) MQTT: MQTT error[0m
+[1;31mE (1328886) MQTT: Transport error: ESP_OK[0m
+[0;32mI (1328896) MQTT: MQTT Disconnected[0m
+[0;33mW (1328956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1333956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1338956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (1343896) MQTT: Other MQTT event id:7[0m
+[0;33mW (1343956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (1344216) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (1344216) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (1344226) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1344226) esp-tls: Failed to open new connection[0m
+[1;31mE (1344236) transport_base: Failed to open a new connection[0m
+[1;31mE (1344246) mqtt_client: Error transport connect[0m
+[1;31mE (1344246) MQTT: MQTT error[0m
+[1;31mE (1344246) MQTT: Transport error: ESP_OK[0m
+[0;32mI (1344256) MQTT: MQTT Disconnected[0m
+[0;33mW (1348956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1353956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (1353986) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (1358956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (1359256) MQTT: Other MQTT event id:7[0m
+[1;31mE (1359576) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (1359576) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (1359586) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1359586) esp-tls: Failed to open new connection[0m
+[1;31mE (1359596) transport_base: Failed to open a new connection[0m
+[1;31mE (1359606) mqtt_client: Error transport connect[0m
+[1;31mE (1359606) MQTT: MQTT error[0m
+[1;31mE (1359606) MQTT: Transport error: ESP_OK[0m
+[0;32mI (1359616) MQTT: MQTT Disconnected[0m
+[0;33mW (1363956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1368956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1373956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (1374616) MQTT: Other MQTT event id:7[0m
+[1;31mE (1374936) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (1374936) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (1374946) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1374956) esp-tls: Failed to open new connection[0m
+[1;31mE (1374956) transport_base: Failed to open a new connection[0m
+[1;31mE (1374966) mqtt_client: Error transport connect[0m
+[1;31mE (1374966) MQTT: MQTT error[0m
+[1;31mE (1374966) MQTT: Transport error: ESP_OK[0m
+[0;32mI (1374976) MQTT: MQTT Disconnected[0m
+[0;33mW (1378956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1383956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (1383986) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (1388956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (1389976) MQTT: Other MQTT event id:7[0m
+[1;31mE (1390296) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (1390296) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (1390306) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1390306) esp-tls: Failed to open new connection[0m
+[1;31mE (1390316) transport_base: Failed to open a new connection[0m
+[1;31mE (1390326) mqtt_client: Error transport connect[0m
+[1;31mE (1390326) MQTT: MQTT error[0m
+[1;31mE (1390326) MQTT: Transport error: ESP_OK[0m
+[0;32mI (1390326) MQTT: MQTT Disconnected[0m
+[0;33mW (1393956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1398956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1403956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (1405336) MQTT: Other MQTT event id:7[0m
+[1;31mE (1405586) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (1405586) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (1405596) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1405596) esp-tls: Failed to open new connection[0m
+[1;31mE (1405606) transport_base: Failed to open a new connection[0m
+[1;31mE (1405606) mqtt_client: Error transport connect[0m
+[1;31mE (1405616) MQTT: MQTT error[0m
+[1;31mE (1405616) MQTT: Transport error: ESP_OK[0m
+[0;32mI (1405616) MQTT: MQTT Disconnected[0m
+[0;33mW (1408956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1413956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (1413986) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;32mI (1415626) MQTT: Other MQTT event id:7[0m
+[1;31mE (1415896) esp-tls-mbedtls: No server verification option set in esp_tls_cfg_t structure. Check esp_tls API reference[0m
+[1;31mE (1415896) esp-tls-mbedtls: Failed to set client configurations, returned [0x8017] (ESP_ERR_MBEDTLS_SSL_SETUP_FAILED)[0m
+[1;31mE (1415906) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1415906) esp-tls: Failed to open new connection[0m
+[1;31mE (1415916) transport_base: Failed to open a new connection[0m
+[1;31mE (1415926) mqtt_client: Error transport connect[0m
+[1;31mE (1415926) MQTT: MQTT error[0m
+[1;31mE (1415926) MQTT: Transport error: ESP_OK[0m
+[0;32mI (1415936) MQTT: MQTT Disconnected[0m
+[0;33mW (1418956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1423956) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1428956) MAIN: MQTT not connected, skipping sensor data publish[0m
