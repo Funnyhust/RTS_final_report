@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RTS Project - Test Cases Report</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 210mm; /* A4 width */
+            margin: 0 auto;
+            padding: 2cm;
+            background-color: white;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 10px;
+            text-align: center;
+        }
+        h2 {
+            color: #2980b9;
+            border-bottom: 1px solid #eee;
+            margin-top: 30px;
+            padding-bottom: 5px;
+        }
+        h3 {
+            color: #d35400;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+        ul {
+            list-style-type: none; /* Custom bullets */
+            padding-left: 20px;
+        }
+        ul li::before {
+            content: "•";
+            color: #e74c3c;
+            font-weight: bold;
+            display: inline-block; 
+            width: 1em;
+            margin-left: -1em;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+            font-size: 0.9em;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: Consolas, monospace;
+            color: #c7254e;
+        }
+        .note {
+            font-style: italic;
+            color: #666;
+        }
+        @media print {
+            body {
+                padding: 0;
+                margin: 0;
+                width: 100%;
+            }
+            @page {
+                size: A4;
+                margin: 2cm;
+            }
+            h2 {
+                page-break-before: auto;
+            }
+            table {
+                page-break-inside: auto;
+            }
+            tr {
+                page-break-inside: avoid;
+                page-break-after: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>DANH SÁCH TESTCASE DỰ ÁN HỆ THỐNG BÁO CHÁY THỜI GIAN THỰC (RTS)</h1>
+    <p><em>Tài liệu này đề xuất 20 testcase kiểm thử chức năng (Functional) và hiệu năng (Hard Real-time) cho hệ thống RTS.</em></p>
+
+    <!-- Content generated from TestCases.md -->
+
+    <h2>I. Nhóm Testcase Cảm biến & Đầu vào (Sensor Logic)</h2>
+
+    <h3>TC-01: Phát hiện nồng độ Khói vượt ngưỡng</h3>
+    <ul>
+        <li><strong>Mục tiêu:</strong> Kiểm tra khả năng kích hoạt báo động của cảm biến Khói (Smoke Sensor).</li>
+        <li><strong>Điều kiện:</strong> Hệ thống đang hoạt động bình thường.</li>
+        <li><strong>Các bước:</strong>
+            <ol>
+                <li>Cấp nguồn khí khói hoặc giả lập giá trị ADC tại chân GPIO 34 vượt ngưỡng cài đặt (Threshold).</li>
+            </ol>
+        </li>
+        <li><strong>Kết quả mong đợi:</strong>
+            <ul>
+                <li>Buzzer kêu ngay lập tức.</li>
+                <li>Gửi bản tin <code>fire_alert</code> lên MQTT với trạng thái <code>smoke</code> cao.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>TC-02: Phát hiện Nhiệt độ cao bất thường</h3>
+    <ul>
+        <li><strong>Mục tiêu:</strong> Kiểm tra logic báo cháy qua cảm biến Nhiệt (Temp Sensor).</li>
+        <li><strong>Điều kiện:</strong> Môi trường bình thường.</li>
+        <li><strong>Các bước:</strong>
+            <ol>
+                <li>Tác động nhiệt hoặc giả lập giá trị ADC tại GPIO 35 vượt ngưỡng (ví dụ > 50°C).</li>
+            </ol>
+        </li>
+        <li><strong>Kết quả mong đợi:</strong>
+            <ul>
+                <li>Buzzer kích hoạt.</li>
+                <li>Gửi Alert về Server kèm giá trị nhiệt độ.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>TC-03: Phát hiện rò rỉ khí Gas</h3>
+    <ul>
+        <li><strong>Mục tiêu:</strong> Kiểm tra phản ứng với cảm biến Gas (MQ-5).</li>
+        <li><strong>Điều kiện:</strong> Hệ thống hoạt động.</li>
+        <li><strong>Các bước:</strong>
+            <ol>
+                <li>Tác động khí gas mẫu hoặc giả lập tín hiệu ADC tại GPIO 33.</li>
+            </ol>
+        </li>
+        <li><strong>Kết quả mong đợi:</strong>
+            <ul>
+                <li>Hệ thống báo động cục bộ và gửi cảnh báo <code>gas</code> về server.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>TC-04: Phát hiện Lửa (Cảm biến hồng ngoại)</h3>
+    <ul>
+        <li><strong>Mục tiêu:</strong> Kiểm tra xử lý tín hiệu số từ cảm biến Lửa (IR Flame).</li>
+        <li><strong>Các bước:</strong>
+            <ol>
+                <li>Chiếu nguồn sáng hồng ngoại hoặc bật lửa trước cảm biến (GPIO 32).</li>
+            </ol>
+        </li>
+        <li><strong>Kết quả mong đợi:</strong>
+            <ul>
+                <li>Hệ thống nhận diện cháy tức thì (Digital signal).</li>
+                <li>Trạng thái <code>ir_flame</code> trong gói tin JSON chuyển thành <code>true</code>.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>TC-05: Kích hoạt đồng thời đa cảm biến</h3>
+    <ul>
+        <li><strong>Mục tiêu:</strong> Đảm bảo hệ thống xử lý đúng khi nhiều sự kiện xảy ra cùng lúc.</li>
+        <li><strong>Các bước:</strong>
+            <ol>
+                <li>Đồng thời tác động vào cả cảm biến Khói và Nhiệt độ.</li>
+            </ol>
+        </li>
+        <li><strong>Kết quả mong đợi:</strong>
+            <ul>
+                <li>Hệ thống báo động liên tục.</li>
+                <li>Gói tin Alert chứa thông tin cập nhật của cả 2 cảm biến (không bị mất dữ liệu nào).</li>
+            </ul>
+        </li>
+    </ul>
+
+    <hr>
+
+    <h2>II. Nhóm Testcase Chấp hành & Tại chỗ (Actuation & Local)</h2>
+
+    <h3>TC-06: Hoạt động của Còi báo động (Buzzer)</h3>
+    <ul>
+        <li><strong>Mục tiêu:</strong> Kiểm tra Task Buzzer hoạt động độc lập và ưu tiên.</li>
+        <li><strong>Các bước:</strong>
+            <ol>
+                <li>Kích hoạt bất kỳ điều kiện cháy nào.</li>
+            </ol>
+        </li>
+        <li><strong>Kết quả mong đợi:</strong>
+            <ul>
+                <li>Chân GPIO 25 xuất mức High, còi kêu to/rõ.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>TC-07: Báo động cục bộ khi mất kết nối mạng</h3>
+    <ul>
+        <li><strong>Mục tiêu:</strong> Đảm bảo tính năng an toàn (Safety) không phụ thuộc vào WiFi.</li>
+        <li><strong>Điều kiện:</strong> Ngắt kết nối WiFi (hoặc tắt Access Point).</li>
+        <li><strong>Các bước:</strong>
+            <ol>
+                <li>Tác động cảm biến báo cháy.</li>
+            </ol>
+        </li>
+        <li><strong>Kết quả mong đợi:</strong>
+            <ul>
+                <li>Buzzer VẪN PHẢI KÊU ngay lập tức dù không gửi được MQTT.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>TC-08: Khởi động hệ thống (System Startup)</h3>
+    <ul>
+        <li><strong>Mục tiêu:</strong> Kiểm tra trạng thái thiết bị sau khi Reset.</li>
+        <li><strong>Các bước:</strong>
+            <ol>
+                <li>Nhấn nút Reset trên ESP32.</li>
+            </ol>
+        </li>
+        <li><strong>Kết quả mong đợi:</strong>
+            <ul>
+                <li>Buzzer không kêu sai (false alarm).</li>
+                <li>Thiết bị kết nối thành công WiFi và MQTT Broker.</li>
+                <li>Đèn LED báo trạng thái hoạt động.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <hr>
+
+    <h2>III. Nhóm Testcase Truyền thông (Communication & MQTT)</h2>
+
+    <h3>TC-09: Gửi dữ liệu Telemetry định kỳ (Normal Operation)</h3>
+    <ul>
+        <li><strong>Mục tiêu:</strong> Kiểm tra tính năng giám sát thường xuyên (Heartbeat).</li>
+        <li><strong>Các bước:</strong>
+            <ol>
+                <li>Để hệ thống chạy bình thường, không có cháy.</li>
+                <li>Quan sát log trên Server.</li>
+            </ol>
+        </li>
+        <li><strong>Kết quả mong đợi:</strong>
+            <ul>
+                <li>Nhận gói tin JSON mỗi 5 giây/lần.</li>
+                <li>Các giá trị cảm biến ở mức bình thường.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>TC-10: Kiểm tra định dạng gói tin JSON</h3>
+    <ul>
+        <li><strong>Mục tiêu:</strong> Đảm bảo tính toàn vẹn dữ liệu.</li>
+        <li><strong>Các bước:</strong>
+            <ol>
+                <li>Bắt gói tin MQTT gửi lên topic.</li>
+            </ol>
+        </li>
+        <li><strong>Kết quả mong đợi:</strong>
+            <ul>
+                <li>JSON hợp lệ, có đủ các trường: <code>type</code>, <code>timestamp</code>, <code>smoke</code>, <code>temperature</code>, <code>gas</code>, <code>ir_flame</code>.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>TC-11: Chất lượng dịch vụ QoS 2 cho Báo cháy</h3>
+    <ul>
+        <li><strong>Mục tiêu:</strong> Xác nhận cấu hình ưu tiên cao nhất cho tin khẩn cấp.</li>
+        <li><strong>Các bước:</strong>
+            <ol>
+                <li>Kích hoạt báo cháy.</li>
+                <li>Kiểm tra log MQTT Broker hoặc Code debug.</li>
+            </ol>
+        </li>
+        <li><strong>Kết quả mong đợi:</strong>
+            <ul>
+                <li>Gói tin <code>type: fire_alert</code> được gửi với flag <code>QoS: 2</code> (Exactly Once).</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>TC-12: Tự động kết nối lại (Auto Reconnect)</h3>
+    <ul>
+        <li><strong>Mục tiêu:</strong> Kiểm tra khả năng phục hồi kết nối.</li>
+        <li><strong>Các bước:</strong>
+            <ol>
+                <li>Tắt Router WiFi trong 10 giây rồi bật lại.</li>
+            </ol>
+        </li>
+        <li><strong>Kết quả mong đợi:</strong>
+            <ul>
+                <li>ESP32 tự động kết nối lại WiFi và MQTT Broker mà không cần reset cứng.</li>
+                <li>Tiếp tục gửi dữ liệu sau khi có mạng.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>TC-13: Nhận lệnh điều khiển từ Server (Remote Control)</h3>
+    <ul>
+        <li><strong>Mục tiêu:</strong> Kiểm tra chiều xuống (Downlink) từ Server -> Device.</li>
+        <li><strong>Các bước:</strong>
+            <ol>
+                <li>Từ Server gửi lệnh MQTT kiểm soát (ví dụ: <code>cmd: silence</code> hoặc <code>cmd: test</code>).</li>
+            </ol>
+        </li>
+        <li><strong>Kết quả mong đợi:</strong>
+            <ul>
+                <li>Thiết bị nhận lệnh và thực thi (ví dụ: tắt còi tạm thời hoặc nháy đèn test).</li>
+            </ul>
+        </li>
+    </ul>
+
+    <hr>
+
+    <h2>IV. Nhóm Testcase Ứng dụng & Dữ liệu (Application Layer)</h2>
+
+    <h3>TC-14: Cập nhật Firebase Realtime Database</h3>
+    <ul>
+        <li><strong>Mục tiêu:</strong> Kiểm tra tính năng đồng bộ Cloud.</li>
+        <li><strong>Các bước:</strong>
+            <ol>
+                <li>Gửi dữ liệu từ thiết bị.</li>
+                <li>Kiểm tra trên Firebase Console tại node <code>/devices/{id}/state</code>.</li>
+            </ol>
+        </li>
+        <li><strong>Kết quả mong đợi:</strong>
+            <ul>
+                <li>Dữ liệu trên web thay đổi gần như tức thời theo gói tin nhận được.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>TC-15: Lưu lịch sử sự kiện (Event Logging)</h3>
+    <ul>
+        <li><strong>Mục tiêu:</strong> Kiểm tra khả năng truy vết sự kiện.</li>
+        <li><strong>Các bước:</strong>
+            <ol>
+                <li>Tạo ra 3 lần báo cháy liên tiếp.</li>
+                <li>Kiểm tra node <code>/alarms/{id}</code> trên Firebase hoặc Database Local (SQLite).</li>
+            </ol>
+        </li>
+        <li><strong>Kết quả mong đợi:</strong>
+            <ul>
+                <li>Có đủ 3 bản ghi sự kiện với Timestamp, loại sự kiện và thông số cảm biến tương ứng.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <hr>
+
+    <h2>V. Nhóm Testcase Nâng cao & Hiệu năng Khắt khe (Advanced & Hard Real-time)</h2>
+
+    <h3>TC-16: Đo lường thời gian thực thi tồi tệ nhất (WCET)</h3>
+    <ul>
+        <li><strong>Mục tiêu:</strong> Xác định độ trễ tối đa từ khi có tín hiệu cháy đến khi Buzzer kêu.</li>
+        <li><strong>Điều kiện:</strong> Hệ thống đang trong trạng thái tải cao nhất (đang mã hóa TLS, đang gửi gói tin MQTT lớn, và Memory đang đầy).</li>
+        <li><strong>Các bước:</strong>
+            <ol>
+                <li>Dùng Oscilloscope hoặc Logic Analyzer. Channel 1: GPIO Sensor, Channel 2: GPIO Buzzer.</li>
+                <li>Kích hoạt cảm biến đúng lúc ESP32 đang bận xử lý tác vụ mạng nặng.</li>
+            </ol>
+        </li>
+        <li><strong>Kết quả mong đợi:</strong>
+            <ul>
+                <li>Độ trễ &Delta;t giữa Input và Output phải <strong>&lt; 1ms</strong>.</li>
+                <li>Hệ thống phải "Preempt" (ngắt) ngay lập tức các tác vụ mạng để xử lý báo động.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>TC-17: Kiểm tra Độ ưu tiên & Priority Inversion</h3>
+    <ul>
+        <li><strong>Mục tiêu:</strong> Chứng minh <code>Warning Task</code> (Priority High) luôn thắng <code>MQTT Task</code> (Priority Low).</li>
+        <li><strong>Các bước:</strong>
+            <ol>
+                <li>Sửa code tạm thời để <code>MQTT Task</code> chạy vòng lặp vô hạn (100% CPU).</li>
+                <li>Kích hoạt cảm biến cháy.</li>
+            </ol>
+        </li>
+        <li><strong>Kết quả mong đợi:</strong>
+            <ul>
+                <li>Buzzer <strong>VẪN PHẢI KÊU</strong>. Chứng tỏ Scheduler của FreeRTOS đã hoạt động đúng.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>TC-18: Kiểm tra Watchdog Timer & Tự phục hồi</h3>
+    <ul>
+        <li><strong>Mục tiêu:</strong> Đảm bảo hệ thống không bị treo vĩnh viễn.</li>
+        <li><strong>Các bước:</strong>
+            <ol>
+                <li>Gây lỗi nhân tạo: Treo 1 Task quan trọng.</li>
+            </ol>
+        </li>
+        <li><strong>Kết quả mong đợi:</strong>
+            <ul>
+                <li>Task Watchdog Timer kích hoạt sau 5s. Thiết bị tự Reset.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>TC-19: Stress Test - Bão bản tin (Message Storm)</h3>
+    <ul>
+        <li><strong>Mục tiêu:</strong> Kiểm tra độ bền vững của bộ đệm.</li>
+        <li><strong>Các bước:</strong>
+            <ol>
+                <li>Tác động cảm biến thay đổi trạng thái tần số cao (50Hz).</li>
+            </ol>
+        </li>
+        <li><strong>Kết quả mong đợi:</strong>
+            <ul>
+                <li>Không Crash, không Stack Overflow.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>TC-20: Kiểm tra rò rỉ bộ nhớ (Memory Leak)</h3>
+    <ul>
+        <li><strong>Mục tiêu:</strong> Đảm bảo hệ thống chạy ổn định 24/7.</li>
+        <li><strong>Các bước:</strong>
+            <ol>
+                <li>Chạy hệ thống liên tục 24-48 giờ.</li>
+            </ol>
+        </li>
+        <li><strong>Kết quả mong đợi:</strong>
+            <ul>
+                <li>Biểu đồ Free Heap phẳng (Flat).</li>
+            </ul>
+        </li>
+    </ul>
+
+    <hr>
+    
+    <div style="page-break-before: always;"></div>
+
+    <h2>VI. Bảng Đánh Giá Kết Quả Kiểm Thử (Test Evaluation Matrix)</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Tên Testcase</th>
+                <th>Priority</th>
+                <th>Kết quả Mong đợi</th>
+                <th>Kết quả Thực tế</th>
+                <th>Pass/Fail</th>
+                <th>Note</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>TC-01</td><td>Smoke Sensor Alert</td><td>Critical</td><td>Buzzer ON, MQTT Alert</td><td></td><td></td><td></td></tr>
+            <tr><td>TC-02</td><td>Temp Sensor Alert</td><td>Critical</td><td>Buzzer ON, MQTT Alert</td><td></td><td></td><td></td></tr>
+            <tr><td>TC-03</td><td>Gas Leak Alert</td><td>High</td><td>Buzzer ON, MQTT Alert</td><td></td><td></td><td></td></tr>
+            <tr><td>TC-04</td><td>Flame Detection</td><td>Critical</td><td>Buzzer ON, MQTT Alert</td><td></td><td></td><td></td></tr>
+            <tr><td>TC-05</td><td>Multi-Sensor Trigger</td><td>High</td><td>No Data Loss</td><td></td><td></td><td></td></tr>
+            <tr><td>TC-06</td><td>Buzzer Actuation</td><td>Critical</td><td>Loud Sound</td><td></td><td></td><td></td></tr>
+            <tr><td>TC-07</td><td>Local Alarm (No WiFi)</td><td>Critical</td><td>Buzzer ON (Offline)</td><td></td><td></td><td></td></tr>
+            <tr><td>TC-08</td><td>System Startup</td><td>Med</td><td>No False Alarm</td><td></td><td></td><td></td></tr>
+            <tr><td>TC-09</td><td>Telemetry Heartbeat</td><td>Med</td><td>JSON/5s</td><td></td><td></td><td></td></tr>
+            <tr><td>TC-10</td><td>JSON Format</td><td>Low</td><td>Valid Schema</td><td></td><td></td><td></td></tr>
+            <tr><td>TC-11</td><td>MQTT QoS 2</td><td>Critical</td><td>Deliver Exactly Once</td><td></td><td></td><td></td></tr>
+            <tr><td>TC-12</td><td>Auto Reconnect</td><td>High</td><td>Recover < 30s</td><td></td><td></td><td></td></tr>
+            <tr><td>TC-13</td><td>Remote Control</td><td>Med</td><td>Device Reacts</td><td></td><td></td><td></td></tr>
+            <tr><td>TC-14</td><td>Firebase Sync</td><td>Med</td><td>Data Updated</td><td></td><td></td><td></td></tr>
+            <tr><td>TC-15</td><td>Event Logging</td><td>Low</td><td>Log Exists</td><td></td><td></td><td></td></tr>
+            <tr><td>TC-16</td><td>WCET Check</td><td>Critical</td><td>Latency < 1ms</td><td></td><td></td><td></td></tr>
+            <tr><td>TC-17</td><td>Priority Inversion</td><td>High</td><td>Warning Prevails</td><td></td><td></td><td></td></tr>
+            <tr><td>TC-18</td><td>Watchdog Recovery</td><td>High</td><td>Auto Reset</td><td></td><td></td><td></td></tr>
+            <tr><td>TC-19</td><td>Message Storm</td><td>High</td><td>No Crash</td><td></td><td></td><td></td></tr>
+            <tr><td>TC-20</td><td>Memory Leak</td><td>Med</td><td>Flat Heap Graph</td><td></td><td></td><td></td></tr>
+        </tbody>
+    </table>
+
+    <div style="page-break-before: always;"></div>
+
+    <h2>VII. Mô Phỏng Các Kịch Bản Điển Hình (Scenario Simulation)</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Kịch bản (Scenario)</th>
+                <th>Điều kiện (State)</th>
+                <th>Kết quả Mô phỏng (Simulation Outcome)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>1. Cháy khi mất mạng</strong></td>
+                <td>WiFi: Disconnected<br>Sensor: Active</td>
+                <td>
+                    1. <strong>Buzzer:</strong> Kêu ngay lập tức.<br>
+                    2. <strong>LED:</strong> Nháy đỏ báo lỗi mạng.<br>
+                    3. <strong>Data:</strong> Lưu tạm vào Queue, gửi lại khi có mạng.
+                </td>
+            </tr>
+            <tr>
+                <td><strong>2. Cháy giả (Nhiễu)</strong></td>
+                <td>Data: Gai nhiễu < 100ms</td>
+                <td>
+                    1. <strong>Filter:</strong> Bộ lọc trung bình loại bỏ nhiễu.<br>
+                    2. <strong>Buzzer:</strong> KHÔNG kêu.<br>
+                    3. <strong>Log:</strong> "Noise detected" (Debug mode).
+                </td>
+            </tr>
+            <tr>
+                <td><strong>3. Mất điện đột ngột</strong></td>
+                <td>Power: OFF<br>Battery: ON</td>
+                <td>
+                    1. <strong>Mode:</strong> Low Power Mode.<br>
+                    2. <strong>WiFi:</strong> Giảm tần suất Heartbeat.<br>
+                    3. <strong>Sensor:</strong> Duy trì giám sát liên tục.
+                </td>
+            </tr>
+            <tr>
+                <td><strong>4. Server bị quá tải</strong></td>
+                <td>Broker: High Latency</td>
+                <td>
+                    1. <strong>Device:</strong> Retransmit (Back-off algorithm).<br>
+                    2. <strong>Priority:</strong> Báo động tại chỗ (Buzzer) KHÔNG bị ảnh hưởng.
+                </td>
+            </tr>
+            <tr>
+                <td><strong>5. Cảm biến hỏng</strong></td>
+                <td>Value: 0 or 4095 (Short/Open)</td>
+                <td>
+                    1. <strong>System:</strong> Detect Fault.<br>
+                    2. <strong>Alert:</strong> Gửi bản tin <code>sensor_fault</code>.<br>
+                    3. <strong>LED:</strong> Nháy vàng bảo trì.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
