@@ -1,0 +1,435 @@
+Command: D:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe D:\Espressif\frameworks\esp-idf-v5.5.1\tools/idf_monitor.py -p COM7 -b 115200 --toolchain-prefix xtensa-esp32-elf- --target esp32 --revision 0 D:\Duong\RTS_Lab\Project\He_thong_bao_chay\build\He_thong_bao_chay.elf D:\Duong\RTS_Lab\Project\He_thong_bao_chay\build\bootloader\bootloader.elf --force-color -m 'D:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe' 'D:\Espressif\frameworks\esp-idf-v5.5.1\tools\idf.py'
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:6380
+ho 0 tail 12 room 4
+load:0x40078000,len:15916
+load:0x40080400,len:3860
+entry 0x40080638
+[0;32mI (29) boot: ESP-IDF v5.5.1 2nd stage bootloader[0m
+[0;32mI (29) boot: compile time Dec  3 2025 00:21:48[0m
+[0;32mI (29) boot: Multicore bootloader[0m
+[0;32mI (31) boot: chip revision: v3.1[0m
+[0;32mI (33) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (37) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (41) boot.esp32: SPI Flash Size : 4MB[0m
+[0;32mI (44) boot: Enabling RNG early entropy source...[0m
+[0;32mI (49) boot: Partition Table:[0m
+[0;32mI (51) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (58) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (64) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (71) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (77) boot: End of partition table[0m
+[0;32mI (81) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=20bach (134060) map[0m
+[0;32mI (134) esp_image: segment 1: paddr=00030bd4 vaddr=3ffb0000 size=03f84h ( 16260) load[0m
+[0;32mI (140) esp_image: segment 2: paddr=00034b60 vaddr=40080000 size=0b4b8h ( 46264) load[0m
+[0;32mI (158) esp_image: segment 3: paddr=00040020 vaddr=400d0020 size=ab23ch (700988) map[0m
+[0;32mI (398) esp_image: segment 4: paddr=000eb264 vaddr=4008b4b8 size=0ccbch ( 52412) load[0m
+[0;32mI (419) esp_image: segment 5: paddr=000f7f28 vaddr=50000000 size=00020h (    32) load[0m
+[0;32mI (431) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (431) boot: Disabling RNG early entropy source...[0m
+[0;32mI (441) cpu_start: Multicore app[0m
+[0;32mI (450) cpu_start: Pro cpu start user code[0m
+[0;32mI (450) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (450) app_init: Application information:[0m
+[0;32mI (450) app_init: Project name:     He_thong_bao_chay[0m
+[0;32mI (455) app_init: App version:      ce15254-dirty[0m
+[0;32mI (459) app_init: Compile time:     Dec  3 2025 00:32:25[0m
+[0;32mI (464) app_init: ELF file SHA256:  910550256...[0m
+[0;32mI (468) app_init: ESP-IDF:          v5.5.1[0m
+[0;32mI (472) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (476) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (480) efuse_init: Chip rev:         v3.1[0m
+[0;32mI (484) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (490) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (495) heap_init: At 3FFB88E0 len 00027720 (157 KiB): DRAM[0m
+[0;32mI (501) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (506) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (511) heap_init: At 40098174 len 00007E8C (31 KiB): IRAM[0m
+[0;32mI (518) spi_flash: detected chip: generic[0m
+[0;32mI (520) spi_flash: flash io: dio[0m
+[0;32mI (524) main_task: Started on CPU0[0m
+[0;32mI (534) main_task: Calling app_main()[0m
+[0;32mI (534) MAIN: === Hệ thống báo cháy ESP32 khởi động ===[0m
+[0;32mI (534) MAIN: Initializing sensors...[0m
+[0;32mI (534) SENSOR: Calibration scheme version is Line Fitting[0m
+[0;32mI (544) SENSOR: ADC calibration success[0m
+[0;32mI (544) SENSOR: ADC initialized[0m
+[0;32mI (544) SENSOR: Sensor type 0 initialized on pin 6 (analog: yes)[0m
+[0;32mI (554) SENSOR: Sensor type 1 initialized on pin 7 (analog: yes)[0m
+[0;32mI (554) SENSOR: Sensor type 2 initialized on pin 32 (analog: no)[0m
+[0;32mI (564) SENSOR: Sensor type 3 initialized on pin 5 (analog: yes)[0m
+[0;32mI (564) SENSOR: Sensor system initialized[0m
+[0;32mI (574) MAIN: Sensors initialized successfully[0m
+[0;32mI (574) MAIN: Initializing buzzer...[0m
+[0;32mI (584) BUZZER: Buzzer initialized on GPIO 25[0m
+[0;32mI (584) BUZZER: Buzzer mode set to 0[0m
+[0;32mI (584) MAIN: Buzzer initialized successfully[0m
+[0;32mI (594) MAIN: Initializing WiFi...[0m
+[0;32mI (634) wifi:wifi driver task: 3ffc0ac8, prio:23, stack:6656, core=0[0m
+[0;32mI (644) wifi:wifi firmware version: 14da9b7[0m
+[0;32mI (644) wifi:wifi certification version: v7.0[0m
+[0;32mI (644) wifi:config NVS flash: enabled[0m
+[0;32mI (644) wifi:config nano formatting: disabled[0m
+[0;32mI (654) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (654) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (654) wifi:Init management short buffer num: 32[0m
+[0;32mI (664) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (664) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (674) wifi:Init static rx buffer num: 10[0m
+[0;32mI (674) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (684) wifi_init: rx ba win: 6[0m
+[0;32mI (684) wifi_init: accept mbox: 6[0m
+[0;32mI (684) wifi_init: tcpip mbox: 32[0m
+[0;32mI (684) wifi_init: udp mbox: 6[0m
+[0;32mI (694) wifi_init: tcp mbox: 6[0m
+[0;32mI (694) wifi_init: tcp tx win: 5760[0m
+[0;32mI (694) wifi_init: tcp rx win: 5760[0m
+[0;32mI (704) wifi_init: tcp mss: 1440[0m
+[0;32mI (704) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (704) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (744) WIFI: WiFi initialized with SSID: DươngNV[0m
+[0;32mI (744) MAIN: Connecting to WiFi: DươngNV[0m
+[0;32mI (744) WIFI: Connecting to WiFi SSID: DươngNV[0m
+[0;32mI (744) phy_init: phy_version 4861,b71b5ad,Aug  5 2025,11:16:06[0m
+[0;32mI (834) phy_init: Saving new calibration data due to checksum failure or outdated calibration data, mode(0)[0m
+[0;32mI (864) wifi:mode : sta (00:4b:12:3d:49:44)[0m
+[0;32mI (864) wifi:enable tsf[0m
+[0;32mI (864) WIFI: WiFi station started, connecting...[0m
+[0;32mI (874) wifi:new:<1,1>, old:<1,0>, ap:<255,255>, sta:<1,1>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (884) wifi:state: init -> auth (0xb0)[0m
+[0;32mI (884) wifi:state: auth -> assoc (0x0)[0m
+[0;32mI (894) wifi:state: assoc -> run (0x10)[0m
+[0;32mI (904) wifi:connected with DươngNV, aid = 4, channel 1, 40U, bssid = 5c:92:5e:b7:0e:7c[0m
+[0;32mI (904) wifi:security: WPA2-PSK, phy: bgn, rssi: -44[0m
+[0;32mI (914) wifi:pm start, type: 1[0m
+
+[0;32mI (914) wifi:dp: 1, bi: 102400, li: 3, scale listen interval from 307200 us to 307200 us[0m
+[0;32mI (914) wifi:AP's beacon interval = 102400 us, DTIM period = 1[0m
+[0;32mI (1114) wifi:<ba-add>idx:0 (ifx:0, 5c:92:5e:b7:0e:7c), tid:0, ssn:2, winSize:64[0m
+[0;32mI (5004) esp_netif_handlers: sta ip: 192.168.0.16, mask: 255.255.255.0, gw: 192.168.0.1[0m
+[0;32mI (5004) WIFI: Got IP:192.168.0.16[0m
+[0;32mI (5004) WIFI: Connected to WiFi SSID: DươngNV[0m
+[0;32mI (5004) MAIN: WiFi connected successfully[0m
+[0;32mI (5014) MAIN: IP Address: 192.168.0.16[0m
+[0;32mI (5014) MAIN: Initializing MQTT...[0m
+[0;32mI (5014) MQTT: MQTT client initialized[0m
+[0;32mI (5014) MQTT: URI: mqtt://192.168.1.100[0m
+[0;32mI (5024) MQTT: Client ID: fire_system_esp32[0m
+[0;32mI (5024) MQTT: TLS: disabled[0m
+[0;32mI (5034) MAIN: Connecting to MQTT broker...[0m
+[0;32mI (5034) MQTT: Connecting to MQTT broker...[0m
+[0;32mI (5034) MQTT: Other MQTT event id:7[0m
+[0;33mW (7044) MAIN: MQTT connection pending...[0m
+[0;32mI (7044) MAIN: Creating FreeRTOS tasks...[0m
+[0;32mI (7044) SENSOR: Sensor task started[0m
+[0;32mI (7044) BUZZER: Buzzer task started[0m
+[0;32mI (7044) MAIN: Warning task started[0m
+[0;32mI (7044) MAIN: MQTT sensor task started[0m
+[0;33mW (7054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (7054) MAIN: MQTT control task started[0m
+[0;32mI (7054) MQTT: MQTT task started[0m
+[0;32mI (7064) MAIN: === Hệ thống đã sẵn sàng ===[0m
+[0;32mI (7064) MAIN: All tasks started. System is running...[0m
+[0;32mI (7074) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;32mI (8084) wifi:<ba-add>idx:1 (ifx:0, 5c:92:5e:b7:0e:7c), tid:6, ssn:0, winSize:64[0m
+[0;33mW (12054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (15054) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (15054) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (15054) mqtt_client: Error transport connect[0m
+[1;31mE (15054) MQTT: MQTT error[0m
+[1;31mE (15054) MQTT: Transport error: ESP_OK[0m
+[0;32mI (15064) MQTT: MQTT Disconnected[0m
+[0;33mW (17054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (22054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (27054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (30064) MQTT: Other MQTT event id:7[0m
+[0;33mW (32054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (37054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (37074) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[1;31mE (40074) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (40074) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (40074) mqtt_client: Error transport connect[0m
+[1;31mE (40074) MQTT: MQTT error[0m
+[1;31mE (40074) MQTT: Transport error: ESP_OK[0m
+[0;32mI (40074) MQTT: MQTT Disconnected[0m
+[0;33mW (42054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (47054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (52054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (55084) MQTT: Other MQTT event id:7[0m
+[0;33mW (57054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (62054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (65094) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (65094) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (65094) mqtt_client: Error transport connect[0m
+[1;31mE (65094) MQTT: MQTT error[0m
+[1;31mE (65094) MQTT: Transport error: ESP_OK[0m
+[0;32mI (65094) MQTT: MQTT Disconnected[0m
+[0;33mW (67054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (67074) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (72054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (77054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (80104) MQTT: Other MQTT event id:7[0m
+[0;33mW (82054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (87054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (90114) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (90114) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (90114) mqtt_client: Error transport connect[0m
+[1;31mE (90114) MQTT: MQTT error[0m
+[1;31mE (90114) MQTT: Transport error: ESP_OK[0m
+[0;32mI (90114) MQTT: MQTT Disconnected[0m
+[0;33mW (92054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (97054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (97074) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (102054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (105124) MQTT: Other MQTT event id:7[0m
+[0;33mW (107054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (112054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (115134) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (115134) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (115134) mqtt_client: Error transport connect[0m
+[1;31mE (115134) MQTT: MQTT error[0m
+[1;31mE (115134) MQTT: Transport error: ESP_OK[0m
+[0;32mI (115144) MQTT: MQTT Disconnected[0m
+[0;33mW (117054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (122054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (127054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (127074) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;32mI (130144) MQTT: Other MQTT event id:7[0m
+[0;33mW (132054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (137054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (140154) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (140154) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (140154) mqtt_client: Error transport connect[0m
+[1;31mE (140154) MQTT: MQTT error[0m
+[1;31mE (140154) MQTT: Transport error: ESP_OK[0m
+[0;32mI (140164) MQTT: MQTT Disconnected[0m
+[0;33mW (142054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (147054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (152054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (155164) MQTT: Other MQTT event id:7[0m
+[0;33mW (157054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (157074) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (162054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (165174) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (165174) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (165174) mqtt_client: Error transport connect[0m
+[1;31mE (165174) MQTT: MQTT error[0m
+[1;31mE (165174) MQTT: Transport error: ESP_OK[0m
+[0;32mI (165184) MQTT: MQTT Disconnected[0m
+[0;33mW (167054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (172054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (177054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (180184) MQTT: Other MQTT event id:7[0m
+[0;33mW (182054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (187054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (187074) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[1;31mE (190194) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (190194) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (190194) mqtt_client: Error transport connect[0m
+[1;31mE (190194) MQTT: MQTT error[0m
+[1;31mE (190194) MQTT: Transport error: ESP_OK[0m
+[0;32mI (190204) MQTT: MQTT Disconnected[0m
+[0;33mW (192054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (197054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (202054) MAIN: MQTT not connected, skipping sensor data publish[0m
+���������������������������������������������������������������� (205204) MQTT: Other MQTT event id:7
+[0;33mW (207054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (212054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (215214) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (215214) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (215214) mqtt_client: Error transport connect[0m
+[1;31mE (215214) MQTT: MQTT error[0m
+[1;31mE (215214) MQTT: Transport error: ESP_OK[0m
+[0;32mI (215224) MQTT: MQTT Disconnected[0m
+[0;33mW (217054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (217074) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (222054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (227054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (230224) MQTT: Other MQTT event id:7[0m
+[0;33mW (232054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (237054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (240234) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (240234) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (240234) mqtt_client: Error transport connect[0m
+[1;31mE (240234) MQTT: MQTT error[0m
+[1;31mE (240234) MQTT: Transport error: ESP_OK[0m
+[0;32mI (240244) MQTT: MQTT Disconnected[0m
+[0;33mW (242054) MAIN: MQTT not connected, skipping sensor data publish[0m
+���������������������������������������������������������������� (247054) MAIN: MQTT not connected, skipping sensor data publish
+[0;32mI (247074) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (252054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (255244) MQTT: Other MQTT event id:7[0m
+[0;33mW (257054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (262054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (265254) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (265254) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (265254) mqtt_client: Error transport connect[0m
+[1;31mE (265254) MQTT: MQTT error[0m
+[1;31mE (265254) MQTT: Transport error: ESP_OK[0m
+[0;32mI (265264) MQTT: MQTT Disconnected[0m
+[0;33mW (267054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (272054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (277054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (277074) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;32mI (280264) MQTT: Other MQTT event id:7[0m
+[0;33mW (282054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (287054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (290274) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (290274) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (290274) mqtt_client: Error transport connect[0m
+[1;31mE (290274) MQTT: MQTT error[0m
+[1;31mE (290274) MQTT: Transport error: ESP_OK[0m
+[0;32mI (290284) MQTT: MQTT Disconnected[0m
+[0;33mW (292054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (297054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (302054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (305284) MQTT: Other MQTT event id:7[0m
+[0;33mW (307054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (307074) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (312054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (315294) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (315294) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (315294) mqtt_client: Error transport connect[0m
+[1;31mE (315294) MQTT: MQTT error[0m
+[1;31mE (315294) MQTT: Transport error: ESP_OK[0m
+[0;32mI (315304) MQTT: MQTT Disconnected[0m
+[0;33mW (317054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (322054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (327054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (330304) MQTT: Other MQTT event id:7[0m
+[0;33mW (332054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (337054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (337074) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[1;31mE (340314) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (340314) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (340314) mqtt_client: Error transport connect[0m
+[1;31mE (340314) MQTT: MQTT error[0m
+[1;31mE (340314) MQTT: Transport error: ESP_OK[0m
+[0;32mI (340324) MQTT: MQTT Disconnected[0m
+[0;33mW (342054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (347054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (352054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (355324) MQTT: Other MQTT event id:7[0m
+[0;33mW (357054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (362054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (365334) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (365334) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (365334) mqtt_client: Error transport connect[0m
+[1;31mE (365334) MQTT: MQTT error[0m
+[1;31mE (365334) MQTT: Transport error: ESP_OK[0m
+[0;32mI (365344) MQTT: MQTT Disconnected[0m
+[0;33mW (367054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (367074) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (372054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (377054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (380344) MQTT: Other MQTT event id:7[0m
+[0;33mW (382054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (387054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (390354) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (390354) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (390354) mqtt_client: Error transport connect[0m
+[1;31mE (390354) MQTT: MQTT error[0m
+[1;31mE (390354) MQTT: Transport error: ESP_OK[0m
+[0;32mI (390364) MQTT: MQTT Disconnected[0m
+[0;33mW (392054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (397054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (397074) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (402054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (405364) MQTT: Other MQTT event id:7[0m
+[0;33mW (407054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (412054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (415374) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (415374) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (415374) mqtt_client: Error transport connect[0m
+[1;31mE (415374) MQTT: MQTT error[0m
+[1;31mE (415374) MQTT: Transport error: ESP_OK[0m
+[0;32mI (415384) MQTT: MQTT Disconnected[0m
+[0;33mW (417054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (422054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (427054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (427074) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;32mI (430384) MQTT: Other MQTT event id:7[0m
+[0;33mW (432054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (437054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (440394) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (440394) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (440394) mqtt_client: Error transport connect[0m
+[1;31mE (440394) MQTT: MQTT error[0m
+[1;31mE (440394) MQTT: Transport error: ESP_OK[0m
+[0;32mI (440404) MQTT: MQTT Disconnected[0m
+[0;33mW (442054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (447054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (452054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (455404) MQTT: Other MQTT event id:7[0m
+[0;33mW (457054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (457074) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (462054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (465414) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (465414) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (465414) mqtt_client: Error transport connect[0m
+[1;31mE (465414) MQTT: MQTT error[0m
+[1;31mE (465414) MQTT: Transport error: ESP_OK[0m
+[0;32mI (465424) MQTT: MQTT Disconnected[0m
+[0;33mW (467054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (472054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (477054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (480424) MQTT: Other MQTT event id:7[0m
+[0;33mW (482054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (487054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (487074) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[1;31mE (490434) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (490434) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (490434) mqtt_client: Error transport connect[0m
+[1;31mE (490434) MQTT: MQTT error[0m
+[1;31mE (490434) MQTT: Transport error: ESP_OK[0m
+[0;32mI (490444) MQTT: MQTT Disconnected[0m
+[0;33mW (492054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (497054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (502054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (505444) MQTT: Other MQTT event id:7[0m
+[0;33mW (507054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (512054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (515454) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (515454) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (515454) mqtt_client: Error transport connect[0m
+[1;31mE (515454) MQTT: MQTT error[0m
+[1;31mE (515454) MQTT: Transport error: ESP_OK[0m
+[0;32mI (515464) MQTT: MQTT Disconnected[0m
+[0;33mW (517054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (517074) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (522054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (527054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (530464) MQTT: Other MQTT event id:7[0m
+[0;33mW (532054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (537054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (540474) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (540474) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (540474) mqtt_client: Error transport connect[0m
+[1;31mE (540474) MQTT: MQTT error[0m
+[1;31mE (540474) MQTT: Transport error: ESP_OK[0m
+[0;32mI (540484) MQTT: MQTT Disconnected[0m
+[0;33mW (542054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (547054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (547074) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (552054) MAIN: MQTT not connected, skipping sensor data publish[0m
+����������������������������������������������������������������555484) MQTT: Other MQTT event id:7
+[0;33mW (557054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (562054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (565494) esp-tls: [sock=54] select() timeout[0m
+[1;31mE (565494) transport_base: Failed to open a new connection: 32774[0m
+[1;31mE (565494) mqtt_client: Error transport connect[0m
+[1;31mE (565494) MQTT: MQTT error[0m
+[1;31mE (565494) MQTT: Transport error: ESP_OK[0m
+[0;32mI (565504) MQTT: MQTT Disconnected[0m
+[0;33mW (567054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (572054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (577054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (577074) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;32mI (580504) MQTT: Other MQTT event id:7[0m
+[0;33mW (582054) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (587054) MAIN: MQTT not connected, skipping sensor data publish[0m

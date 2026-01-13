@@ -1,0 +1,13 @@
+# Target labels
+ bootloader
+# Source files and their labels
+D:/Duong/RTS_Lab/Project/He_thong_bao_chay/build/CMakeFiles/bootloader
+D:/Duong/RTS_Lab/Project/He_thong_bao_chay/build/CMakeFiles/bootloader.rule
+D:/Duong/RTS_Lab/Project/He_thong_bao_chay/build/CMakeFiles/bootloader-complete.rule
+D:/Duong/RTS_Lab/Project/He_thong_bao_chay/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule
+D:/Duong/RTS_Lab/Project/He_thong_bao_chay/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule
+D:/Duong/RTS_Lab/Project/He_thong_bao_chay/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule
+D:/Duong/RTS_Lab/Project/He_thong_bao_chay/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule
+D:/Duong/RTS_Lab/Project/He_thong_bao_chay/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule
+D:/Duong/RTS_Lab/Project/He_thong_bao_chay/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule
+D:/Duong/RTS_Lab/Project/He_thong_bao_chay/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule

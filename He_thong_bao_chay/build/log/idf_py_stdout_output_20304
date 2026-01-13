@@ -1,0 +1,1378 @@
+Command: D:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe D:\Espressif\frameworks\esp-idf-v5.5.1\tools/idf_monitor.py -p COM7 -b 115200 --toolchain-prefix xtensa-esp32-elf- --target esp32 --revision 0 D:\Duong\RTS_Lab\Project\He_thong_bao_chay\build\He_thong_bao_chay.elf D:\Duong\RTS_Lab\Project\He_thong_bao_chay\build\bootloader\bootloader.elf --force-color -m 'D:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe' 'D:\Espressif\frameworks\esp-idf-v5.5.1\tools\idf.py'
+*�H(
+B��J��ѹe�ets Jun  8 2016 00:22:57
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:6380
+ho 0 tail 12 room 4
+load:0x40078000,len:15916
+load:0x40080400,len:3860
+entry 0x40080638
+[0;32mI (28) boot: ESP-IDF v5.5.1 2nd stage bootloader[0m
+[0;32mI (29) boot: compile time Dec  3 2025 00:21:48[0m
+[0;32mI (29) boot: Multicore bootloader[0m
+[0;32mI (30) boot: chip revision: v1.1[0m
+[0;32mI (33) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (36) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (40) boot.esp32: SPI Flash Size : 4MB[0m
+[0;32mI (44) boot: Enabling RNG early entropy source...[0m
+[0;32mI (48) boot: Partition Table:[0m
+[0;32mI (51) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (57) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (63) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (70) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (77) boot: End of partition table[0m
+[0;32mI (80) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=20fdch (135132) map[0m
+[0;32mI (133) esp_image: segment 1: paddr=00031004 vaddr=3ffb0000 size=03f84h ( 16260) load[0m
+[0;32mI (140) esp_image: segment 2: paddr=00034f90 vaddr=40080000 size=0b088h ( 45192) load[0m
+[0;32mI (158) esp_image: segment 3: paddr=00040020 vaddr=400d0020 size=aaeech (700140) map[0m
+[0;32mI (397) esp_image: segment 4: paddr=000eaf14 vaddr=4008b088 size=0d0ech ( 53484) load[0m
+[0;32mI (418) esp_image: segment 5: paddr=000f8008 vaddr=50000000 size=00020h (    32) load[0m
+[0;32mI (430) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (430) boot: Disabling RNG early entropy source...[0m
+[0;32mI (441) cpu_start: Multicore app[0m
+[0;32mI (449) cpu_start: Pro cpu start user code[0m
+[0;32mI (449) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (449) app_init: Application information:[0m
+[0;32mI (449) app_init: Project name:     He_thong_bao_chay[0m
+[0;32mI (454) app_init: App version:      38f805b-dirty[0m
+[0;32mI (458) app_init: Compile time:     Dec 10 2025 00:31:47[0m
+[0;32mI (463) app_init: ELF file SHA256:  bde2a4767...[0m
+[0;32mI (468) app_init: ESP-IDF:          v5.5.1[0m
+[0;32mI (472) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (475) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (479) efuse_init: Chip rev:         v1.1[0m
+[0;32mI (484) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (490) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (495) heap_init: At 3FFB88E0 len 00027720 (157 KiB): DRAM[0m
+[0;32mI (500) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (505) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (511) heap_init: At 40098174 len 00007E8C (31 KiB): IRAM[0m
+[0;32mI (518) spi_flash: detected chip: gd[0m
+[0;32mI (519) spi_flash: flash io: dio[0m
+[0;33mW (522) spi_flash: Detected size(8192k) larger than the size in the binary image header(4096k). Using the size in the binary image header.[0m
+[0;32mI (536) main_task: Started on CPU0[0m
+[0;32mI (546) main_task: Calling app_main()[0m
+[0;32mI (546) MAIN: === Hệ thống báo cháy ESP32 khởi động ===[0m
+[0;32mI (546) MAIN: Initializing sensors...[0m
+[0;32mI (546) SENSOR: Calibration scheme version is Line Fitting[0m
+[0;32mI (556) SENSOR: ADC calibration success[0m
+[0;32mI (556) SENSOR: ADC initialized[0m
+[0;32mI (556) SENSOR: Sensor type 0 initialized on pin 6 (analog: yes)[0m
+[0;32mI (566) SENSOR: Sensor type 1 initialized on pin 7 (analog: yes)[0m
+[0;32mI (566) SENSOR: Sensor type 2 initialized on pin 32 (analog: no)[0m
+[0;32mI (576) SENSOR: Sensor type 3 initialized on pin 5 (analog: yes)[0m
+[0;32mI (576) SENSOR: Sensor system initialized[0m
+[0;32mI (586) MAIN: Sensors initialized successfully[0m
+[0;32mI (586) MAIN: Initializing buzzer...[0m
+[0;32mI (596) BUZZER: Buzzer initialized on GPIO 25[0m
+[0;32mI (596) BUZZER: Buzzer mode set to 0[0m
+[0;32mI (596) MAIN: Buzzer initialized successfully[0m
+[0;32mI (606) MAIN: Initializing WiFi...[0m
+[0;32mI (646) wifi:wifi driver task: 3ffc0ac8, prio:23, stack:6656, core=0[0m
+[0;32mI (656) wifi:wifi firmware version: 14da9b7[0m
+[0;32mI (656) wifi:wifi certification version: v7.0[0m
+[0;32mI (656) wifi:config NVS flash: enabled[0m
+[0;32mI (656) wifi:config nano formatting: disabled[0m
+[0;32mI (666) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (666) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (666) wifi:Init management short buffer num: 32[0m
+[0;32mI (676) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (676) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (686) wifi:Init static rx buffer num: 10[0m
+[0;32mI (686) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (696) wifi_init: rx ba win: 6[0m
+[0;32mI (696) wifi_init: accept mbox: 6[0m
+[0;32mI (696) wifi_init: tcpip mbox: 32[0m
+[0;32mI (696) wifi_init: udp mbox: 6[0m
+[0;32mI (706) wifi_init: tcp mbox: 6[0m
+[0;32mI (706) wifi_init: tcp tx win: 5760[0m
+[0;32mI (706) wifi_init: tcp rx win: 5760[0m
+[0;32mI (716) wifi_init: tcp mss: 1440[0m
+[0;32mI (716) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (716) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (726) WIFI: WiFi initialized with SSID: DươngNV[0m
+[0;32mI (726) MAIN: Connecting to WiFi: DươngNV[0m
+[0;32mI (726) WIFI: Connecting to WiFi SSID: DươngNV[0m
+[0;32mI (736) phy_init: phy_version 4861,b71b5ad,Aug  5 2025,11:16:06[0m
+[0;32mI (816) wifi:mode : sta (a0:dd:6c:95:26:64)[0m
+[0;32mI (816) wifi:enable tsf[0m
+[0;32mI (826) WIFI: WiFi station started, connecting...[0m
+[0;32mI (836) wifi:new:<1,1>, old:<1,0>, ap:<255,255>, sta:<1,1>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (836) wifi:state: init -> auth (0xb0)[0m
+[0;32mI (846) wifi:state: auth -> assoc (0x0)[0m
+[0;32mI (856) wifi:state: assoc -> run (0x10)[0m
+[0;32mI (866) wifi:connected with DươngNV, aid = 5, channel 1, 40U, bssid = 5c:92:5e:b7:0e:7c[0m
+[0;32mI (866) wifi:security: WPA2-PSK, phy: bgn, rssi: -47[0m
+[0;32mI (866) wifi:pm start, type: 1[0m
+
+[0;32mI (866) wifi:dp: 1, bi: 102400, li: 3, scale listen interval from 307200 us to 307200 us[0m
+[0;32mI (896) wifi:AP's beacon interval = 102400 us, DTIM period = 1[0m
+[0;32mI (1896) esp_netif_handlers: sta ip: 192.168.0.7, mask: 255.255.255.0, gw: 192.168.0.1[0m
+[0;32mI (1896) WIFI: Got IP:192.168.0.7[0m
+[0;32mI (1896) WIFI: Connected to WiFi SSID: DươngNV[0m
+[0;32mI (1896) MAIN: WiFi connected successfully[0m
+[0;32mI (1896) MAIN: IP Address: 192.168.0.7[0m
+[0;32mI (1906) MAIN: Initializing MQTT...[0m
+[0;32mI (1906) MQTT: MQTT initialized: mqtts://2800b62043be42bc94cb422b60d069f2.s1.eu.hivemq.cloud:8883[0m
+[0;32mI (1916) MAIN: Connecting to MQTT broker...[0m
+[0;32mI (1916) MQTT: MQTT starting...[0m
+[0;32mI (1926) wifi:<ba-add>idx:0 (ifx:0, 5c:92:5e:b7:0e:7c), tid:0, ssn:4, winSize:64[0m
+[1;31mE (2636) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (2636) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (2636) esp-tls: create_ssl_handle failed[0m
+[1;31mE (2646) esp-tls: Failed to open new connection[0m
+[1;31mE (2646) transport_base: Failed to open a new connection[0m
+[1;31mE (2656) mqtt_client: Error transport connect[0m
+[1;31mE (2656) MQTT: MQTT error[0m
+[0;33mW (2656) MQTT: MQTT Disconnected[0m
+[0;33mW (3926) MAIN: MQTT connection pending...[0m
+[0;32mI (3926) MAIN: Creating FreeRTOS tasks...[0m
+[0;32mI (3926) SENSOR: Sensor task started[0m
+[0;32mI (3926) BUZZER: Buzzer task started[0m
+[0;32mI (3926) MAIN: Warning task started[0m
+[0;32mI (3926) MAIN: MQTT sensor task started[0m
+[0;33mW (3936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (3936) MAIN: MQTT control task started[0m
+[0;32mI (3936) MAIN: === Hệ thống đã sẵn sàng ===[0m
+[0;32mI (3946) MAIN: All tasks started. System is running...[0m
+[0;32mI (3946) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (8936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (12886) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (12886) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (12896) esp-tls: create_ssl_handle failed[0m
+[1;31mE (12896) esp-tls: Failed to open new connection[0m
+[1;31mE (12896) transport_base: Failed to open a new connection[0m
+[1;31mE (12906) mqtt_client: Error transport connect[0m
+[1;31mE (12906) MQTT: MQTT error[0m
+[0;33mW (12916) MQTT: MQTT Disconnected[0m
+[0;33mW (13936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (14926) wifi:<ba-add>idx:1 (ifx:0, 5c:92:5e:b7:0e:7c), tid:6, ssn:0, winSize:64[0m
+[0;33mW (18936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (23936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (28246) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (28246) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (28256) esp-tls: create_ssl_handle failed[0m
+[1;31mE (28256) esp-tls: Failed to open new connection[0m
+[1;31mE (28256) transport_base: Failed to open a new connection[0m
+[1;31mE (28266) mqtt_client: Error transport connect[0m
+[1;31mE (28266) MQTT: MQTT error[0m
+[0;33mW (28276) MQTT: MQTT Disconnected[0m
+[0;33mW (28936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (33936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (33956) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (38936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (43506) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (43506) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (43506) esp-tls: create_ssl_handle failed[0m
+[1;31mE (43516) esp-tls: Failed to open new connection[0m
+[1;31mE (43516) transport_base: Failed to open a new connection[0m
+[1;31mE (43526) mqtt_client: Error transport connect[0m
+[1;31mE (43526) MQTT: MQTT error[0m
+[0;33mW (43526) MQTT: MQTT Disconnected[0m
+[0;33mW (43936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (48936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (53846) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (53846) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (53856) esp-tls: create_ssl_handle failed[0m
+[1;31mE (53856) esp-tls: Failed to open new connection[0m
+[1;31mE (53856) transport_base: Failed to open a new connection[0m
+[1;31mE (53866) mqtt_client: Error transport connect[0m
+[1;31mE (53866) MQTT: MQTT error[0m
+[0;33mW (53876) MQTT: MQTT Disconnected[0m
+[0;33mW (53936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (58936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (63936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (63956) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[1;31mE (64186) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (64186) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (64196) esp-tls: create_ssl_handle failed[0m
+[1;31mE (64196) esp-tls: Failed to open new connection[0m
+[1;31mE (64206) transport_base: Failed to open a new connection[0m
+[1;31mE (64206) mqtt_client: Error transport connect[0m
+[1;31mE (64216) MQTT: MQTT error[0m
+[0;33mW (64216) MQTT: MQTT Disconnected[0m
+[0;33mW (68936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (73936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (78936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (79546) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (79546) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (79556) esp-tls: create_ssl_handle failed[0m
+[1;31mE (79556) esp-tls: Failed to open new connection[0m
+[1;31mE (79566) transport_base: Failed to open a new connection[0m
+[1;31mE (79576) mqtt_client: Error transport connect[0m
+[1;31mE (79576) MQTT: MQTT error[0m
+[0;33mW (79576) MQTT: MQTT Disconnected[0m
+[0;33mW (83936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (88936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (93936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (93956) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[1;31mE (94906) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (94906) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (94916) esp-tls: create_ssl_handle failed[0m
+[1;31mE (94916) esp-tls: Failed to open new connection[0m
+[1;31mE (94916) transport_base: Failed to open a new connection[0m
+[1;31mE (94926) mqtt_client: Error transport connect[0m
+[1;31mE (94926) MQTT: MQTT error[0m
+[0;33mW (94936) MQTT: MQTT Disconnected[0m
+[0;33mW (98936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (103936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (108936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (110266) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (110266) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (110276) esp-tls: create_ssl_handle failed[0m
+[1;31mE (110276) esp-tls: Failed to open new connection[0m
+[1;31mE (110286) transport_base: Failed to open a new connection[0m
+[1;31mE (110286) mqtt_client: Error transport connect[0m
+[1;31mE (110296) MQTT: MQTT error[0m
+[0;33mW (110296) MQTT: MQTT Disconnected[0m
+[0;33mW (113936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (118936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (123936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (123956) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[1;31mE (125626) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (125626) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (125636) esp-tls: create_ssl_handle failed[0m
+[1;31mE (125636) esp-tls: Failed to open new connection[0m
+[1;31mE (125646) transport_base: Failed to open a new connection[0m
+[1;31mE (125646) mqtt_client: Error transport connect[0m
+[1;31mE (125656) MQTT: MQTT error[0m
+[0;33mW (125656) MQTT: MQTT Disconnected[0m
+[0;33mW (128936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (133936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (138936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (140886) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (140886) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (140886) esp-tls: create_ssl_handle failed[0m
+[1;31mE (140896) esp-tls: Failed to open new connection[0m
+[1;31mE (140896) transport_base: Failed to open a new connection[0m
+[1;31mE (140906) mqtt_client: Error transport connect[0m
+[1;31mE (140906) MQTT: MQTT error[0m
+[0;33mW (140906) MQTT: MQTT Disconnected[0m
+[0;33mW (143936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (148936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (153936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (153956) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[1;31mE (156246) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (156246) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (156246) esp-tls: create_ssl_handle failed[0m
+[1;31mE (156256) esp-tls: Failed to open new connection[0m
+[1;31mE (156256) transport_base: Failed to open a new connection[0m
+[1;31mE (156266) mqtt_client: Error transport connect[0m
+[1;31mE (156266) MQTT: MQTT error[0m
+[0;33mW (156266) MQTT: MQTT Disconnected[0m
+[0;33mW (158936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (163936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (168936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (171606) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (171606) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (171616) esp-tls: create_ssl_handle failed[0m
+[1;31mE (171616) esp-tls: Failed to open new connection[0m
+[1;31mE (171616) transport_base: Failed to open a new connection[0m
+[1;31mE (171626) mqtt_client: Error transport connect[0m
+[1;31mE (171626) MQTT: MQTT error[0m
+[0;33mW (171636) MQTT: MQTT Disconnected[0m
+[0;33mW (173936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (178936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (183936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (183956) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[1;31mE (186966) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (186966) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (186976) esp-tls: create_ssl_handle failed[0m
+[1;31mE (186976) esp-tls: Failed to open new connection[0m
+[1;31mE (186976) transport_base: Failed to open a new connection[0m
+[1;31mE (186986) mqtt_client: Error transport connect[0m
+[1;31mE (186986) MQTT: MQTT error[0m
+[0;33mW (186996) MQTT: MQTT Disconnected[0m
+[0;33mW (188936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (193936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (198936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (202326) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (202326) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (202326) esp-tls: create_ssl_handle failed[0m
+[1;31mE (202336) esp-tls: Failed to open new connection[0m
+[1;31mE (202336) transport_base: Failed to open a new connection[0m
+[1;31mE (202346) mqtt_client: Error transport connect[0m
+[1;31mE (202346) MQTT: MQTT error[0m
+[0;33mW (202356) MQTT: MQTT Disconnected[0m
+[0;33mW (203936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (208936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (213936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (213956) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[1;31mE (217686) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (217686) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (217696) esp-tls: create_ssl_handle failed[0m
+[1;31mE (217696) esp-tls: Failed to open new connection[0m
+[1;31mE (217696) transport_base: Failed to open a new connection[0m
+[1;31mE (217706) mqtt_client: Error transport connect[0m
+[1;31mE (217706) MQTT: MQTT error[0m
+[0;33mW (217716) MQTT: MQTT Disconnected[0m
+[0;33mW (218936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (223936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (228936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (233046) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (233046) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (233056) esp-tls: create_ssl_handle failed[0m
+[1;31mE (233056) esp-tls: Failed to open new connection[0m
+[1;31mE (233056) transport_base: Failed to open a new connection[0m
+[1;31mE (233066) mqtt_client: Error transport connect[0m
+[1;31mE (233066) MQTT: MQTT error[0m
+[0;33mW (233076) MQTT: MQTT Disconnected[0m
+[0;33mW (233936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (238936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (243936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (243956) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[1;31mE (248406) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (248406) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (248406) esp-tls: create_ssl_handle failed[0m
+[1;31mE (248416) esp-tls: Failed to open new connection[0m
+[1;31mE (248416) transport_base: Failed to open a new connection[0m
+[1;31mE (248426) mqtt_client: Error transport connect[0m
+[1;31mE (248426) MQTT: MQTT error[0m
+[0;33mW (248426) MQTT: MQTT Disconnected[0m
+[0;33mW (248936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (253936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (258746) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (258746) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (258756) esp-tls: create_ssl_handle failed[0m
+[1;31mE (258756) esp-tls: Failed to open new connection[0m
+[1;31mE (258766) transport_base: Failed to open a new connection[0m
+[1;31mE (258766) mqtt_client: Error transport connect[0m
+[1;31mE (258766) MQTT: MQTT error[0m
+[0;33mW (258776) MQTT: MQTT Disconnected[0m
+[0;33mW (258936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (263936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (268936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (273936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (273956) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[1;31mE (274106) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (274106) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (274116) esp-tls: create_ssl_handle failed[0m
+[1;31mE (274116) esp-tls: Failed to open new connection[0m
+[1;31mE (274126) transport_base: Failed to open a new connection[0m
+[1;31mE (274126) mqtt_client: Error transport connect[0m
+[1;31mE (274136) MQTT: MQTT error[0m
+[0;33mW (274136) MQTT: MQTT Disconnected[0m
+[0;33mW (278936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (283936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (288936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (289466) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (289466) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (289476) esp-tls: create_ssl_handle failed[0m
+[1;31mE (289476) esp-tls: Failed to open new connection[0m
+[1;31mE (289486) transport_base: Failed to open a new connection[0m
+[1;31mE (289486) mqtt_client: Error transport connect[0m
+[1;31mE (289496) MQTT: MQTT error[0m
+[0;33mW (289496) MQTT: MQTT Disconnected[0m
+[0;33mW (293936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (298936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (303936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (303956) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[1;31mE (304826) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (304826) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (304836) esp-tls: create_ssl_handle failed[0m
+[1;31mE (304836) esp-tls: Failed to open new connection[0m
+[1;31mE (304836) transport_base: Failed to open a new connection[0m
+[1;31mE (304846) mqtt_client: Error transport connect[0m
+[1;31mE (304846) MQTT: MQTT error[0m
+[0;33mW (304856) MQTT: MQTT Disconnected[0m
+[0;33mW (308936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (313936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (318936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (320186) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (320186) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (320196) esp-tls: create_ssl_handle failed[0m
+[1;31mE (320196) esp-tls: Failed to open new connection[0m
+[1;31mE (320196) transport_base: Failed to open a new connection[0m
+[1;31mE (320206) mqtt_client: Error transport connect[0m
+[1;31mE (320206) MQTT: MQTT error[0m
+[0;33mW (320216) MQTT: MQTT Disconnected[0m
+[0;33mW (323936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (328936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (333936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (333956) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[1;31mE (335446) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (335446) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (335446) esp-tls: create_ssl_handle failed[0m
+[1;31mE (335456) esp-tls: Failed to open new connection[0m
+[1;31mE (335456) transport_base: Failed to open a new connection[0m
+[1;31mE (335466) mqtt_client: Error transport connect[0m
+[1;31mE (335466) MQTT: MQTT error[0m
+[0;33mW (335466) MQTT: MQTT Disconnected[0m
+[0;33mW (338936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (343936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (345786) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (345786) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (345796) esp-tls: create_ssl_handle failed[0m
+[1;31mE (345796) esp-tls: Failed to open new connection[0m
+[1;31mE (345796) transport_base: Failed to open a new connection[0m
+[1;31mE (345806) mqtt_client: Error transport connect[0m
+[1;31mE (345806) MQTT: MQTT error[0m
+[0;33mW (345816) MQTT: MQTT Disconnected[0m
+[0;33mW (348936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (353936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (358936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (361146) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (361146) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (361156) esp-tls: create_ssl_handle failed[0m
+[1;31mE (361156) esp-tls: Failed to open new connection[0m
+[1;31mE (361166) transport_base: Failed to open a new connection[0m
+[1;31mE (361166) mqtt_client: Error transport connect[0m
+[1;31mE (361176) MQTT: MQTT error[0m
+[0;33mW (361176) MQTT: MQTT Disconnected[0m
+[0;33mW (363936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (363956) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (368936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (373936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (376406) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (376406) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (376406) esp-tls: create_ssl_handle failed[0m
+[1;31mE (376416) esp-tls: Failed to open new connection[0m
+[1;31mE (376416) transport_base: Failed to open a new connection[0m
+[1;31mE (376426) mqtt_client: Error transport connect[0m
+[1;31mE (376426) MQTT: MQTT error[0m
+[0;33mW (376426) MQTT: MQTT Disconnected[0m
+[0;33mW (378936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (383936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (386746) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (386746) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (386756) esp-tls: create_ssl_handle failed[0m
+[1;31mE (386756) esp-tls: Failed to open new connection[0m
+[1;31mE (386766) transport_base: Failed to open a new connection[0m
+[1;31mE (386766) mqtt_client: Error transport connect[0m
+[1;31mE (386776) MQTT: MQTT error[0m
+[0;33mW (386776) MQTT: MQTT Disconnected[0m
+[0;33mW (388936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (393936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (393956) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (398936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (402106) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (402106) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (402116) esp-tls: create_ssl_handle failed[0m
+[1;31mE (402116) esp-tls: Failed to open new connection[0m
+[1;31mE (402116) transport_base: Failed to open a new connection[0m
+[1;31mE (402126) mqtt_client: Error transport connect[0m
+[1;31mE (402126) MQTT: MQTT error[0m
+[0;33mW (402136) MQTT: MQTT Disconnected[0m
+[0;33mW (403936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (408936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (413936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (417466) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (417466) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (417476) esp-tls: create_ssl_handle failed[0m
+[1;31mE (417476) esp-tls: Failed to open new connection[0m
+[1;31mE (417476) transport_base: Failed to open a new connection[0m
+[1;31mE (417486) mqtt_client: Error transport connect[0m
+[1;31mE (417486) MQTT: MQTT error[0m
+[0;33mW (417496) MQTT: MQTT Disconnected[0m
+[0;33mW (418936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (423936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (423956) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (428936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (432826) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (432826) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (432836) esp-tls: create_ssl_handle failed[0m
+[1;31mE (432836) esp-tls: Failed to open new connection[0m
+[1;31mE (432836) transport_base: Failed to open a new connection[0m
+[1;31mE (432846) mqtt_client: Error transport connect[0m
+[1;31mE (432846) MQTT: MQTT error[0m
+[0;33mW (432856) MQTT: MQTT Disconnected[0m
+[0;33mW (433936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (438936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (443936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (448186) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (448186) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (448196) esp-tls: create_ssl_handle failed[0m
+[1;31mE (448196) esp-tls: Failed to open new connection[0m
+[1;31mE (448196) transport_base: Failed to open a new connection[0m
+[1;31mE (448206) mqtt_client: Error transport connect[0m
+[1;31mE (448206) MQTT: MQTT error[0m
+[0;33mW (448216) MQTT: MQTT Disconnected[0m
+[0;33mW (448936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (453936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (453956) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (458936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (463546) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (463546) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (463556) esp-tls: create_ssl_handle failed[0m
+[1;31mE (463556) esp-tls: Failed to open new connection[0m
+[1;31mE (463556) transport_base: Failed to open a new connection[0m
+[1;31mE (463566) mqtt_client: Error transport connect[0m
+[1;31mE (463566) MQTT: MQTT error[0m
+[0;33mW (463576) MQTT: MQTT Disconnected[0m
+[0;33mW (463936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (468936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (473936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (478906) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (478906) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (478916) esp-tls: create_ssl_handle failed[0m
+[1;31mE (478916)esp-tls: Failed to open new connection[0m
+[1;31mE (478926) transport_base: Failed to open a new connection[0m
+[0;33mW (478936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (478936) mqtt_client: Error transport connect[0m
+[1;31mE (478936) MQTT: MQTT error[0m
+[0;33mW (478946) MQTT: MQTT Disconnected[0m
+[0;33mW (483936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (483956) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (488936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (493936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (494266) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (494266) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (494266) esp-tls: create_ssl_handle failed[0m
+[1;31mE (494276) esp-tls: Failed to open new connection[0m
+[1;31mE (494276) transport_base: Failed to open a new connection[0m
+[1;31mE (494286) mqtt_client: Error transport connect[0m
+[1;31mE (494286) MQTT: MQTT error[0m
+[0;33mW (494296) MQTT: MQTT Disconnected[0m
+[0;33mW (498936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (503936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (504616) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (504616) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (504626) esp-tls: create_ssl_handle failed[0m
+[1;31mE (504626) esp-tls: Failed to open new connection[0m
+[1;31mE (504626) transport_base: Failed to open a new connection[0m
+[1;31mE (504636) mqtt_client: Error transport connect[0m
+[1;31mE (504636) MQTT: MQTT error[0m
+[0;33mW (504646) MQTT: MQTT Disconnected[0m
+[0;33mW (508936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (513936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (513956) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (518936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (519966) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (519966) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (519976) esp-tls: create_ssl_handle failed[0m
+[1;31mE (519976) esp-tls: Failed to open new connection[0m
+[1;31mE (519986) transport_base: Failed to open a new connection[0m
+[1;31mE (519986) mqtt_client: Error transport connect[0m
+[1;31mE (519996) MQTT: MQTT error[0m
+[0;33mW (519996) MQTT: MQTT Disconnected[0m
+[0;33mW (523936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (528936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (533936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (535226) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (535226) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (535236) esp-tls: create_ssl_handle failed[0m
+[1;31mE (535236) esp-tls: Failed to open new connection[0m
+[1;31mE (535236) transport_base: Failed to open a new connection[0m
+[1;31mE (535246) mqtt_client: Error transport connect[0m
+[1;31mE (535246) MQTT: MQTT error[0m
+[0;33mW (535256) MQTT: MQTT Disconnected[0m
+[0;33mW (538936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (543936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (543956) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (548936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (550586) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (550586) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (550596) esp-tls: create_ssl_handle failed[0m
+[1;31mE (550596) esp-tls: Failed to open new connection[0m
+[1;31mE (550606) transport_base: Failed to open a new connection[0m
+[1;31mE (550606) mqtt_client: Error transport connect[0m
+[1;31mE (550606) MQTT: MQTT error[0m
+[0;33mW (550616) MQTT: MQTT Disconnected[0m
+[0;33mW (553936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (558936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (563936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (565946) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (565946) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (565956) esp-tls: create_ssl_handle failed[0m
+[1;31mE (565956) esp-tls: Failed to open new connection[0m
+[1;31mE (565956) transport_base: Failed to open a new connection[0m
+[1;31mE (565966) mqtt_client: Error transport connect[0m
+[1;31mE (565966) MQTT: MQTT error[0m
+[0;33mW (565976) MQTT: MQTT Disconnected[0m
+[0;33mW (568936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (573936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (573956) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (578936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (581306) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (581306) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (581306) esp-tls: create_ssl_handle failed[0m
+[1;31mE (581316) esp-tls: Failed to open new connection[0m
+[1;31mE (581316) transport_base: Failed to open a new connection[0m
+[1;31mE (581326) mqtt_client: Error transport connect[0m
+[1;31mE (581326) MQTT: MQTT error[0m
+[0;33mW (581326) MQTT: MQTT Disconnected[0m
+[0;33mW (583936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (588936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (591756) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (591766) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (591766) esp-tls: create_ssl_handle failed[0m
+[1;31mE (591776) esp-tls: Failed to open new connection[0m
+[1;31mE (591776) transport_base: Failed to open a new connection[0m
+[1;31mE (591786) mqtt_client: Error transport connect[0m
+[1;31mE (591786) MQTT: MQTT error[0m
+[0;33mW (591786) MQTT: MQTT Disconnected[0m
+[0;33mW (593936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (598936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (602086) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (602096) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (602096) esp-tls: create_ssl_handle failed[0m
+[1;31mE (602106) esp-tls: Failed to open new connection[0m
+[1;31mE (602106) transport_base: Failed to open a new connection[0m
+[1;31mE (602116) mqtt_client: Error transport connect[0m
+[1;31mE (602116) MQTT: MQTT error[0m
+[0;33mW (602116) MQTT: MQTT Disconnected[0m
+[0;33mW (603936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (603956) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (608936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (612436) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (612436) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (612436) esp-tls: create_ssl_handle failed[0m
+[1;31mE (612446) esp-tls: Failed to open new connection[0m
+[1;31mE (612446) transport_base: Failed to open a new connection[0m
+[1;31mE (612456) mqtt_client: Error transport connect[0m
+[1;31mE (612456) MQTT: MQTT error[0m
+[0;33mW (612466) MQTT: MQTT Disconnected[0m
+[0;33mW (613936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (618936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (623936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (627796) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (627796) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (627796) esp-tls: create_ssl_handle failed[0m
+[1;31mE (627806) esp-tls: Failed to open new connection[0m
+[1;31mE (627806) transport_base: Failed to open a new connection[0m
+[1;31mE (627816) mqtt_client: Error transport connect[0m
+[1;31mE (627816) MQTT: MQTT error[0m
+[0;33mW (627816) MQTT: MQTT Disconnected[0m
+[0;33mW (628936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (633936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (633956) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[1;31mE (638136) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (638136) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (638146) esp-tls: create_ssl_handle failed[0m
+[1;31mE (638146) esp-tls: Failed to open new connection[0m
+[1;31mE (638156) transport_base: Failed to open a new connection[0m
+[1;31mE (638156) mqtt_client: Error transport connect[0m
+[1;31mE (638156) MQTT: MQTT error[0m
+[0;33mW (638166) MQTT: MQTT Disconnected[0m
+[0;33mW (638936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (643936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (648936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (653936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (654166) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (654166) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (654166) esp-tls: create_ssl_handle failed[0m
+[1;31mE (654176) esp-tls: Failed to open new connection[0m
+[1;31mE (654176) transport_base: Failed to open a new connection[0m
+[1;31mE (654186) mqtt_client: Error transport connect[0m
+[1;31mE (654186) MQTT: MQTT error[0m
+[0;33mW (654186) MQTT: MQTT Disconnected[0m
+[0;33mW (658936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (663936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (663956) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[1;31mE (664756) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (664766) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (664766) esp-tls: create_ssl_handle failed[0m
+[1;31mE (664776) esp-tls: Failed to open new connection[0m
+[1;31mE (664776) transport_base: Failed to open a new connection[0m
+[1;31mE (664786) mqtt_client: Error transport connect[0m
+[1;31mE (664786) MQTT: MQTT error[0m
+[0;33mW (664786) MQTT: MQTT Disconnected[0m
+[0;33mW (668936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (673936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (675106) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (675106) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (675106) esp-tls: create_ssl_handle failed[0m
+[1;31mE (675116) esp-tls: Failed to open new connection[0m
+[1;31mE (675116) transport_base: Failed to open a new connection[0m
+[1;31mE (675126) mqtt_client: Error transport connect[0m
+[1;31mE (675126) MQTT: MQTT error[0m
+[0;33mW (675126) MQTT: MQTT Disconnected[0m
+[0;33mW (678936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (683936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (685446) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (685446) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (685446) esp-tls: create_ssl_handle failed[0m
+[1;31mE (685456) esp-tls: Failed to open new connection[0m
+[1;31mE (685456) transport_base: Failed to open a new connection[0m
+[1;31mE (685466) mqtt_client: Error transport connect[0m
+[1;31mE (685466) MQTT: MQTT error[0m
+[0;33mW (685466) MQTT: MQTT Disconnected[0m
+[0;33mW (688936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (693936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (693956) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[1;31mE (695786) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (695786) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (695796) esp-tls: create_ssl_handle failed[0m
+[1;31mE (695796) esp-tls: Failed to open new connection[0m
+[1;31mE (695806) transport_base: Failed to open a new connection[0m
+[1;31mE (695806) mqtt_client: Error transport connect[0m
+[1;31mE (695816) MQTT: MQTT error[0m
+[0;33mW (695816) MQTT: MQTT Disconnected[0m
+[0;33mW (698936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (703936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (708936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (711146) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (711146) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (711156) esp-tls: create_ssl_handle failed[0m
+[1;31mE (711156) esp-tls: Failed to open new connection[0m
+[1;31mE (711166) transport_base: Failed to open a new connection[0m
+[1;31mE (711166) mqtt_client: Error transport connect[0m
+[1;31mE (711176) MQTT: MQTT error[0m
+[0;33mW (711176) MQTT: MQTT Disconnected[0m
+[0;33mW (713936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (718936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (723936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (723956) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[1;31mE (726506) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (726506) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (726516) esp-tls: create_ssl_handle failed[0m
+[1;31mE (726516) esp-tls: Failed to open new connection[0m
+[1;31mE (726516) transport_base: Failed to open a new connection[0m
+[1;31mE (726526) mqtt_client: Error transport connect[0m
+[1;31mE (726526) MQTT: MQTT error[0m
+[0;33mW (726536) MQTT: MQTT Disconnected[0m
+[0;33mW (728936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (733936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (738936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (741766) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (741766) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (741766) esp-tls: create_ssl_handle failed[0m
+[1;31mE (741776) esp-tls: Failed to open new connection[0m
+[1;31mE (741776) transport_base: Failed to open a new connection[0m
+[1;31mE (741786) mqtt_client: Error transport connect[0m
+[1;31mE (741786) MQTT: MQTT error[0m
+[0;33mW (741796) MQTT: MQTT Disconnected[0m
+[0;33mW (743936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (748936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (753936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (753956) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[1;31mE (757126) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (757126) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (757126) esp-tls: create_ssl_handle failed[0m
+[1;31mE (757136) esp-tls: Failed to open new connection[0m
+[1;31mE (757136) transport_base: Failed to open a new connection[0m
+[1;31mE (757146) mqtt_client: Error transport connect[0m
+[1;31mE (757146) MQTT: MQTT error[0m
+[0;33mW (757156) MQTT: MQTT Disconnected[0m
+[0;33mW (758936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (763936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (768936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (772486) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (772486) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (772486) esp-tls: create_ssl_handle failed[0m
+[1;31mE (772496) esp-tls: Failed to open new connection[0m
+[1;31mE (772496) transport_base: Failed to open a new connection[0m
+[1;31mE (772506) mqtt_client: Error transport connect[0m
+[1;31mE (772506) MQTT: MQTT error[0m
+[0;33mW (772506) MQTT: MQTT Disconnected[0m
+[0;33mW (773936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (778936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (782826) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (782826) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (782836) esp-tls: create_ssl_handle failed[0m
+[1;31mE (782836) esp-tls: Failed to open new connection[0m
+[1;31mE (782836) transport_base: Failed to open a new connection[0m
+[1;31mE (782846) mqtt_client: Error transport connect[0m
+[1;31mE (782856) MQTT: MQTT error[0m
+[0;33mW (782856) MQTT: MQTT Disconnected[0m
+[0;33mW (783936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (783956) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (788936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (793936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (798186) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (798186) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (798196) esp-tls: create_ssl_handle failed[0m
+[1;31mE (798196) esp-tls: Failed to open new connection[0m
+[1;31mE (798206) transport_base: Failed to open a new connection[0m
+[1;31mE (798206) mqtt_client: Error transport connect[0m
+[1;31mE (798216) MQTT: MQTT error[0m
+[0;33mW (798216) MQTT: MQTT Disconnected[0m
+[0;33mW (798936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (803936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (808936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (813446) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (813446) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (813446) esp-tls: create_ssl_handle failed[0m
+[1;31mE (813456) esp-tls: Failed to open new connection[0m
+[1;31mE (813456) transport_base: Failed to open a new connection[0m
+[1;31mE (813466) mqtt_client: Error transport connect[0m
+[1;31mE (813466) MQTT: MQTT error[0m
+[0;33mW (813466) MQTT: MQTT Disconnected[0m
+[0;33mW (813936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (813956) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (818936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (823786) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (823786) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (823796) esp-tls: create_ssl_handle failed[0m
+[1;31mE (823796) esp-tls: Failed to open new connection[0m
+[1;31mE (823796) transport_base: Failed to open a new connection[0m
+[1;31mE (823806) mqtt_client: Error transport connect[0m
+[1;31mE (823806) MQTT: MQTT error[0m
+[0;33mW (823816) MQTT: MQTT Disconnected[0m
+[0;33mW (823936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (828936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (833936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (838936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (839046) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (839046) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (839046) esp-tls: create_ssl_handle failed[0m
+[1;31mE (839056) esp-tls: Failed to open new connection[0m
+[1;31mE (839056) transport_base: Failed to open a new connection[0m
+[1;31mE (839066) mqtt_client: Error transport connect[0m
+[1;31mE (839066) MQTT: MQTT error[0m
+[0;33mW (839066) MQTT: MQTT Disconnected[0m
+[0;33mW (843936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (843956) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (848936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (849386) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (849386) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (849396) esp-tls: create_ssl_handle failed[0m
+[1;31mE (849396) esp-tls: Failed to open new connection[0m
+[1;31mE (849396) transport_base: Failed to open a new connection[0m
+[1;31mE (849406) mqtt_client: Error transport connect[0m
+[1;31mE (849406) MQTT: MQTT error[0m
+[0;33mW (849416) MQTT: MQTT Disconnected[0m
+[0;33mW (853936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (858936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (863936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (864656) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (864656) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (864666) esp-tls: create_ssl_handle failed[0m
+[1;31mE (864666) esp-tls: Failed to open new connection[0m
+[1;31mE (864676) transport_base: Failed to open a new connection[0m
+[1;31mE (864676) mqtt_client: Error transport connect[0m
+[1;31mE (864686) MQTT: MQTT error[0m
+[0;33mW (864686) MQTT: MQTT Disconnected[0m
+[0;33mW (868936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (873936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (873956) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (878936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (880006) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (880006) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (880006) esp-tls: create_ssl_handle failed[0m
+[1;31mE (880016) esp-tls: Failed to open new connection[0m
+[1;31mE (880016) transport_base: Failed to open a new connection[0m
+[1;31mE (880026) mqtt_client: Error transport connect[0m
+[1;31mE (880026) MQTT: MQTT error[0m
+[0;33mW (880026) MQTT: MQTT Disconnected[0m
+[0;33mW (883936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (888936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (890346) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (890346) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (890356) esp-tls: create_ssl_handle failed[0m
+[1;31mE (890356) esp-tls: Failed to open new connection[0m
+[1;31mE (890356) transport_base: Failed to open a new connection[0m
+[1;31mE (890366) mqtt_client: Error transport connect[0m
+[1;31mE (890366) MQTT: MQTT error[0m
+[0;33mW (890376) MQTT: MQTT Disconnected[0m
+[0;33mW (893936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (898936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (903936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (903956) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[1;31mE (905606) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (905606) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (905606) esp-tls: create_ssl_handle failed[0m
+[1;31mE (905616) esp-tls: Failed to open new connection[0m
+[1;31mE (905616) transport_base: Failed to open a new connection[0m
+[1;31mE (905626) mqtt_client: Error transport connect[0m
+[1;31mE (905626) MQTT: MQTT error[0m
+[0;33mW (905626) MQTT: MQTT Disconnected[0m
+[0;33mW (908936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (913936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (915846) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (915846) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (915856) esp-tls: create_ssl_handle failed[0m
+[1;31mE (915856) esp-tls: Failed to open new connection[0m
+[1;31mE (915856) transport_base: Failed to open a new connection[0m
+[1;31mE (915866) mqtt_client: Error transport connect[0m
+[1;31mE (915866) MQTT: MQTT error[0m
+[0;33mW (915876) MQTT: MQTT Disconnected[0m
+[0;33mW (918936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (923936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (928936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (931206) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (931206) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (931206) esp-tls: create_ssl_handle failed[0m
+[1;31mE (931216) esp-tls: Failed to open new connection[0m
+[1;31mE (931216) transport_base: Failed to open a new connection[0m
+[1;31mE (931226) mqtt_client: Error transport connect[0m
+[1;31mE (931226) MQTT: MQTT error[0m
+[0;33mW (931226) MQTT: MQTT Disconnected[0m
+[0;33mW (933936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (933956) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (938936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (941546) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (941546) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (941556) esp-tls: create_ssl_handle failed[0m
+[1;31mE (941556) esp-tls: Failed to open new connection[0m
+[1;31mE (941556) transport_base: Failed to open a new connection[0m
+[1;31mE (941566) mqtt_client: Error transport connect[0m
+[1;31mE (941566) MQTT: MQTT error[0m
+[0;33mW (941576) MQTT: MQTT Disconnected[0m
+[0;33mW (943936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (948936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (953936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (956806) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (956806) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (956806) esp-tls: create_ssl_handle failed[0m
+[1;31mE (956816) esp-tls: Failed to open new connection[0m
+[1;31mE (956816) transport_base: Failed to open a new connection[0m
+[1;31mE (956826) mqtt_client: Error transport connect[0m
+[1;31mE (956826) MQTT: MQTT error[0m
+[0;33mW (956826) MQTT: MQTT Disconnected[0m
+[0;33mW (958936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (963936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (963956) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[1;31mE (967146) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (967146) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (967146) esp-tls: create_ssl_handle failed[0m
+[1;31mE (967156) esp-tls: Failed to open new connection[0m
+[1;31mE (967156) transport_base: Failed to open a new connection[0m
+[1;31mE (967166) mqtt_client: Error transport connect[0m
+[1;31mE (967166) MQTT: MQTT error[0m
+[0;33mW (967176) MQTT: MQTT Disconnected[0m
+[0;33mW (968936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (973936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (977486) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (977486) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (977496) esp-tls: create_ssl_handle failed[0m
+[1;31mE (977496) esp-tls: Failed to open new connection[0m
+[1;31mE (977506) transport_base: Failed to open a new connection[0m
+[1;31mE (977506) mqtt_client: Error transport connect[0m
+[1;31mE (977516) MQTT: MQTT error[0m
+[0;33mW (977516) MQTT: MQTT Disconnected[0m
+[0;33mW (978936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (983936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (988936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (992846) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (992846) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (992856) esp-tls: create_ssl_handle failed[0m
+[1;31mE (992856) esp-tls: Failed to open new connection[0m
+[1;31mE (992866) transport_base: Failed to open a new connection[0m
+[1;31mE (992876) mqtt_client: Error transport connect[0m
+[1;31mE (992876) MQTT: MQTT error[0m
+[0;33mW (992876) MQTT: MQTT Disconnected[0m
+[0;33mW (993936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (993956) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (998936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1003936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (1008116) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (1008116) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (1008116) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1008126) esp-tls: Failed to open new connection[0m
+[1;31mE (1008126) transport_base: Failed to open a new connection[0m
+[1;31mE (1008136) mqtt_client: Error transport connect[0m
+[1;31mE (1008136) MQTT: MQTT error[0m
+[0;33mW (1008136) MQTT: MQTT Disconnected[0m
+[0;33mW (1008936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1013936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (1018446) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (1018446) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (1018456) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1018456) esp-tls: Failed to open new connection[0m
+[1;31mE (1018466) transport_base: Failed to open a new connection[0m
+[1;31mE (1018476) mqtt_client: Error transport connect[0m
+[1;31mE (1018476) MQTT: MQTT error[0m
+[0;33mW (1018476) MQTT: MQTT Disconnected[0m
+[0;33mW (1018936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1023936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (1023956) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (1028936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (1033706) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (1033706) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (1033706) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1033716) esp-tls: Failed to open new connection[0m
+[1;31mE (1033716) transport_base: Failed to open a new connection[0m
+[1;31mE (1033726) mqtt_client: Error transport connect[0m
+[1;31mE (1033726) MQTT: MQTT error[0m
+[0;33mW (1033736) MQTT: MQTT Disconnected[0m
+[0;33mW (1033936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1038936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1043936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1048936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (1049066) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (1049066) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (1049076) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1049076) esp-tls: Failed to open new connection[0m
+[1;31mE (1049076) transport_base: Failed to open a new connection[0m
+[1;31mE (1049086) mqtt_client: Error transport connect[0m
+[1;31mE (1049086) MQTT: MQTT error[0m
+[0;33mW (1049096) MQTT: MQTT Disconnected[0m
+[0;33mW (1053936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (1053956) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (1058936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1063936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (1064426) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (1064426) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (1064436) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1064436) esp-tls: Failed to open new connection[0m
+[1;31mE (1064436) transport_base: Failed to open a new connection[0m
+[1;31mE (1064446) mqtt_client: Error transport connect[0m
+[1;31mE (1064446) MQTT: MQTT error[0m
+[0;33mW (1064456) MQTT: MQTT Disconnected[0m
+[0;33mW (1068936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1073936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1078936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (1079786) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (1079786) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (1079786) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1079796) esp-tls: Failed to open new connection[0m
+[1;31mE (1079796) transport_base: Failed to open a new connection[0m
+[1;31mE (1079806) mqtt_client: Error transport connect[0m
+[1;31mE (1079806) MQTT: MQTT error[0m
+[0;33mW (1079816) MQTT: MQTT Disconnected[0m
+[0;33mW (1083936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (1083956) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (1088936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1093936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (1095146) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (1095146) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (1095146) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1095156) esp-tls: Failed to open new connection[0m
+[1;31mE (1095156) transport_base: Failed to open a new connection[0m
+[1;31mE (1095166) mqtt_client: Error transport connect[0m
+[1;31mE (1095166) MQTT: MQTT error[0m
+[0;33mW (1095176) MQTT: MQTT Disconnected[0m
+[0;33mW (1098936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1103936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1108936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (1110396) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (1110396) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (1110406) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1110416) esp-tls: Failed to open new connection[0m
+[1;31mE (1110416) transport_base: Failed to open a new connection[0m
+[1;31mE (1110426) mqtt_client: Error transport connect[0m
+[1;31mE (1110426) MQTT: MQTT error[0m
+[0;33mW (1110426) MQTT: MQTT Disconnected[0m
+[0;33mW (1113936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (1113956) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (1118936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (1120746) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (1120746) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (1120746) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1120756) esp-tls: Failed to open new connection[0m
+[1;31mE (1120756) transport_base: Failed to open a new connection[0m
+[1;31mE (1120766) mqtt_client: Error transport connect[0m
+[1;31mE (1120766) MQTT: MQTT error[0m
+[0;33mW (1120776) MQTT: MQTT Disconnected[0m
+[0;33mW (1123936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1128936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1133936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (1136106) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (1136106) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (1136106) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1136116) esp-tls: Failed to open new connection[0m
+[1;31mE (1136116) transport_base: Failed to open a new connection[0m
+[1;31mE (1136126) mqtt_client: Error transport connect[0m
+[1;31mE (1136126) MQTT: MQTT error[0m
+[0;33mW (1136126) MQTT: MQTT Disconnected[0m
+[0;33mW (1138936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1143936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (1143956) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (1148936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (1151466) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (1151466) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (1151466) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1151476) esp-tls: Failed to open new connection[0m
+[1;31mE (1151476) transport_base: Failed to open a new connection[0m
+[1;31mE (1151486) mqtt_client: Error transport connect[0m
+[1;31mE (1151486) MQTT: MQTT error[0m
+[0;33mW (1151496) MQTT: MQTT Disconnected[0m
+[0;33mW (1153936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1158936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1163936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (1166826) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (1166826) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (1166826) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1166836) esp-tls: Failed to open new connection[0m
+[1;31mE (1166836) transport_base: Failed to open a new connection[0m
+[1;31mE (1166846) mqtt_client: Error transport connect[0m
+[1;31mE (1166846) MQTT: MQTT error[0m
+[0;33mW (1166856) MQTT: MQTT Disconnected[0m
+[0;33mW (1168936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1173936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (1173956) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (1178936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (1182076) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (1182076) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (1182086) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1182096) esp-tls: Failed to open new connection[0m
+[1;31mE (1182096) transport_base: Failed to open a new connection[0m
+[1;31mE (1182106) mqtt_client: Error transport connect[0m
+[1;31mE (1182106) MQTT: MQTT error[0m
+[0;33mW (1182106) MQTT: MQTT Disconnected[0m
+[0;33mW (1183936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1188936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (1192426) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (1192426) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (1192426) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1192436) esp-tls: Failed to open new connection[0m
+[1;31mE (1192436) transport_base: Failed to open a new connection[0m
+[1;31mE (1192446) mqtt_client: Error transport connect[0m
+[1;31mE (1192446) MQTT: MQTT error[0m
+[0;33mW (1192456) MQTT: MQTT Disconnected[0m
+[0;33mW (1193936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1198936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1203936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (1203956) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[1;31mE (1207786) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (1207786) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (1207786) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1207796) esp-tls: Failed to open new connection[0m
+[1;31mE (1207796) transport_base: Failed to open a new connection[0m
+[1;31mE (1207806) mqtt_client: Error transport connect[0m
+[1;31mE (1207806) MQTT: MQTT error[0m
+[0;33mW (1207806) MQTT: MQTT Disconnected[0m
+[0;33mW (1208936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1213936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (1218126) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (1218126) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (1218136) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1218136) esp-tls: Failed to open new connection[0m
+[1;31mE (1218146) transport_base: Failed to open a new connection[0m
+[1;31mE (1218146) mqtt_client: Error transport connect[0m
+[1;31mE (1218156) MQTT: MQTT error[0m
+[0;33mW (1218156) MQTT: MQTT Disconnected[0m
+[0;33mW (1218936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1223936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1228936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (1233386) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (1233386) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (1233386) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1233396) esp-tls: Failed to open new connection[0m
+[1;31mE (1233396) transport_base: Failed to open a new connection[0m
+[1;31mE (1233406) mqtt_client: Error transport connect[0m
+[1;31mE (1233406) MQTT: MQTT error[0m
+[0;33mW (1233406) MQTT: MQTT Disconnected[0m
+[0;33mW (1233936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (1233956) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (1238936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (1243726) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (1243726) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (1243736) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1243736) esp-tls: Failed to open new connection[0m
+[1;31mE (1243736) transport_base: Failed to open a new connection[0m
+[1;31mE (1243746) mqtt_client: Error transport connect[0m
+[1;31mE (1243746) MQTT: MQTT error[0m
+[0;33mW (1243756) MQTT: MQTT Disconnected[0m
+[0;33mW (1243936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1248936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1253936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1258936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (1258986) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (1258986) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (1258996) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1258996) esp-tls: Failed to open new connection[0m
+[1;31mE (1258996) transport_base: Failed to open a new connection[0m
+[1;31mE (1259006) mqtt_client: Error transport connect[0m
+[1;31mE (1259006) MQTT: MQTT error[0m
+[0;33mW (1259016) MQTT: MQTT Disconnected[0m
+[0;33mW (1263936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (1263956) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (1268936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1273936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (1274346) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (1274346) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (1274346) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1274356) esp-tls: Failed to open new connection[0m
+[1;31mE (1274356) transport_base: Failed to open a new connection[0m
+[1;31mE (1274366) mqtt_client: Error transport connect[0m
+[1;31mE (1274366) MQTT: MQTT error[0m
+[0;33mW (1274366) MQTT: MQTT Disconnected[0m
+[0;33mW (1278936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1283936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (1284686) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (1284686) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (1284696) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1284696) esp-tls: Failed to open new connection[0m
+[1;31mE (1284696) transport_base: Failed to open a new connection[0m
+[1;31mE (1284706) mqtt_client: Error transport connect[0m
+[1;31mE (1284706) MQTT: MQTT error[0m
+[0;33mW (1284716) MQTT: MQTT Disconnected[0m
+[0;33mW (1288936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1293936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (1293956) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (1298936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (1299946) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (1299946) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (1299946) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1299956) esp-tls: Failed to open new connection[0m
+[1;31mE (1299956) transport_base: Failed to open a new connection[0m
+[1;31mE (1299966) mqtt_client: Error transport connect[0m
+[1;31mE (1299966) MQTT: MQTT error[0m
+[0;33mW (1299966) MQTT: MQTT Disconnected[0m
+[0;33mW (1303936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1308936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (1310286) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (1310286) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (1310296) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1310296) esp-tls: Failed to open new connection[0m
+[1;31mE (1310296) transport_base: Failed to open a new connection[0m
+[1;31mE (1310306) mqtt_client: Error transport connect[0m
+[1;31mE (1310306) MQTT: MQTT error[0m
+[0;33mW (1310316) MQTT: MQTT Disconnected[0m
+[0;33mW (1313936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1318936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1323936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (1323956) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[1;31mE (1325546) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (1325546) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (1325546) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1325556) esp-tls: Failed to open new connection[0m
+[1;31mE (1325556) transport_base: Failed to open a new connection[0m
+[1;31mE (1325566) mqtt_client: Error transport connect[0m
+[1;31mE (1325566) MQTT: MQTT error[0m
+[0;33mW (1325566) MQTT: MQTT Disconnected[0m
+[0;33mW (1328936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1333936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (1335886) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (1335886) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (1335896) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1335896) esp-tls: Failed to open new connection[0m
+[1;31mE (1335896) transport_base: Failed to open a new connection[0m
+[1;31mE (1335906) mqtt_client: Error transport connect[0m
+[1;31mE (1335906) MQTT: MQTT error[0m
+[0;33mW (1335916) MQTT: MQTT Disconnected[0m
+[0;33mW (1338936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1343936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1348936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (1351246) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (1351246) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (1351246) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1351256) esp-tls: Failed to open new connection[0m
+[1;31mE (1351256) transport_base: Failed to open a new connection[0m
+[1;31mE (1351266) mqtt_client: Error transport connect[0m
+[1;31mE (1351266) MQTT: MQTT error[0m
+[0;33mW (1351276) MQTT: MQTT Disconnected[0m
+[0;33mW (1353936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (1353956) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (1358936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (1361586) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (1361586) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (1361596) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1361596) esp-tls: Failed to open new connection[0m
+[1;31mE (1361606) transport_base: Failed to open a new connection[0m
+[1;31mE (1361606) mqtt_client: Error transport connect[0m
+[1;31mE (1361616) MQTT: MQTT error[0m
+[0;33mW (1361616) MQTT: MQTT Disconnected[0m
+[0;33mW (1363936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1368936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1373936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (1376846) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (1376846) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (1376856) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1376856) esp-tls: Failed to open new connection[0m
+[1;31mE (1376856) transport_base: Failed to open a new connection[0m
+[1;31mE (1376866) mqtt_client: Error transport connect[0m
+[1;31mE (1376866) MQTT: MQTT error[0m
+[0;33mW (1376876) MQTT: MQTT Disconnected[0m
+[0;33mW (1378936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1383936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (1383956) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (1388936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (1392206) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (1392206) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (1392206) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1392216) esp-tls: Failed to open new connection[0m
+[1;31mE (1392216) transport_base: Failed to open a new connection[0m
+[1;31mE (1392226) mqtt_client: Error transport connect[0m
+[1;31mE (1392226) MQTT: MQTT error[0m
+[0;33mW (1392236) MQTT: MQTT Disconnected[0m
+[0;33mW (1393936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1398936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1403936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (1407566) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (1407566) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (1407566) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1407576) esp-tls: Failed to open new connection[0m
+[1;31mE (1407576) transport_base: Failed to open a new connection[0m
+[1;31mE (1407586) mqtt_client: Error transport connect[0m
+[1;31mE (1407586) MQTT: MQTT error[0m
+[0;33mW (1407596) MQTT: MQTT Disconnected[0m
+[0;33mW (1408936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1413936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (1413956) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[0;33mW (1418936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (1422826) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (1422826) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (1422826) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1422836) esp-tls: Failed to open new connection[0m
+[1;31mE (1422836) transport_base: Failed to open a new connection[0m
+[1;31mE (1422846) mqtt_client: Error transport connect[0m
+[1;31mE (1422846) MQTT: MQTT error[0m
+[0;33mW (1422846) MQTT: MQTT Disconnected[0m
+[0;33mW (1423936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1428936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (1433166) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (1433166) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (1433166) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1433176) esp-tls: Failed to open new connection[0m
+[1;31mE (1433176) transport_base: Failed to open a new connection[0m
+[1;31mE (1433186) mqtt_client: Error transport connect[0m
+[1;31mE (1433186) MQTT: MQTT error[0m
+[0;33mW (1433196) MQTT: MQTT Disconnected[0m
+[0;33mW (1433936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1438936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1443936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (1443956) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[1;31mE (1448526) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (1448526) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (1448536) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1448536) esp-tls: Failed to open new connection[0m
+[1;31mE (1448536) transport_base: Failed to open a new connection[0m
+[1;31mE (1448546) mqtt_client: Error transport connect[0m
+[1;31mE (1448546) MQTT: MQTT error[0m
+[0;33mW (1448556) MQTT: MQTT Disconnected[0m
+[0;33mW (1448936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1453936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1458936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (1463786) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (1463786) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (1463786) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1463796) esp-tls: Failed to open new connection[0m
+[1;31mE (1463796) transport_base: Failed to open a new connection[0m
+[1;31mE (1463806) mqtt_client: Error transport connect[0m
+[1;31mE (1463806) MQTT: MQTT error[0m
+[0;33mW (1463806) MQTT: MQTT Disconnected[0m
+[0;33mW (1463936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1468936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1473936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (1473956) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[1;31mE (1474126) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (1474126) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (1474126) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1474136) esp-tls: Failed to open new connection[0m
+[1;31mE (1474136) transport_base: Failed to open a new connection[0m
+[1;31mE (1474146) mqtt_client: Error transport connect[0m
+[1;31mE (1474146) MQTT: MQTT error[0m
+[0;33mW (1474156) MQTT: MQTT Disconnected[0m
+[0;33mW (1478936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1483936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1488936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (1489486) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (1489486) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (1489486) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1489496) esp-tls: Failed to open new connection[0m
+[1;31mE (1489496) transport_base: Failed to open a new connection[0m
+[1;31mE (1489506) mqtt_client: Error transport connect[0m
+[1;31mE (1489506) MQTT: MQTT error[0m
+[0;33mW (1489516) MQTT: MQTT Disconnected[0m
+[0;33mW (1493936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1498936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1503936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;32mI (1503956) MAIN: System Status - WiFi: Connected, MQTT: Disconnected, Fire: Normal[0m
+[1;31mE (1504846) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (1504846) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (1504846) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1504856) esp-tls: Failed to open new connection[0m
+[1;31mE (1504856) transport_base: Failed to open a new connection[0m
+[1;31mE (1504866) mqtt_client: Error transport connect[0m
+[1;31mE (1504866) MQTT: MQTT error[0m
+[0;33mW (1504876) MQTT: MQTT Disconnected[0m
+[0;33mW (1508936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1513936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1518936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[1;31mE (1520206) esp-tls-mbedtls: mbedtls_x509_crt_parse of CA cert returned -0x112C[0m
+[1;31mE (1520206) esp-tls-mbedtls: Failed to set client configurations, returned [0x8015] (ESP_ERR_MBEDTLS_X509_CRT_PARSE_FAILED)[0m
+[1;31mE (1520206) esp-tls: create_ssl_handle failed[0m
+[1;31mE (1520216) esp-tls: Failed to open new connection[0m
+[1;31mE (1520216) transport_base: Failed to open a new connection[0m
+[1;31mE (1520226) mqtt_client: Error transport connect[0m
+[1;31mE (1520226) MQTT: MQTT error[0m
+[0;33mW (1520236) MQTT: MQTT Disconnected[0m
+[0;33mW (1523936) MAIN: MQTT not connected, skipping sensor data publish[0m
+[0;33mW (1528936) MAIN: MQTT not connected, skipping sensor data publish[0m
