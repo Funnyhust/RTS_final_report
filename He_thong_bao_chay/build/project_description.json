@@ -1,7 +1,7 @@
 {
     "version":            "1.2",
     "project_name":       "He_thong_bao_chay",
-    "project_version":    "eeb0cb9-dirty",
+    "project_version":    "445071a-dirty",
     "project_path":       "D:/Duong/RTS_Lab/Project/He_thong_bao_chay",
     "idf_path":           "D:/Espressif/frameworks/esp-idf-v5.5.1",
     "build_dir":          "D:/Duong/RTS_Lab/Project/He_thong_bao_chay/build",
@@ -1225,7 +1225,7 @@
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "D:/Duong/RTS_Lab/Project/He_thong_bao_chay/build/esp-idf/main/libmain.a",
-            "sources": [ "D:/Duong/RTS_Lab/Project/He_thong_bao_chay/main/main.c", "D:/Duong/RTS_Lab/Project/He_thong_bao_chay/main/sensor/sensor.c", "D:/Duong/RTS_Lab/Project/He_thong_bao_chay/main/buzzer/buzzer.c", "D:/Duong/RTS_Lab/Project/He_thong_bao_chay/main/wifi/wifi.c", "D:/Duong/RTS_Lab/Project/He_thong_bao_chay/main/mqtt/mqtt.c", "D:/Duong/RTS_Lab/Project/He_thong_bao_chay/build/hivemq_ca.pem.S" ],
+            "sources": [ "D:/Duong/RTS_Lab/Project/He_thong_bao_chay/main/main.c", "D:/Duong/RTS_Lab/Project/He_thong_bao_chay/main/sensor/sensor.c", "D:/Duong/RTS_Lab/Project/He_thong_bao_chay/main/buzzer/buzzer.c", "D:/Duong/RTS_Lab/Project/He_thong_bao_chay/main/wifi/wifi.c", "D:/Duong/RTS_Lab/Project/He_thong_bao_chay/main/mqtt/mqtt.c", "D:/Duong/RTS_Lab/Project/He_thong_bao_chay/main/all_test_case.c" ],
             "include_dirs": [ ".", "sensor", "buzzer", "wifi", "mqtt" ]
         },
         "mbedtls": {

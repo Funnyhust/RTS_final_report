@@ -13,6 +13,18 @@
 #include <time.h>
 #include <sys/time.h>
 #include "mqtt/mqtt.h"
+#include "esp_timer.h"
+
+#include "nvs_flash.h"
+#include "nvs.h"
+#include "driver/uart.h"
+#include "test_config.h"
+#include "config.h" // Chứa CONFIG_USE_SIMULATION
+
+#ifndef CONFIG_USE_SIMULATION
+    #include "sensor/sensor.h"
+    #include "buzzer/buzzer.h"
+#endif
 
 static const char *TAG = "MAIN";
 
@@ -20,19 +32,100 @@ static const char *TAG = "MAIN";
 #define WIFI_SSID "DươngNV"
 #define WIFI_PASSWORD "21062003"
 
-#define MQTT_BROKER_URI "mqtts://2800b62043be42bc94cb422b60d069f2.s1.eu.hivemq.cloud:8883"  // Hoặc mqtts:// cho TLS
-#define MQTT_USERNAME "duongnv"  // Hoặc "username" nếu cần
-#define MQTT_PASSWORD "Rts12345"  // Hoặc "password" nếu cần
+#define MQTT_BROKER_URI "mqtt://192.168.0.5:1883"
+#define MQTT_USERNAME ""  // Để trống nếu broker local không yêu cầu
+#define MQTT_PASSWORD ""  
 #define MQTT_CLIENT_ID "fire_system_esp32"
-#define MQTT_USE_TLS true
+#define MQTT_USE_TLS false
 
-#define BUZZER_GPIO_PIN GPIO_NUM_25  // Thay đổi theo GPIO bạn sử dụng
+#define BUZZER_GPIO_PIN GPIO_NUM_25
+
+// UART Config
+#define UART_PORT_NUM      UART_NUM_0
+#define UART_BAUD_RATE     115200
+#define UART_BUF_SIZE      1024
 
 // Biến toàn cục
-static sensor_status_t g_sensor_status;
-static buzzer_t g_buzzer;
-static wifi_manager_t g_wifi_manager;
-static mqtt_config_t g_mqtt_config;
+// Biến toàn cục
+sensor_status_t g_sensor_status;
+
+#ifndef CONFIG_USE_SIMULATION
+    buzzer_t g_buzzer;
+#endif
+
+wifi_manager_t g_wifi_manager;
+mqtt_config_t g_mqtt_config;
+
+// --- UART & NVS Helper Functions ---
+
+void init_nvs(void) {
+    esp_err_t ret = nvs_flash_init();
+    if (ret == ESP_ERR_NVS_NO_FREE_PAGES || ret == ESP_ERR_NVS_NEW_VERSION_FOUND) {
+      ESP_ERROR_CHECK(nvs_flash_erase());
+      ret = nvs_flash_init();
+    }
+    ESP_ERROR_CHECK(ret);
+}
+
+void set_test_case_id(uint8_t id) {
+    nvs_handle_t my_handle;
+    esp_err_t err = nvs_open(NVS_NAMESPACE, NVS_READWRITE, &my_handle);
+    if (err == ESP_OK) {
+        err = nvs_set_u8(my_handle, NVS_KEY_TEST_ID, id);
+        if (err == ESP_OK) nvs_commit(my_handle);
+        nvs_close(my_handle);
+    }
+}
+
+uint8_t get_test_case_id(void) {
+    nvs_handle_t my_handle;
+    uint8_t id = 0; // Default normal
+    esp_err_t err = nvs_open(NVS_NAMESPACE, NVS_READONLY, &my_handle);
+    if (err == ESP_OK) {
+        nvs_get_u8(my_handle, NVS_KEY_TEST_ID, &id);
+        nvs_close(my_handle);
+    }
+    return id;
+}
+
+void uart_command_task(void *arg) {
+    uart_config_t uart_config = {
+        .baud_rate = UART_BAUD_RATE,
+        .data_bits = UART_DATA_8_BITS,
+        .parity    = UART_PARITY_DISABLE,
+        .stop_bits = UART_STOP_BITS_1,
+        .flow_ctrl = UART_HW_FLOWCTRL_DISABLE,
+        .source_clk = UART_SCLK_APB,
+    };
+    uart_driver_install(UART_PORT_NUM, UART_BUF_SIZE * 2, 0, 0, NULL, 0);
+    uart_param_config(UART_PORT_NUM, &uart_config);
+
+    uint8_t *data = (uint8_t *) malloc(UART_BUF_SIZE);
+    
+    ESP_LOGI(TAG, "UART Command Listener Started. Send '0xAD 0xID' to switch mode.");
+
+    while (1) {
+        int len = uart_read_bytes(UART_PORT_NUM, data, UART_BUF_SIZE, 20 / portTICK_PERIOD_MS);
+        if (len >= 2) {
+            // Check for pattern 0xAD 0x**
+            // Scan buffer
+            for (int i = 0; i < len - 1; i++) {
+                if (data[i] == 0xAD) {
+                    uint8_t new_id = data[i+1];
+                    ESP_LOGW(TAG, "RECEIVED COMMAND: Switch to Test Case 0x%02X", new_id);
+                    
+                    set_test_case_id(new_id);
+                    ESP_LOGW(TAG, "Saved to NVS. Restarting system...");
+                    vTaskDelay(pdMS_TO_TICKS(100)); // Wait for log to flush
+                    esp_restart();
+                }
+            }
+        }
+    }
+    free(data);
+}
+
+// --- ORIGINAL APP FUNCTIONS ---
 
 void obtain_time(void)
 {
@@ -41,7 +134,6 @@ void obtain_time(void)
     esp_sntp_setservername(0, "pool.ntp.org");
     esp_sntp_init();
 
-    // Wait for time to be set
     time_t now = 0;
     struct tm timeinfo = { 0 };
     int retry = 0;
@@ -53,9 +145,6 @@ void obtain_time(void)
     time(&now);
     localtime_r(&now, &timeinfo);
     
-    // Set timezone to Vietnam (UTC+7)
-    // POSIX format for UTC+7 is "CST-7" or similar. 
-    // Usually setenv("TZ", "UTC-7", 1) works effectively.
     setenv("TZ", "UTC-7", 1);
     tzset();
     
@@ -64,128 +153,139 @@ void obtain_time(void)
     ESP_LOGI(TAG, "Current time: %s", strftime_buf);
 }
 
-/**
- * @brief Task cảnh báo - xử lý khi phát hiện cháy
- */
+#ifdef CONFIG_USE_SIMULATION
+// --- SIMULATION MODE TASK ---
+void simulation_task(void *pvParameters)
+{
+    ESP_LOGW(TAG, "Simulation Task Started (Hardware Disabled)");
+    
+    // Init fake data
+    g_sensor_status.smoke.normalized_value = 0.1f;
+    g_sensor_status.temperature.normalized_value = 25.0f;
+    g_sensor_status.gas.normalized_value = 0.05f;
+    g_sensor_status.ir_flame.is_triggered = false;
+    g_sensor_status.fire_detected = false;
+
+    // Random seed
+    srand((unsigned int)esp_timer_get_time());
+
+    while (1) {
+        // Random walk simulation
+        g_sensor_status.smoke.normalized_value += ((float)(rand() % 10) - 5.0f) / 100.0f;
+        if (g_sensor_status.smoke.normalized_value < 0.0f) g_sensor_status.smoke.normalized_value = 0.0f;
+        if (g_sensor_status.smoke.normalized_value > 1.0f) g_sensor_status.smoke.normalized_value = 1.0f;
+
+        g_sensor_status.temperature.normalized_value += ((float)(rand() % 10) - 4.0f) / 10.0f; // Temp thay đổi chậm hơn
+        
+        g_sensor_status.gas.normalized_value += ((float)(rand() % 10) - 5.0f) / 200.0f;
+        if (g_sensor_status.gas.normalized_value < 0.0f) g_sensor_status.gas.normalized_value = 0.0f;
+
+        // Giả lập phát hiện cháy nếu smoke > 0.8
+        if (g_sensor_status.smoke.normalized_value > 0.8f) {
+            g_sensor_status.fire_detected = true;
+            g_sensor_status.detection_timestamp = esp_log_timestamp();
+        } else {
+            g_sensor_status.fire_detected = false;
+        }
+
+        vTaskDelay(pdMS_TO_TICKS(1000));
+    }
+}
+#else
+// --- HARDWARE TASKS ---
 void warning_task(void *pvParameters)
 {
     ESP_LOGI(TAG, "Warning task started");
-    
     bool last_fire_state = false;
-    
     while (1) {
-        // Kiểm tra trạng thái cháy
         if (g_sensor_status.fire_detected) {
             if (!last_fire_state) {
-                // Cháy mới được phát hiện
                 ESP_LOGW(TAG, "FIRE DETECTED! Activating alarm...");
-                
-                // Kích hoạt buzzer ở chế độ báo động
                 buzzer_set_mode(&g_buzzer, BUZZER_ALARM);
-                
-                // Gửi cảnh báo qua MQTT
                 if (mqtt_is_connected(&g_mqtt_config)) {
-                    cJSON *alert = cJSON_CreateObject();
-                    cJSON_AddStringToObject(alert, "type", "fire_alert");
-                    cJSON_AddBoolToObject(alert, "detected", true);
-                    cJSON_AddNumberToObject(alert, "timestamp", 
-                                          (double)g_sensor_status.detection_timestamp);
-                    cJSON_AddNumberToObject(alert, "smoke", g_sensor_status.smoke.normalized_value);
-                    cJSON_AddNumberToObject(alert, "temperature", g_sensor_status.temperature.normalized_value);
-                    cJSON_AddBoolToObject(alert, "ir_flame", g_sensor_status.ir_flame.is_triggered);
-                    cJSON_AddNumberToObject(alert, "gas", g_sensor_status.gas.normalized_value);
+                    // Tạo gói tin chuẩn
+                    cJSON *root = mqtt_create_payload(MQTT_CLIENT_ID, "alarm", 0);
+                    cJSON *values = cJSON_GetObjectItem(root, "values");
                     
-                    char *alert_json = cJSON_Print(alert);
+                    // Thêm dữ liệu vào "values"
+                    cJSON_AddBoolToObject(values, "detected", true);
+                    cJSON_AddNumberToObject(values, "smoke", g_sensor_status.smoke.normalized_value);
+                    cJSON_AddNumberToObject(values, "temperature", g_sensor_status.temperature.normalized_value);
+                    cJSON_AddBoolToObject(values, "ir_flame", g_sensor_status.ir_flame.is_triggered);
+                    cJSON_AddNumberToObject(values, "gas", g_sensor_status.gas.normalized_value);
+                    
+                    char *alert_json = cJSON_Print(root);
                     if (alert_json != NULL) {
                         mqtt_publish_alert(&g_mqtt_config, alert_json);
                         free(alert_json);
                     }
-                    cJSON_Delete(alert);
+                    cJSON_Delete(root);
                 }
             }
             last_fire_state = true;
         } else {
             if (last_fire_state) {
-                // Cháy đã được dập tắt
                 ESP_LOGI(TAG, "Fire extinguished. Deactivating alarm...");
                 buzzer_set_mode(&g_buzzer, BUZZER_OFF);
                 last_fire_state = false;
             }
         }
-        
-        vTaskDelay(pdMS_TO_TICKS(100)); // Kiểm tra mỗi 100ms
+        vTaskDelay(pdMS_TO_TICKS(100));
     }
 }
+#endif // CONFIG_USE_SIMULATION
 
-/**
- * @brief Task gửi dữ liệu cảm biến lên MQTT
- */
 void mqtt_sensor_task(void *pvParameters)
 {
     ESP_LOGI(TAG, "MQTT sensor task started");
-    
-    const TickType_t delay = pdMS_TO_TICKS(5000); // Gửi mỗi 5 giây
-    
+    const TickType_t delay = pdMS_TO_TICKS(5000);
     while (1) {
         if (mqtt_is_connected(&g_mqtt_config)) {
-            // Tạo JSON chứa dữ liệu cảm biến
-            cJSON *json = cJSON_CreateObject();
-            cJSON_AddNumberToObject(json, "timestamp", 
-                                  (double)(xTaskGetTickCount() * portTICK_PERIOD_MS));
-            cJSON_AddNumberToObject(json, "smoke", g_sensor_status.smoke.normalized_value);
-            cJSON_AddNumberToObject(json, "temperature", g_sensor_status.temperature.normalized_value);
-            cJSON_AddBoolToObject(json, "ir_flame", g_sensor_status.ir_flame.is_triggered);
-            cJSON_AddNumberToObject(json, "gas", g_sensor_status.gas.normalized_value);
-            cJSON_AddBoolToObject(json, "fire_detected", g_sensor_status.fire_detected);
+            // Tạo gói tin chuẩn
+            cJSON *root = mqtt_create_payload(MQTT_CLIENT_ID, "telemetry", 0);
+            cJSON *values = cJSON_GetObjectItem(root, "values");
+
+            cJSON_AddNumberToObject(values, "smoke", g_sensor_status.smoke.normalized_value);
+            cJSON_AddNumberToObject(values, "temperature", g_sensor_status.temperature.normalized_value);
+            cJSON_AddBoolToObject(values, "ir_flame", g_sensor_status.ir_flame.is_triggered);
+            cJSON_AddNumberToObject(values, "gas", g_sensor_status.gas.normalized_value);
+            cJSON_AddBoolToObject(values, "fire_detected", g_sensor_status.fire_detected);
             
-            char *json_string = cJSON_Print(json);
+            char *json_string = cJSON_Print(root);
             if (json_string != NULL) {
                 mqtt_publish_sensor_data(&g_mqtt_config, json_string);
                 free(json_string);
             }
-            cJSON_Delete(json);
-        } else {
-            ESP_LOGW(TAG, "MQTT not connected, skipping sensor data publish");
+            cJSON_Delete(root);
         }
-        
         vTaskDelay(delay);
     }
 }
 
-/**
- * @brief Task xử lý message MQTT nhận được
- */
 void mqtt_control_task(void *pvParameters)
 {
     ESP_LOGI(TAG, "MQTT control task started");
-    
     mqtt_message_t message;
-    
     while (1) {
         if (mqtt_receive_message(&g_mqtt_config, &message, 1000)) {
-            ESP_LOGI(TAG, "Received MQTT message - Topic: %s, Payload: %s", 
-                     message.topic, message.payload);
-            
-            // Xử lý message điều khiển
+            ESP_LOGI(TAG, "Received MQTT message - Topic: %s", message.topic);
             if (strstr(message.topic, "control") != NULL) {
                 cJSON *json = cJSON_Parse(message.payload);
                 if (json != NULL) {
                     cJSON *cmd = cJSON_GetObjectItem(json, "command");
                     if (cmd != NULL && cJSON_IsString(cmd)) {
                         const char *command = cJSON_GetStringValue(cmd);
-                        
-                        if (strcmp(command, "buzzer_on") == 0) {
-                            buzzer_set_mode(&g_buzzer, BUZZER_NORMAL);
-                            ESP_LOGI(TAG, "Buzzer turned on via MQTT");
-                        } else if (strcmp(command, "buzzer_off") == 0) {
-                            buzzer_set_mode(&g_buzzer, BUZZER_OFF);
-                            ESP_LOGI(TAG, "Buzzer turned off via MQTT");
-                        } else if (strcmp(command, "test_alarm") == 0) {
+                        #ifndef CONFIG_USE_SIMULATION
+                        if (strcmp(command, "buzzer_on") == 0) buzzer_set_mode(&g_buzzer, BUZZER_NORMAL);
+                        else if (strcmp(command, "buzzer_off") == 0) buzzer_set_mode(&g_buzzer, BUZZER_OFF);
+                        else if (strcmp(command, "test_alarm") == 0) {
                             buzzer_set_mode(&g_buzzer, BUZZER_ALARM);
                             vTaskDelay(pdMS_TO_TICKS(3000));
                             buzzer_set_mode(&g_buzzer, BUZZER_OFF);
-                            ESP_LOGI(TAG, "Test alarm executed via MQTT");
                         }
+                        #else
+                        ESP_LOGI(TAG, "Simulation Mode: Ignoring buzzer command '%s'", command);
+                        #endif
                     }
                     cJSON_Delete(json);
                 }
@@ -194,111 +294,66 @@ void mqtt_control_task(void *pvParameters)
     }
 }
 
-void app_main(void)
+// Renamed from app_main to app_main_normal
+void app_main_normal(void)
 {
-    ESP_LOGI(TAG, "=== Hệ thống báo cháy ESP32 khởi động ===");
+    ESP_LOGI(TAG, "=== Hệ thống báo cháy ESP32 khởi động (NORMAL MODE) ===");
     
-    // 1. Khởi tạo cảm biến
-    ESP_LOGI(TAG, "Initializing sensors...");
-    if (sensor_system_init(&g_sensor_status) != 0) {
-        ESP_LOGE(TAG, "Failed to initialize sensors");
-        return;
-    }
-    ESP_LOGI(TAG, "Sensors initialized successfully");
+    #ifndef CONFIG_USE_SIMULATION
+    ESP_LOGI(TAG, "Initializing sensors (HARDWARE)...");
+    if (sensor_system_init(&g_sensor_status) != 0) return;
     
-    // 2. Khởi tạo buzzer
-    ESP_LOGI(TAG, "Initializing buzzer...");
-    if (buzzer_init(&g_buzzer, BUZZER_GPIO_PIN) != 0) {
-        ESP_LOGE(TAG, "Failed to initialize buzzer");
-        return;
-    }
+    ESP_LOGI(TAG, "Initializing buzzer (HARDWARE)...");
+    if (buzzer_init(&g_buzzer, BUZZER_GPIO_PIN) != 0) return;
     buzzer_set_mode(&g_buzzer, BUZZER_OFF);
-    ESP_LOGI(TAG, "Buzzer initialized successfully");
+    #else
+    ESP_LOGW(TAG, "Initializing SIMULATION MODE...");
+    #endif
     
-    // 3. Khởi tạo và kết nối WiFi
     ESP_LOGI(TAG, "Initializing WiFi...");
-    if (wifi_init(&g_wifi_manager, WIFI_SSID, WIFI_PASSWORD) != 0) {
-        ESP_LOGE(TAG, "Failed to initialize WiFi");
-        return;
-    }
+    wifi_init(&g_wifi_manager, WIFI_SSID, WIFI_PASSWORD);
+    wifi_connect(&g_wifi_manager);
     
-    ESP_LOGI(TAG, "Connecting to WiFi: %s", WIFI_SSID);
-    if (wifi_connect(&g_wifi_manager) != 0) {
-        ESP_LOGE(TAG, "Failed to connect to WiFi");
-        return;
-    }
-    ESP_LOGI(TAG, "WiFi connected successfully");
-    
-    // Hiển thị địa chỉ IP
-    char ip_str[16];
-    if (wifi_get_ip_address(ip_str) == 0) {
-        ESP_LOGI(TAG, "IP Address: %s", ip_str);
-    }
-
-    // 3.1 Đồng bộ thời gian qua SNTP
     obtain_time();
     
-    // 4. Khởi tạo và kết nối MQTT
     ESP_LOGI(TAG, "Initializing MQTT...");
-    if (mqtt_init(&g_mqtt_config, MQTT_BROKER_URI, MQTT_USERNAME, 
-                  MQTT_PASSWORD, MQTT_CLIENT_ID, MQTT_USE_TLS) != 0) {
-        ESP_LOGE(TAG, "Failed to initialize MQTT");
-        return;
-    }
-    
-    ESP_LOGI(TAG, "Connecting to MQTT broker...");
-    if (mqtt_connect(&g_mqtt_config) != 0) {
-        ESP_LOGE(TAG, "Failed to connect to MQTT broker");
-        return;
-    }
-    
-    // Đợi một chút để MQTT kết nối
+    mqtt_init(&g_mqtt_config, MQTT_BROKER_URI, MQTT_USERNAME, MQTT_PASSWORD, MQTT_CLIENT_ID, MQTT_USE_TLS);
+    mqtt_connect(&g_mqtt_config);
     vTaskDelay(pdMS_TO_TICKS(2000));
     
-    if (mqtt_is_connected(&g_mqtt_config)) {
-        ESP_LOGI(TAG, "MQTT connected successfully");
-    } else {
-        ESP_LOGW(TAG, "MQTT connection pending...");
-    }
+    vTaskDelay(pdMS_TO_TICKS(2000));
     
-    // 5. Tạo các FreeRTOS tasks
-    ESP_LOGI(TAG, "Creating FreeRTOS tasks...");
+    #ifdef CONFIG_USE_SIMULATION
+        xTaskCreate(simulation_task, "simulation_task", 4096, NULL, configMAX_PRIORITIES - 2, NULL);
+    #else
+        xTaskCreate(sensor_task, "sensor_task", 4096, &g_sensor_status, configMAX_PRIORITIES - 1, NULL);
+        xTaskCreate(buzzer_task, "buzzer_task", 2048, &g_buzzer, configMAX_PRIORITIES - 2, NULL);
+        xTaskCreate(warning_task, "warning_task", 4096, NULL, configMAX_PRIORITIES - 1, NULL);
+    #endif
+
+    xTaskCreate(mqtt_sensor_task, "mqtt_sensor_task", 4096, NULL, configMAX_PRIORITIES - 3, NULL);
+    xTaskCreate(mqtt_control_task, "mqtt_control_task", 4096, NULL, configMAX_PRIORITIES - 3, NULL);
+    xTaskCreate(mqtt_task, "mqtt_task", 4096, &g_mqtt_config, configMAX_PRIORITIES - 4, NULL);
     
-    // Task đọc cảm biến (ưu tiên cao, chu kỳ 500ms)
-    xTaskCreate(sensor_task, "sensor_task", 4096, &g_sensor_status, 
-                configMAX_PRIORITIES - 1, NULL);
-    
-    // Task điều khiển buzzer (ưu tiên cao)
-    xTaskCreate(buzzer_task, "buzzer_task", 2048, &g_buzzer, 
-                configMAX_PRIORITIES - 2, NULL);
-    
-    // Task cảnh báo (ưu tiên cao, xử lý khi phát hiện cháy)
-    xTaskCreate(warning_task, "warning_task", 4096, NULL, 
-                configMAX_PRIORITIES - 1, NULL);
-    
-    // Task gửi dữ liệu cảm biến lên MQTT (ưu tiên trung bình, chu kỳ 5s)
-    xTaskCreate(mqtt_sensor_task, "mqtt_sensor_task", 4096, NULL, 
-                configMAX_PRIORITIES - 3, NULL);
-    
-    // Task xử lý message MQTT (ưu tiên trung bình)
-    xTaskCreate(mqtt_control_task, "mqtt_control_task", 4096, NULL, 
-                configMAX_PRIORITIES - 3, NULL);
-    
-    // Task MQTT (ưu tiên thấp, chu kỳ 30s)
-    xTaskCreate(mqtt_task, "mqtt_task", 4096, &g_mqtt_config, 
-                configMAX_PRIORITIES - 4, NULL);
-    
-    ESP_LOGI(TAG, "=== Hệ thống đã sẵn sàng ===");
     ESP_LOGI(TAG, "All tasks started. System is running...");
-    
-    // Main task có thể làm việc khác hoặc đợi
     while (1) {
-        // Hiển thị trạng thái hệ thống định kỳ
-        ESP_LOGI(TAG, "System Status - WiFi: %s, MQTT: %s, Fire: %s",
-                 wifi_is_connected(&g_wifi_manager) ? "Connected" : "Disconnected",
-                 mqtt_is_connected(&g_mqtt_config) ? "Connected" : "Disconnected",
-                 g_sensor_status.fire_detected ? "DETECTED" : "Normal");
-        
-        vTaskDelay(pdMS_TO_TICKS(30000)); // Log mỗi 30 giây
+        ESP_LOGI(TAG, "System Status - Fire: %s", g_sensor_status.fire_detected ? "DETECTED" : "Normal");
+        vTaskDelay(pdMS_TO_TICKS(30000));
     }
+}
+
+// --- NEW APP MAIN ENTRY POINT ---
+
+void app_main(void) {
+    // 1. Init NVS
+    init_nvs();
+
+    // 2. Start UART Command Listener (Always runs to allow switching)
+    xTaskCreate(uart_command_task, "uart_cmd", 4096, NULL, configMAX_PRIORITIES - 1, NULL);
+
+    // 3. Read Test Case ID
+    uint8_t current_test_id = get_test_case_id();
+
+    // 4. Run Request
+    run_test_case(current_test_id);
 }

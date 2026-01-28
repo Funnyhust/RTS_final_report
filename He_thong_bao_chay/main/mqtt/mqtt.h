@@ -146,5 +146,15 @@ void mqtt_event_handler(void *handler_args, esp_event_base_t base,
  */
 void mqtt_task(void *pvParameters);
 
+/**
+ * @brief Tạo JSON payload chuẩn theo format Server yêu cầu
+ * @param device_id ID của thiết bị
+ * @param msg_type Loại tin nhắn (telemetry, alarm, status)
+ * @param seq Sequence number (có thể bỏ qua nếu tự quản lý bên trong)
+ * @return cJSON* object root (chứa msg_id, values, ...)
+ */
+#include "cJSON.h"
+cJSON* mqtt_create_payload(const char* device_id, const char* msg_type, int seq);
+
 #endif // MQTT_H
 

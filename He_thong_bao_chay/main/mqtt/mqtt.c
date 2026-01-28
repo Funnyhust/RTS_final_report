@@ -3,11 +3,12 @@
 #include "cJSON.h"
 #include <string.h>
 #include <stdlib.h>
+#include <sys/time.h>
 #include <time.h>
 
 // ==== TLS CA (HiveMQ Cloud) ====
-extern const uint8_t hivemq_ca_pem_start[] asm("_binary_hivemq_ca_pem_start");
-extern const uint8_t hivemq_ca_pem_end[]   asm("_binary_hivemq_ca_pem_end");
+// extern const uint8_t hivemq_ca_pem_start[] asm("_binary_hivemq_ca_pem_start");
+// extern const uint8_t hivemq_ca_pem_end[]   asm("_binary_hivemq_ca_pem_end");
 
 static const char *TAG = "MQTT";
 
@@ -108,7 +109,8 @@ int mqtt_init(mqtt_config_t *config,
 
     // TLS nếu bật
     if (use_tls) {
-        mqtt_cfg.broker.verification.certificate = (const char *)hivemq_ca_pem_start;
+        // mqtt_cfg.broker.verification.certificate = (const char *)hivemq_ca_pem_start;
+        ESP_LOGW(TAG, "TLS requested but CA certificate is commented out");
     }
 
     config->client = esp_mqtt_client_init(&mqtt_cfg);
@@ -166,6 +168,11 @@ int mqtt_publish(mqtt_config_t *config, const char *topic,
 
     int id = esp_mqtt_client_publish(config->client, topic, payload,
                                      strlen(payload), qos, retain);
+    if (id != -1) {
+        ESP_LOGI(TAG, "Sent PKT [Topic: %s] [ID: %d] [Len: %d]", topic, id, strlen(payload));
+    } else {
+        ESP_LOGE(TAG, "Failed to send PKT [Topic: %s]", topic);
+    }
     return (id >= 0) ? id : -1;
 }
 
@@ -192,6 +199,38 @@ bool mqtt_receive_message(mqtt_config_t *config,
 }
 
 // ===============================
+// Helper để tạo JSON chuẩn Server yêu cầu
+cJSON* mqtt_create_payload(const char* device_id, const char* msg_type, int seq) {
+    cJSON *root = cJSON_CreateObject();
+    
+    // 1. msg_id (Unique)
+    char msg_id[64];
+    snprintf(msg_id, sizeof(msg_id), "%s_%u", device_id, (unsigned int)esp_log_timestamp());
+    cJSON_AddStringToObject(root, "msg_id", msg_id);
+
+    // 2. device_id
+    cJSON_AddStringToObject(root, "device_id", device_id);
+
+    // 3. type
+    cJSON_AddStringToObject(root, "type", msg_type);
+
+    // 4. t_sensor_ms
+    struct timeval tv;
+    gettimeofday(&tv, NULL);
+    uint64_t t_ms = (uint64_t)tv.tv_sec * 1000 + tv.tv_usec / 1000;
+    cJSON_AddNumberToObject(root, "t_sensor_ms", (double)t_ms);
+
+    // 5. seq
+    static int global_seq = 0;
+    cJSON_AddNumberToObject(root, "seq", global_seq++);
+
+    // 6. values (Container for data)
+    cJSON *values = cJSON_CreateObject();
+    cJSON_AddItemToObject(root, "values", values);
+
+    return root; 
+}
+
 void mqtt_task(void *pvParameters)
 {
     mqtt_config_t *config = (mqtt_config_t *)pvParameters;
@@ -199,19 +238,21 @@ void mqtt_task(void *pvParameters)
 
     while (1) {
         if (config->is_connected) {
-            cJSON *root = cJSON_CreateObject();
-            cJSON_AddStringToObject(root, "status", "online");
-            cJSON_AddNumberToObject(root, "uptime", esp_log_timestamp());
+            // Sử dụng Helper để tạo gói tin Status chuẩn
+            cJSON *root = mqtt_create_payload(config->client_id, "status", 0);
+            cJSON *values = cJSON_GetObjectItem(root, "values");
 
-            // Get real time
+            cJSON_AddStringToObject(values, "status", "online");
+            cJSON_AddNumberToObject(values, "uptime", esp_log_timestamp());
+            
+            // Real time string
             time_t now = 0;
             struct tm timeinfo = { 0 };
             time(&now);
             localtime_r(&now, &timeinfo);
-            
             char time_str[64];
             strftime(time_str, sizeof(time_str), "%Y-%m-%d %H:%M:%S", &timeinfo);
-            cJSON_AddStringToObject(root, "real_time", time_str);
+            cJSON_AddStringToObject(values, "real_time", time_str);
 
             char *buf = cJSON_Print(root);
             if (buf) {
@@ -220,6 +261,6 @@ void mqtt_task(void *pvParameters)
             }
             cJSON_Delete(root);
         }
-        vTaskDelay(pdMS_TO_TICKS(5000));
+        vTaskDelay(pdMS_TO_TICKS(5000)); // Status mỗi 5s cho dễ debug (hoặc 30s)
     }
 }
