@@ -6,13 +6,6 @@ __pycache__/
 *.egg-info/
 .venv/
 
-# Logs and results
-logs/
-results/
-
-# Local secrets
-secrets/
-
 # Editor
 .vscode/
 .idea/
@@ -27,24 +20,17 @@ __pycache__/
 
 # Secrets / env
 .env
-secrets/
+
 
 # Optional (bạn có thể bỏ nếu muốn push)
 logs/
-results/
 
-# Python venv
-.venv/
-venv/
 
 # Python cache
 __pycache__/
 *.pyc
 
-# Secrets / env
-.env
-secrets/
 
-# Optional (bạn có thể bỏ nếu muốn push)
-logs/
-results/
+
+
+

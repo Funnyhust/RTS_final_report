@@ -1,0 +1,18 @@
+{
+  "duration_s": 300,
+  "throughput_msg_s": 0.0,
+  "alarm_p50_ms": null,
+  "alarm_p95_ms": null,
+  "alarm_p99_ms": null,
+  "alarm_jitter_ms": null,
+  "alarm_deadline_miss_rate": null,
+  "telemetry_p50_ms": null,
+  "telemetry_p95_ms": null,
+  "telemetry_p99_ms": null,
+  "telemetry_jitter_ms": null,
+  "telemetry_deadline_miss_rate": null,
+  "db_time_p95_ms": null,
+  "db_time_p99_ms": null,
+  "freshness_ratio_telemetry": null,
+  "freshness_ratio_state": null
+}
