@@ -55,3 +55,4 @@ logs/
 # Google Cloud service account keys
 WebServer-RTS-v2/secrets/serviceAccountKey.json
 WebServer-RTS-v2/secrets1/serviceAccountKey1.json
+secrets/
