@@ -16,3 +16,35 @@ secrets/
 # Editor
 .vscode/
 .idea/
+
+# Python venv
+.venv/
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Secrets / env
+.env
+secrets/
+
+# Optional (bạn có thể bỏ nếu muốn push)
+logs/
+results/
+
+# Python venv
+.venv/
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Secrets / env
+.env
+secrets/
+
+# Optional (bạn có thể bỏ nếu muốn push)
+logs/
+results/

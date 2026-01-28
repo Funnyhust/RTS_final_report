@@ -17,11 +17,11 @@ pipeline:
   alarm_queue_max: 1000
 
 rtdb:
-  mode: "mock"
-  write_mode: "async"
+  mode: "firebase" # "firebase" or "mock"
+  write_mode: "async" # "sync" or "async"
   firebase:
     service_account_json: "secrets/serviceAccountKey.json"
-    database_url: "https://<your-db>.firebaseio.com/"
+    database_url: "https://rtshust-default-rtdb.asia-southeast1.firebasedatabase.app/"
   mock:
     ack_delay_ms: 20
   writer:

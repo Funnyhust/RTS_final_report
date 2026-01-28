@@ -1,5 +1,5 @@
 mqtt:
-  host: "localhost"
+  host: "broker.emqx.io"
   port: 1883
   keepalive_s: 60
   alert_topic: "fire_system/alert"
@@ -12,16 +12,16 @@ deadlines:
 
 pipeline:
   inject_jitter_telemetry_ms: 0
-  telemetry_queue_max: 2000
-  telemetry_drop_policy: "keep_latest"
+  telemetry_queue_max: 10000
+  telemetry_drop_policy: "none"
   alarm_queue_max: 1000
 
 rtdb:
-  mode: "firebase"  # "firebase" or "mock"
-  write_mode: "async"  # "sync" or "async"
+  mode: "firebase"  # ENABLED FIREBASE MODE
+  write_mode: "async"
   firebase:
-    service_account_json: "secrets/serviceAccountKey.json"
-    database_url: "https://rtshust-default-rtdb.asia-southeast1.firebasedatabase.app/"
+    service_account_json: "secrets/serviceAccountKey.json" # USER MUST PROVIDE THIS
+    database_url: "https://YOUR_PROJECT_ID.firebaseio.com/" # USER MUST UPDATE THIS
   mock:
     ack_delay_ms: 20
   writer:
@@ -47,5 +47,5 @@ sensor_sim:
   burst_start_s: 10
 
 benchmark:
-  duration_s: 30
+  duration_s: 300
   warmup_s: 3
