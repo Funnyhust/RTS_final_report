@@ -1,0 +1,11 @@
+{
+  "received": {
+    "alarm": 10,
+    "telemetry": 2925,
+    "status": 0
+  },
+  "dropped_pipeline": 0,
+  "dropped_db": 0,
+  "queue_max_pipeline": 55,
+  "queue_max_db": 3
+}

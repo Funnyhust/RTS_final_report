@@ -1,0 +1,2 @@
+duration_s,throughput_msg_s,alarm_p50_ms,alarm_p95_ms,alarm_p99_ms,alarm_jitter_ms,alarm_deadline_miss_rate,telemetry_p50_ms,telemetry_p95_ms,telemetry_p99_ms,telemetry_jitter_ms,telemetry_deadline_miss_rate,db_time_p95_ms,db_time_p99_ms,freshness_ratio_telemetry,freshness_ratio_state,dropped_pipeline,dropped_db,queue_max_pipeline,queue_max_db
+300,111.69,10.0,274.0,322.39999999999986,312.39999999999986,0.08396946564885496,1.0,280.0,334.0,333.0,0.032749063670411985,244.0,1938.160000000069,0.9996404494382023,0.9990449471736406,0,0,11,3

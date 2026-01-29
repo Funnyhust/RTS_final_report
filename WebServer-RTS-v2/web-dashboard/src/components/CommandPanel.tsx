@@ -1,7 +1,6 @@
 ﻿import { useMemo, useState } from "react";
-import { push, ref, set } from "firebase/database";
-import { db } from "../firebase";
 import type { FloorConfig } from "../types";
+import { useWebSocket } from "../hooks/useWebSocket";
 
 const COMMANDS = [
   { value: "SIREN_ON", label: "BẬT CÒI" },
@@ -18,6 +17,7 @@ type CommandPanelProps = {
 };
 
 export function CommandPanel({ floors }: CommandPanelProps) {
+  const { sendCommand } = useWebSocket();
   const [targetType, setTargetType] = useState<TargetType>("all");
   const [floorId, setFloorId] = useState(floors[0]?.id ?? "");
   const [deviceId, setDeviceId] = useState(floors[0]?.deviceIds[0] ?? "");
@@ -26,14 +26,7 @@ export function CommandPanel({ floors }: CommandPanelProps) {
 
   const deviceOptions = useMemo(() => floors.flatMap((floor) => floor.deviceIds), [floors]);
 
-  const targetKey = useMemo(() => {
-    if (targetType === "all") return "all";
-    if (targetType === "floor") return `floor-${floorId}`;
-    return `device-${deviceId}`;
-  }, [targetType, floorId, deviceId]);
-
-  const handleSend = async () => {
-    if (!db) return;
+  const handleSend = () => {
     if (targetType === "floor" && !floorId) {
       setStatus("Vui lòng chọn tầng mục tiêu");
       return;
@@ -42,22 +35,14 @@ export function CommandPanel({ floors }: CommandPanelProps) {
       setStatus("Vui lòng chọn thiết bị mục tiêu");
       return;
     }
-    setStatus("Đang gửi lệnh...");
-    try {
-      const payload: Record<string, unknown> = {
-        cmd: command,
-        ts_ms: Date.now(),
-        target: targetType,
-      };
-      if (targetType === "floor") payload.floorId = floorId;
-      if (targetType === "device") payload.deviceId = deviceId;
 
-      const targetRef = push(ref(db, `commands/${targetKey}`));
-      await set(targetRef, payload);
-      setStatus("Đã gửi lệnh thành công");
-    } catch (error) {
-      console.error(error);
-      setStatus("Gửi lệnh thất bại");
+    setStatus("Đang gửi lệnh (qua WebSocket)...");
+
+    if (targetType === "device") {
+      sendCommand(command, deviceId);
+      setStatus("✅ Đã gửi lệnh (WebSocket)");
+    } else {
+      setStatus("⚠️ Chế độ Group/All chưa hỗ trợ qua WS (Local)");
     }
   };
 
@@ -65,7 +50,7 @@ export function CommandPanel({ floors }: CommandPanelProps) {
     <div className="card">
       <div className="panel-header">
         <h3>Gửi lệnh điều khiển</h3>
-        <p className="dim">Ghi vào /commands/&lt;target&gt;/&lt;pushId&gt; trên RTDB.</p>
+        <p className="dim">Gửi lệnh trực tiếp qua WebSocket (Bypass Firebase).</p>
       </div>
 
       <div className="command-grid">

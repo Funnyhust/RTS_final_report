@@ -1,0 +1,42 @@
+{
+    "latex-workshop.latex.tools": [
+        {
+            "name": "latexmk",
+            "command": "C:/Users/truong pc/AppData/Local/Programs/MiKTeX/miktex/bin/x64/latexmk.exe",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-pdf",
+                "-outdir=%OUTDIR%",
+                "%DOC%"
+            ],
+            "env": {
+                "PATH": "C:/Strawberry/c/bin;C:/Strawberry/perl/site/bin;C:/Strawberry/perl/bin;C:/Users/truong pc/AppData/Local/Programs/MiKTeX/miktex/bin/x64;%PATH%"
+            }
+        },
+        {
+            "name": "pdflatex",
+            "command": "C:/Users/truong pc/AppData/Local/Programs/MiKTeX/miktex/bin/x64/pdflatex.exe",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOC%"
+            ],
+            "env": {
+                "PATH": "C:/Strawberry/c/bin;C:/Strawberry/perl/site/bin;C:/Strawberry/perl/bin;C:/Users/truong pc/AppData/Local/Programs/MiKTeX/miktex/bin/x64;%PATH%"
+            }
+        },
+        {
+            "name": "bibtex",
+            "command": "C:/Users/truong pc/AppData/Local/Programs/MiKTeX/miktex/bin/x64/bibtex.exe",
+            "args": [
+                "%DOCFILE%"
+            ],
+            "env": {
+                "PATH": "C:/Users/truong pc/AppData/Local/Programs/MiKTeX/miktex/bin/x64;%PATH%"
+            }
+        }
+    ]
+}

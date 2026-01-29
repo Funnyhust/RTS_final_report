@@ -387,7 +387,13 @@ void app_main_normal(void)
     vTaskDelay(pdMS_TO_TICKS(2000));
     
     #ifdef CONFIG_USE_SIMULATION
-        xTaskCreate(simulation_task, "simulation_task", 4096, NULL, configMAX_PRIORITIES - 2, NULL);
+        // Only run random simulation in NORMAL mode. 
+        // In other modes, the Test Case logic controls the sensors.
+        if (get_test_case_id() == TEST_CASE_NORMAL) {
+             xTaskCreate(simulation_task, "simulation_task", 4096, NULL, configMAX_PRIORITIES - 2, NULL);
+        } else {
+             ESP_LOGW(TAG, "Default Simulation Task skipped (Test Case %02X Active)", get_test_case_id());
+        }
     #else
         xTaskCreate(sensor_task, "sensor_task", 4096, &g_sensor_status, configMAX_PRIORITIES - 1, NULL);
         xTaskCreate(buzzer_task, "buzzer_task", 2048, &g_buzzer, configMAX_PRIORITIES - 2, NULL);

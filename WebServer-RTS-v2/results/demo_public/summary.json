@@ -1,0 +1,22 @@
+{
+  "duration_s": 300,
+  "throughput_msg_s": 19.67,
+  "alarm_p50_ms": 261.0,
+  "alarm_p95_ms": 18014.199999999993,
+  "alarm_p99_ms": 22218.060000000005,
+  "alarm_jitter_ms": 21957.060000000005,
+  "alarm_deadline_miss_rate": 1.0,
+  "telemetry_p50_ms": 264.0,
+  "telemetry_p95_ms": 29278.999999999993,
+  "telemetry_p99_ms": 52301.369999999995,
+  "telemetry_jitter_ms": 52037.369999999995,
+  "telemetry_deadline_miss_rate": 0.251446070091868,
+  "db_time_p95_ms": 180.0,
+  "db_time_p99_ms": 277.0,
+  "freshness_ratio_telemetry": 0.866110922082341,
+  "freshness_ratio_state": 0.8559566175224538,
+  "dropped_pipeline": 0,
+  "dropped_db": 0,
+  "queue_max_pipeline": 55,
+  "queue_max_db": 3
+}

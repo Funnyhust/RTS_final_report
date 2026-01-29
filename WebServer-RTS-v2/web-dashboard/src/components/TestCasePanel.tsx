@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { push, ref, set } from "firebase/database";
-import { db } from "../firebase";
+import { useWebSocket } from "../hooks/useWebSocket";
 
 // Test Case Definitions matching Device's test_config.h
 const TEST_CASES = [
@@ -35,37 +34,31 @@ const groupedTestCases = TEST_CASES.reduce((acc, tc) => {
 }, {} as Record<string, typeof TEST_CASES[number][]>);
 
 export function TestCasePanel() {
+    const { sendCommand } = useWebSocket();
     const [selectedTestCase, setSelectedTestCase] = useState<TestCaseValue>(0x00);
     const [status, setStatus] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState(false);
 
     const selectedInfo = TEST_CASES.find(tc => tc.value === selectedTestCase);
 
-    const handleSendTestMode = async () => {
-        if (!db) {
-            setStatus("Firebase chưa sẵn sàng");
-            return;
-        }
-
+    const handleSendTestMode = () => {
         setIsLoading(true);
-        setStatus("Đang gửi lệnh...");
+        setStatus("Đang gửi lệnh (WS)...");
 
         try {
             const payload = {
-                cmd: "SET_TEST_MODE",
                 test_case_id: selectedTestCase,
                 test_case_hex: `0x${selectedTestCase.toString(16).padStart(2, '0').toUpperCase()}`,
                 test_case_name: selectedInfo?.label ?? "Unknown",
                 ts_ms: Date.now(),
                 target: "device",
-                deviceId: "fire_system_esp32",
+                // cmd and deviceId are passed as args to sendCommand
             };
 
-            // Write to Firebase RTDB - server will forward via MQTT
-            const targetRef = push(ref(db, `commands/device-fire_system_esp32`));
-            await set(targetRef, payload);
+            // Using sendCommand with extraData to pass the full payload
+            sendCommand("SET_TEST_MODE", "fire_system_esp32", payload);
 
-            setStatus(`✅ Đã gửi lệnh: ${selectedInfo?.label}. Thiết bị sẽ restart.`);
+            setStatus(`✅ Đã gửi lệnh: ${selectedInfo?.label}. (Qua WebSocket)`);
         } catch (error) {
             console.error(error);
             setStatus("❌ Gửi lệnh thất bại");
@@ -77,8 +70,8 @@ export function TestCasePanel() {
     return (
         <div className="card test-case-panel">
             <div className="panel-header">
-                <h3>🧪 Chuyển Test Mode</h3>
-                <p className="dim">Gửi lệnh đến ESP32 để chuyển đổi chế độ kiểm thử.</p>
+                <h3>🧪 Chuyển Test Mode (WS Hybrid)</h3>
+                <p className="dim">Gửi lệnh đến ESP32 qua WebSocket (Bypass Firebase).</p>
             </div>
 
             <div className="test-case-content">

@@ -1,0 +1,2 @@
+duration_s,throughput_msg_s,alarm_p50_ms,alarm_p95_ms,alarm_p99_ms,alarm_jitter_ms,alarm_deadline_miss_rate,telemetry_p50_ms,telemetry_p95_ms,telemetry_p99_ms,telemetry_jitter_ms,telemetry_deadline_miss_rate,db_time_p95_ms,db_time_p99_ms,freshness_ratio_telemetry,freshness_ratio_state
+300,0.0,,,,,,,,,,,,,,

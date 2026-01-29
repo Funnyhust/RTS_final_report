@@ -162,6 +162,13 @@ void sim_sanity_task(void *pvParameters) {
     uint8_t id = (uint8_t)((uint32_t)pvParameters);
     vTaskDelay(pdMS_TO_TICKS(5000)); // Wait for boot
 
+    // Init defaults so dashboard isn't empty/zero
+    g_sensor_status.temperature.normalized_value = 25.0f; 
+    g_sensor_status.gas.normalized_value = 0.0f;
+    g_sensor_status.ir_flame.is_triggered = false;
+    g_sensor_status.smoke.normalized_value = 0.0f;
+    g_sensor_status.fire_detected = false;
+
     switch (id) {
         case TEST_CASE_BSC_01: // Smoke
             ESP_LOGW(TAG, "   [BSC-01] SIMULATING SMOKE > THRESHOLD");

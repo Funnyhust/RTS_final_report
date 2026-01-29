@@ -2,10 +2,7 @@
 import { Header } from "./components/Header";
 import { Sidebar } from "./components/Sidebar";
 import { FLOORS } from "./config/building";
-import { db, firebaseInitError } from "./firebase";
-import { useConnectionStatus } from "./hooks/useConnectionStatus";
-import { useRtdbValue } from "./hooks/useRtdbValue";
-import type { AlarmRecord, DevicesTree } from "./types";
+import { firebaseInitError } from "./firebase";
 import { getDeviceStateSnapshot, normalizeSeverity, readNumber } from "./types";
 import CanhBao from "./pages/CanhBao";
 import DieuKhien from "./pages/DieuKhien";
@@ -24,22 +21,19 @@ function FirebaseErrorScreen({ error }: { error: unknown }) {
   );
 }
 
-function FirebasePendingScreen() {
-  return (
-    <div className="gate-screen">
-      <div className="gate-card">
-        <h1>Đang kết nối Firebase...</h1>
-        <p>Hệ thống đang chờ Firebase RTDB sẵn sàng.</p>
-        <p>Kiểm tra src/firebase.ts và web-dashboard/.env rồi khởi động lại dev server.</p>
-      </div>
-    </div>
-  );
-}
+
+
+import { useWebSocket } from "./hooks/useWebSocket";
+
+// ... imports remain the same ...
 
 export default function App() {
-  const { connected } = useConnectionStatus();
-  const { value: devices } = useRtdbValue<DevicesTree>("devices", {});
-  const { value: alarms } = useRtdbValue<Record<string, AlarmRecord>>("alarms", {});
+  // [NEW] Use WebSocket instead of Firebase
+  const { devices, alarms, connected } = useWebSocket();
+
+  // const { connected } = useConnectionStatus(); // Removed
+  // const { value: devices } = useRtdbValue<DevicesTree>("devices", {});
+  // const { value: alarms } = useRtdbValue<Record<string, AlarmRecord>>("alarms", {});
 
   if (firebaseInitError) {
     return <FirebaseErrorScreen error={firebaseInitError} />;

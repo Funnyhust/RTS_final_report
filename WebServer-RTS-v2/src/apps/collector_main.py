@@ -18,6 +18,7 @@ from src.processing.pipeline import Pipeline
 from src.rtdb.db_writer import DbWriter
 from src.rtdb.firebase_backend import FirebaseBackend
 from src.rtdb.mock_backend import MockBackend
+from src.comm.websocket_server import WebSocketServer
 
 
 class Stats:
@@ -102,6 +103,24 @@ def main() -> int:
         db_writer = DbWriter(backend, ack_writer, cfg)
         db_writer.start()
 
+    # [NEW] Start WebSocket Server (Bypass Firebase)
+    ws_server = WebSocketServer(port=8765)
+    
+    def on_ws_message(data: Dict[str, object]) -> None:
+        cmd_type = str(data.get("cmd"))
+        device_id = str(data.get("device_id"))
+        
+        # Bridge to MQTT
+        if cmd_type and device_id:
+            logger.info(f"WS Command: {cmd_type} for {device_id}")
+            # Topic: fire_system/control
+            # Payload: {"cmd": "BUZZER_ON", "device_id": "..."}
+            control_topic = get_cfg(cfg, "mqtt.control_topic", "fire_system/control") 
+            mqtt_client.publish(control_topic, json.dumps(data))
+
+    ws_server.set_message_handler(on_ws_message)
+    ws_server.start()
+
     stats = Stats()
 
     dashboard = DashboardConsumer(enabled=True)
@@ -170,6 +189,22 @@ def main() -> int:
 
             t_dashboard_emit_ms = wall_ms()
             dashboard.emit({"msg_id": msg.msg_id, "type": msg_type, "severity": severity})
+
+            # [NEW] Broadcast to WebSocket (Bypass Firebase)
+            ws_payload = {
+                "msg_id": msg.msg_id,
+                "device_id": msg.device_id,
+                "type": msg_type,
+                "severity": severity,
+                "timestamp": wall_ms(),
+                "data": {
+                    "state": state,
+                    "alarm": alarm,
+                    "telemetry": telemetry
+                }
+            }
+            if 'ws_server' in globals() or 'ws_server' in locals():
+                 ws_server.broadcast(ws_payload)
 
         # Validate timestamp
         ts_origin = msg.t_sensor_ms
