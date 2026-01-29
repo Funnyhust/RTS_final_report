@@ -27,6 +27,7 @@ export type SensorValues = {
 export type DeviceState = {
   severity?: unknown;
   t_sensor_ms?: unknown;
+  ntp_synced?: unknown;
   temp?: unknown;
   smoke?: unknown;
   gas?: unknown;
@@ -95,6 +96,7 @@ export type FloorDeviceSummary = {
   severity: Severity;
   tSensorMs?: number;
   ageMs?: number;
+  ntpSynced?: boolean;
   values: SensorValues;
   stale: boolean;
 };

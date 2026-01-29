@@ -22,12 +22,14 @@ try {
     (key) => !firebaseConfig[key]
   );
   if (missingKeys.length > 0) {
-    throw new Error(`Missing Firebase env vars: ${missingKeys.join(", ")}`);
+    console.warn(`[Mock Mode] Missing Firebase env vars: ${missingKeys.join(", ")}. App will run in offline mode.`);
+    // Do NOT initialize Firebase if keys are missing to avoid "FIREBASE FATAL ERROR"
+    db = null;
+  } else {
+    const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
+    db = getDatabase(app);
+    console.log("Firebase init OK:", firebaseConfig.databaseURL);
   }
-
-  const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
-  db = getDatabase(app);
-  console.log("Firebase init OK:", firebaseConfig.databaseURL);
 } catch (error) {
   firebaseInitError = error;
   console.error("Firebase init FAILED:", error);

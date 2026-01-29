@@ -20,6 +20,11 @@ def classify(message: Message) -> Tuple[str, str]:
         return "ALARM", "alarm_payload"
 
     values = message.values or {}
+    
+    # Check explicit fire_detected flag from device telemetry
+    if values.get("fire_detected") is True:
+        return "ALARM", "fire_detected_flag"
+        
     if values.get("flame", 0) >= DEFAULT_THRESHOLDS["flame"]:
         return "ALARM", "flame"
     if values.get("smoke", 0) >= DEFAULT_THRESHOLDS["smoke"]:

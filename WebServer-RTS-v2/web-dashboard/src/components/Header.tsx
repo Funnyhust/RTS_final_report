@@ -5,6 +5,7 @@ import { RealtimeIndicator } from "./RealtimeIndicator";
 type HeaderProps = {
   connected: boolean;
   lastUpdateMs?: number;
+  ntpSynced?: boolean;
   floors: number;
   devices: number;
   activeAlarms: number;
@@ -15,6 +16,7 @@ type HeaderProps = {
 export function Header({
   connected,
   lastUpdateMs,
+  ntpSynced,
   floors,
   devices,
   activeAlarms,
@@ -45,7 +47,7 @@ export function Header({
         </div>
 
         <div className="header-actions">
-          <RealtimeIndicator lastUpdateMs={lastUpdateMs} />
+          <RealtimeIndicator lastUpdateMs={lastUpdateMs} ntpSynced={ntpSynced} />
 
           <div className="header-stats-row">
             <div className="mini-stat">

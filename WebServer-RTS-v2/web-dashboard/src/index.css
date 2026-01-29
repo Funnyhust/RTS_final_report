@@ -1643,3 +1643,215 @@ a {
     gap: 12px;
   }
 }
+
+/* ========================================
+   TEST CASE PANEL STYLES
+   ======================================== */
+
+.test-mode-section {
+  margin-bottom: 20px;
+}
+
+.test-case-panel {
+  background: linear-gradient(145deg, rgba(59, 214, 198, 0.08), rgba(20, 28, 40, 0.9));
+  border: 1px solid rgba(59, 214, 198, 0.3);
+  box-shadow: 0 20px 50px rgba(59, 214, 198, 0.1), var(--shadow);
+}
+
+.test-case-panel .panel-header {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 14px;
+  margin-bottom: 18px;
+}
+
+.test-case-panel .panel-header h3 {
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.test-case-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.test-case-selector {
+  width: 100%;
+}
+
+.test-case-selector label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.test-case-select {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.04);
+  color: #e6edf3;
+  font-family: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.test-case-select:hover {
+  border-color: rgba(59, 214, 198, 0.5);
+}
+
+.test-case-select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(59, 214, 198, 0.2);
+}
+
+.test-case-select optgroup {
+  background: #101827;
+  color: var(--accent);
+  font-weight: 600;
+  padding: 8px 0;
+}
+
+.test-case-select option {
+  background: #0c111a;
+  color: #e6edf3;
+  padding: 8px 12px;
+}
+
+.test-case-info {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.info-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+}
+
+.info-label {
+  color: var(--muted);
+  min-width: 80px;
+}
+
+.hex-code {
+  font-family: "IBM Plex Mono", monospace;
+  background: rgba(59, 214, 198, 0.15);
+  color: var(--accent);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.group-badge {
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}
+
+.group-badge.normal {
+  background: rgba(74, 222, 128, 0.2);
+  color: #86efac;
+}
+
+.group-badge.rts {
+  background: rgba(147, 51, 234, 0.2);
+  color: #c4b5fd;
+}
+
+.group-badge.bsc {
+  background: rgba(59, 130, 246, 0.2);
+  color: #93c5fd;
+}
+
+.description {
+  color: #e6edf3;
+}
+
+.warning-box {
+  background: linear-gradient(135deg, rgba(242, 185, 75, 0.15), rgba(255, 93, 93, 0.1));
+  border: 1px solid rgba(242, 185, 75, 0.4);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  font-size: 13px;
+  color: #fcd34d;
+  line-height: 1.5;
+}
+
+.warning-box code {
+  font-family: "IBM Plex Mono", monospace;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.test-case-panel .panel-actions {
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+  padding: 14px 24px;
+  font-size: 14px;
+  width: 100%;
+  transition: all 0.25s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(59, 214, 198, 0.35);
+}
+
+.btn-primary.loading {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+.test-case-panel .status-text {
+  text-align: center;
+  font-size: 13px;
+  min-height: 20px;
+}
+
+.test-case-panel .status-text.success {
+  color: var(--ok);
+}
+
+.test-case-panel .status-text.error {
+  color: var(--alarm);
+}
+
+/* Animation for button hover */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(59, 214, 198, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(59, 214, 198, 0.5);
+  }
+}
+
+.btn-primary:focus {
+  animation: pulse-glow 1.5s ease-in-out infinite;
+}

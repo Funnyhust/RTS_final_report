@@ -3,9 +3,10 @@ import { useEffect, useState } from "react";
 type RealtimeIndicatorProps = {
     lastUpdateMs?: number;
     showLatency?: boolean;
+    ntpSynced?: boolean;
 };
 
-export function RealtimeIndicator({ lastUpdateMs, showLatency = true }: RealtimeIndicatorProps) {
+export function RealtimeIndicator({ lastUpdateMs, showLatency = true, ntpSynced }: RealtimeIndicatorProps) {
     const [ageMs, setAgeMs] = useState<number | null>(null);
     const [pulse, setPulse] = useState(false);
 
@@ -61,6 +62,14 @@ export function RealtimeIndicator({ lastUpdateMs, showLatency = true }: Realtime
                     {status === "stale" && "🟠 DỮ LIỆU CŨ"}
                     {status === "offline" && "🔴 OFFLINE"}
                 </span>
+
+                {/* Warning NTP Not Synced */}
+                {ntpSynced === false && (
+                    <span className="rt-warning" style={{ color: "#ff9800", fontWeight: "bold" }}>
+                        ⚠️ Chưa Sync NTP
+                    </span>
+                )}
+
                 {showLatency && ageMs !== null && (
                     <span className="rt-latency">
                         Cập nhật: {formatAge(ageMs)}

@@ -1,5 +1,6 @@
 ﻿import { useMemo } from "react";
 import { CommandPanel } from "../components/CommandPanel";
+import { TestCasePanel } from "../components/TestCasePanel";
 import { ThresholdEditor } from "../components/ThresholdEditor";
 import { FLOORS } from "../config/building";
 import { useRtdbValue } from "../hooks/useRtdbValue";
@@ -23,8 +24,13 @@ export default function DieuKhien() {
       <div className="page-header">
         <div>
           <h2>Điều khiển</h2>
-          <p className="dim">Gửi lệnh và cấu hình ngưỡng cảnh báo cho thiết bị.</p>
+          <p className="dim">Gửi lệnh, cấu hình ngưỡng cảnh báo và chuyển chế độ test cho thiết bị.</p>
         </div>
+      </div>
+
+      {/* Test Case Panel - prominently displayed */}
+      <div className="test-mode-section">
+        <TestCasePanel />
       </div>
 
       <div className="controls-grid">

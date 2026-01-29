@@ -27,8 +27,18 @@ logs/
 
 
 # Python cache
-__pycache__/
-*.pyc
+
+# Secrets
+secrets/
+*.json
+!mock_rtdb.jsonl
+
+# Results
+results/
+
+# Local configs
+*local.conf
+mosquitto_local.conf
 
 
 

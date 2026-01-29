@@ -2,6 +2,7 @@ import type { FloorConfig } from "../types";
 
 // Chung cư mini 6 tầng - mỗi tầng 1 sensor ESP32
 export const FLOORS: FloorConfig[] = [
+  { id: "demo", label: "PHÒNG LAB (Demo)", deviceIds: ["fire_system_esp32"] },
   { id: "6", label: "Tầng 6 (Sân thượng)", deviceIds: ["esp32-06"] },
   { id: "5", label: "Tầng 5", deviceIds: ["esp32-05"] },
   { id: "4", label: "Tầng 4", deviceIds: ["esp32-04"] },

@@ -17,7 +17,7 @@ if (Test-Path ".venv\Scripts\python.exe") {
     $pythonCmd = ".venv\Scripts\python.exe"
     Write-Host "Using Virtual Environment Python: $pythonCmd" -ForegroundColor Gray
 } else {
-    $pythonCmd = "python"
+    $pythonCmd = "C:\Users\gmoba\AppData\Local\Programs\Python\Python311\python.exe"
     Write-Host "Using System Python" -ForegroundColor Gray
 }
 

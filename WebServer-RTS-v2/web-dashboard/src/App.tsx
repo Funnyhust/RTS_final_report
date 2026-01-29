@@ -45,9 +45,9 @@ export default function App() {
     return <FirebaseErrorScreen error={firebaseInitError} />;
   }
 
-  if (!db) {
-    return <FirebasePendingScreen />;
-  }
+  // if (!db) {
+  //   return <FirebasePendingScreen />;
+  // }
 
   const deviceCount = Object.keys(devices ?? {}).length;
   const activeAlarms = Object.values(alarms ?? {}).filter((alarm) => {
@@ -57,11 +57,15 @@ export default function App() {
   }).length;
 
   let lastUpdateMs: number | undefined;
+  let isNtpSynced: boolean | undefined;
+
   for (const device of Object.values(devices ?? {})) {
     const state = getDeviceStateSnapshot(device);
     const ts = readNumber(state.t_sensor_ms ?? state.ts_ms ?? state.timestamp);
     if (ts && (!lastUpdateMs || ts > lastUpdateMs)) {
       lastUpdateMs = ts;
+      // Nếu thiết bị có gửi ntp_synced = false thì ghi nhận
+      isNtpSynced = state.ntp_synced !== false;
     }
   }
 
@@ -73,6 +77,7 @@ export default function App() {
           <Header
             connected={connected}
             lastUpdateMs={lastUpdateMs}
+            ntpSynced={isNtpSynced}
             floors={FLOORS.length}
             devices={deviceCount}
             activeAlarms={activeAlarms}

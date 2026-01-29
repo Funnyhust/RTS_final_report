@@ -11,6 +11,7 @@ class Message:
     seq: int
     values: Dict[str, Any]
     alarm: Optional[Dict[str, Any]] = None
+    ntp_synced: bool = False
 
     @staticmethod
     def from_dict(data: Dict[str, Any]) -> "Message":
@@ -22,6 +23,7 @@ class Message:
             seq=int(data.get("seq", 0)),
             values=dict(data.get("values") or {}),
             alarm=data.get("alarm"),
+            ntp_synced=bool(data.get("ntp_synced", False)),
         )
 
 

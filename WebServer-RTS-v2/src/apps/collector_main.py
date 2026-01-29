@@ -171,11 +171,21 @@ def main() -> int:
             t_dashboard_emit_ms = wall_ms()
             dashboard.emit({"msg_id": msg.msg_id, "type": msg_type, "severity": severity})
 
+        # Validate timestamp
+        ts_origin = msg.t_sensor_ms
+        MIN_VALID_MS = 1704067200000 # 2024-01-01
+        
+        if not ts_origin or ts_origin < MIN_VALID_MS or not msg.ntp_synced:
+            # Fallback nếu thiết bị chưa sync NTP
+            ts_origin = t_pc_rx_ms
+            if not msg.ntp_synced:
+                notes = (notes + ";unsynced").strip(";")
+        
         trace = TraceEvent(
             msg_id=msg.msg_id,
             device_id=msg.device_id,
             msg_type=msg_type,
-            t_sensor_ms=msg.t_sensor_ms,
+            t_sensor_ms=ts_origin, # Use validated timestamp
             t_pc_rx_ms=t_pc_rx_ms,
             t_proc_start_ms=t_proc_start_ms,
             t_proc_end_ms=t_proc_end_ms,
@@ -188,8 +198,7 @@ def main() -> int:
         trace_writer.write_event(trace.to_row())
 
         if feedback_enabled and msg_type == "telemetry":
-            ts_base = msg.t_sensor_ms or t_pc_rx_ms
-            if t_dashboard_emit_ms - ts_base <= avi_ms:
+            if t_dashboard_emit_ms - ts_origin <= avi_ms:
                 telemetry_fresh += 1
             telemetry_total += 1
 
