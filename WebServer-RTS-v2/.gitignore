@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.venv/
+
+# Editor
+.vscode/
+.idea/
+
+# Python venv
+.venv/
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Secrets / env
+.env
+
+
+# Optional (bạn có thể bỏ nếu muốn push)
+logs/
+
+
+# Python cache
+
+# Secrets
+secrets/
+*.json
+!mock_rtdb.jsonl
+
+# Results
+results/
+
+# Local configs
+*local.conf
+mosquitto_local.conf
+
+
+
+
+
