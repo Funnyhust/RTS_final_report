@@ -49,5 +49,7 @@ class MqttClient:
         self._logger.warning("MQTT disconnected rc=%s", rc)
 
     def _on_message(self, client: mqtt.Client, userdata: Any, msg: mqtt.MQTTMessage) -> None:
+        # DBG: Force print to terminal
+        print(f"[MQTT DBG] Topic: {msg.topic} | Len: {len(msg.payload)}")
         if self._on_message_cb:
             self._on_message_cb(msg.topic, msg.payload)

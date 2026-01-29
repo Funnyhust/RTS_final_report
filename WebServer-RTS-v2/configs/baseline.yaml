@@ -21,7 +21,7 @@ rtdb:
   write_mode: "async"
   firebase:
     service_account_json: "secrets/serviceAccountKey.json"
-    database_url: "https://rtshust-default-rtdb.asia-southeast1.firebasedatabase.app/"
+    database_url: "https://rtshust-default-rtdb.asia-southeast1.firebasedatabase.app"
   mock:
     ack_delay_ms: 20
   writer:

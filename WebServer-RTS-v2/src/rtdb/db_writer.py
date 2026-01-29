@@ -132,18 +132,21 @@ class DbWriter:
                 break
 
     def _write_record(self, record: Dict[str, object]) -> None:
-        msg_id = str(record.get("msg_id"))
-        device_id = str(record.get("device_id"))
-        msg_type = str(record.get("msg_type"))
+        try:
+            msg_id = str(record.get("msg_id"))
+            device_id = str(record.get("device_id"))
+            msg_type = str(record.get("msg_type"))
 
-        state = record.get("state") or {}
-        alarm = record.get("alarm") or {}
-        telemetry = record.get("telemetry") or {}
+            state = record.get("state") or {}
+            alarm = record.get("alarm") or {}
+            telemetry = record.get("telemetry") or {}
 
-        ack_ms = self._backend.write_state(device_id, state)
-        if msg_type == "alarm":
-            ack_ms = self._backend.write_alarm(msg_id, alarm)
-        elif msg_type == "telemetry":
-            ack_ms = self._backend.write_telemetry(device_id, telemetry)
+            ack_ms = self._backend.write_state(device_id, state)
+            if msg_type == "alarm":
+                ack_ms = self._backend.write_alarm(msg_id, alarm)
+            elif msg_type == "telemetry":
+                ack_ms = self._backend.write_telemetry(device_id, telemetry)
 
-        self._ack_writer.write_ack(msg_id, ack_ms)
+            self._ack_writer.write_ack(msg_id, ack_ms)
+        except Exception as e:
+            self._logger.error(f"DbWriter Error: {e}")
